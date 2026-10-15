@@ -8,7 +8,8 @@
     "dev:frontend": "node scripts/dev-frontend.js",
     "build:frontend": "node scripts/build-frontend.js",
     "test": "node --test tests/*.test.js",
-    "validate": "node scripts/validate.js"
+    "validate": "node scripts/validate.js",
+    "audit:50": "node scripts/audit50.mjs"
   },
   "engines": {
     "node": ">=20"
@@ -17,5 +18,9 @@
     "@fontsource/dm-sans": "^5.3.0",
     "@fontsource/space-grotesk": "^5.3.0",
     "@fortawesome/fontawesome-free": "^7.3.1"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
+    "playwright": "^1.64.1"
   }
 }

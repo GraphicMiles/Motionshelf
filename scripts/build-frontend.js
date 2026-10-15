@@ -4,7 +4,7 @@ const source=new URL('../public/',import.meta.url), target=new URL('../dist/',im
 await fs.rm(target,{recursive:true,force:true});await fs.cp(source,target,{recursive:true});
 const host=process.env.API_HOST?.trim();
 if(process.env.RENDER && !host)throw Error('API_HOST is required for the Render static build');
-if(host && !/^[a-z0-9.-]+\.onrender\.com$/i.test(host))throw Error('API_HOST must be a Render hostname, without https://');
+if(host && (!/^(?:[a-z0-9-]+\.)+[a-z0-9-]+$/i.test(host) || host.includes('..')))throw Error('API_HOST must be a hostname without protocol, path, or port');
 const base=host?`https://${host}`:'';
 await fs.writeFile(new URL('config.js',target),`window.MOTIONSHELF_API_BASE = ${JSON.stringify(base)};\n`);
 console.log(`Built static frontend with API base ${base || '(same-origin local development)'}`);
