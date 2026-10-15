@@ -22,7 +22,7 @@ export function validateResource(value, existing = []) {
   for (const key of ['tags','frameworks']) if(Array.isArray(value[key]) && (value[key].length>20 || value[key].some(x=>typeof x==='string' && x.length>80))) errors.push(`${key} has too many or oversized values`);
   if (value.type === 'agent' && (!value.runtime || !value.install || !value.usage)) errors.push('agent tools require runtime, installation, and client configuration guidance');
   if (['ui','animation'].includes(value.type) && !value.frameworks?.length) errors.push('UI resources require a framework');
-  if (existing.some(x => x.slug === value.slug || x.repository?.replace(/\/$/,'').toLowerCase() === value.repository?.replace(/\/$/,'').toLowerCase())) errors.push('duplicate slug or repository');
+  if (existing.some(x => x.slug === value.slug || (typeof value.repository === 'string' && typeof x.repository === 'string' && x.repository.replace(/\/$/,'').toLowerCase() === value.repository.replace(/\/$/,'').toLowerCase()))) errors.push('duplicate slug or repository');
   return errors;
 }
 export function loadCatalog() { return JSON.parse(fs.readFileSync(new URL('./data/resources.json', import.meta.url), 'utf8')); }
