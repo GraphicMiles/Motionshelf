@@ -8,7 +8,7 @@ Commit `8109f99` is on `main`; the Render static site and API served the new rou
 - Live `/admin.html` 200; `/health/storage` 200, database ~2% of assumed 500 MiB free quota, zero pending submissions after cleanup. Unauthenticated admin queue 401, incorrect password 401, multipart uploads 415.
 - One temporary live JSON submission returned 201/pending; repeated submission returned 409; the row was deleted and the pending queue returned to zero.
 - Live SQL privilege checks: `anon` cannot read the maintainer allowlist, call review or rate-budget RPCs; `authenticated` cannot read submissions. Service-role snapshot and rate-budget RPCs returned expected responses.
-- GitHub Actions monitoring workflow was manually dispatched; check its run result under **Actions → Production storage monitor**. GitHub issue notifications require repository watch settings and issue permissions.
+- GitHub Actions monitoring workflow was manually dispatched and [completed successfully](https://github.com/GraphicMiles/Motionshelf/actions/runs/38752971206). GitHub issue notifications require repository watch settings and issue permissions.
 
 ## Security and operational boundaries
 
