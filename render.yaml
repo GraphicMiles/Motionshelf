@@ -25,6 +25,10 @@ services:
     runtime: static
     buildCommand: npm ci && npm run build:frontend
     staticPublishPath: ./dist
+    routes:
+      - type: rewrite
+        source: /contribute
+        destination: /contribute.html
     headers:
       - path: /examples/assets/fa/*
         name: Access-Control-Allow-Origin
