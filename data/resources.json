@@ -1,9 +1,1524 @@
 [
-  {"slug":"shadcn-ui","name":"shadcn/ui","type":"ui","category":"Components","description":"A collection of accessible, customizable components you can copy into your application.","tags":["components","dashboard","forms","navigation"],"frameworks":["React"],"runtime":"Browser","repository":"https://github.com/shadcn-ui/ui","source":"https://github.com/shadcn-ui/ui/tree/main/apps/v4/registry","website":"https://ui.shadcn.com","license":"MIT","attribution":"See upstream license and component dependencies before reuse.","install":"npx shadcn@latest init","usage":"Choose a component in the upstream registry, then use its documented add command.","version":"See upstream releases","maintenance":"Check upstream activity","preview":"command","verified":{"repository":true,"license":true}},
-  {"slug":"radix-primitives","name":"Radix Primitives","type":"ui","category":"Components","description":"Low-level, accessible UI primitives for building design systems and applications.","tags":["primitives","accessibility","navigation","dialogs"],"frameworks":["React"],"runtime":"Browser","repository":"https://github.com/radix-ui/primitives","source":"https://github.com/radix-ui/primitives/tree/main/packages/react","website":"https://www.radix-ui.com/primitives","license":"MIT","attribution":"See upstream license and package-specific notices.","install":"npm install @radix-ui/react-dialog","usage":"Install the specific primitive you need and follow its upstream API reference.","version":"See upstream releases","maintenance":"Check upstream activity","preview":"dialog","verified":{"repository":true,"license":true}},
-  {"slug":"tanstack-table","name":"TanStack Table","type":"ui","category":"Components","description":"Headless table utilities for building data grids and tables with full control over markup.","tags":["tables","data","dashboard","headless"],"frameworks":["React","Vue","Solid","Svelte"],"runtime":"Browser","repository":"https://github.com/TanStack/table","source":"https://github.com/TanStack/table/tree/main/packages","website":"https://tanstack.com/table","license":"MIT","attribution":"See upstream license for redistribution terms.","install":"npm install @tanstack/react-table","usage":"Create a table instance with your columns and data; refer to the upstream guide.","version":"See upstream releases","maintenance":"Check upstream activity","preview":"table","verified":{"repository":true,"license":true}},
-  {"slug":"motion","name":"Motion","type":"animation","category":"Animation","description":"Animation library for expressive UI motion, gestures, and scroll-driven interactions.","tags":["transitions","gestures","scroll","micro-interactions"],"frameworks":["React","JavaScript","Vue"],"runtime":"Browser","repository":"https://github.com/motiondivision/motion","source":"https://github.com/motiondivision/motion/tree/main/packages","website":"https://motion.dev","license":"MIT","attribution":"See upstream license and package-specific notices.","install":"npm install motion","usage":"Import the framework-specific API and follow the upstream quick start.","version":"See upstream releases","maintenance":"Check upstream activity","preview":"motion","verified":{"repository":true,"license":true}},
-  {"slug":"playwright-mcp","name":"Playwright MCP","type":"agent","category":"Agent tool","description":"A browser automation MCP server from Microsoft for agent-driven web interaction.","tags":["mcp","browser","automation","testing"],"frameworks":["MCP"],"runtime":"Node.js","repository":"https://github.com/microsoft/playwright-mcp","source":"https://github.com/microsoft/playwright-mcp/tree/main/src","website":"https://github.com/microsoft/playwright-mcp","license":"Apache-2.0","attribution":"Apache-2.0 includes notice and license obligations; inspect upstream files.","install":"npx @playwright/mcp@latest","usage":"Configure this server in your MCP client using the upstream instructions. Review permissions before enabling browser access.","version":"See upstream releases","maintenance":"Check upstream activity","preview":null,"verified":{"repository":true,"license":true}},
-  {"slug":"zustand","name":"Zustand","type":"utility","category":"Developer utility","description":"A small state management library with a hook-based API for React applications.","tags":["state","hooks","utilities"],"frameworks":["React"],"runtime":"Browser","repository":"https://github.com/pmndrs/zustand","source":"https://github.com/pmndrs/zustand/tree/main/src","website":"https://zustand.docs.pmnd.rs","license":"MIT","attribution":"See upstream license for redistribution terms.","install":"npm install zustand","usage":"Create a store with create and consume its hook in React; see upstream docs.","version":"See upstream releases","maintenance":"Check upstream activity","preview":null,"verified":{"repository":true,"license":true}},
-  {"slug":"react-hook-form","name":"React Hook Form","type":"utility","category":"Developer utility","description":"Performant form-state and validation utilities for React.","tags":["forms","hooks","validation"],"frameworks":["React"],"runtime":"Browser","repository":"https://github.com/react-hook-form/react-hook-form","source":"https://github.com/react-hook-form/react-hook-form/tree/master/src","website":"https://react-hook-form.com","license":"MIT","attribution":"See upstream license for redistribution terms.","install":"npm install react-hook-form","usage":"Use the useForm hook and register inputs; consult the upstream documentation.","version":"See upstream releases","maintenance":"Check upstream activity","preview":null,"verified":{"repository":true,"license":true}}
+  {
+    "slug": "shadcn-ui",
+    "name": "shadcn/ui",
+    "type": "ui",
+    "category": "Components",
+    "description": "A collection of accessible, customizable components you can copy into your application.",
+    "tags": [
+      "components",
+      "dashboard",
+      "forms",
+      "navigation"
+    ],
+    "frameworks": [
+      "React"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/shadcn-ui/ui",
+    "source": "https://github.com/shadcn-ui/ui/tree/main/apps/v4/registry",
+    "website": "https://ui.shadcn.com",
+    "license": "MIT",
+    "attribution": "See upstream license and component dependencies before reuse.",
+    "install": "npx shadcn@latest init",
+    "usage": "Choose a component in the upstream registry, then use its documented add command.",
+    "version": "See upstream releases",
+    "maintenance": "Check upstream activity",
+    "preview": "command",
+    "verified": {
+      "repository": true,
+      "license": true
+    }
+  },
+  {
+    "slug": "radix-primitives",
+    "name": "Radix Primitives",
+    "type": "ui",
+    "category": "Components",
+    "description": "Low-level, accessible UI primitives for building design systems and applications.",
+    "tags": [
+      "primitives",
+      "accessibility",
+      "navigation",
+      "dialogs"
+    ],
+    "frameworks": [
+      "React"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/radix-ui/primitives",
+    "source": "https://github.com/radix-ui/primitives/tree/main/packages/react",
+    "website": "https://www.radix-ui.com/primitives",
+    "license": "MIT",
+    "attribution": "See upstream license and package-specific notices.",
+    "install": "npm install @radix-ui/react-dialog",
+    "usage": "Install the specific primitive you need and follow its upstream API reference.",
+    "version": "See upstream releases",
+    "maintenance": "Check upstream activity",
+    "preview": "dialog",
+    "verified": {
+      "repository": true,
+      "license": true
+    }
+  },
+  {
+    "slug": "tanstack-table",
+    "name": "TanStack Table",
+    "type": "ui",
+    "category": "Components",
+    "description": "Headless table utilities for building data grids and tables with full control over markup.",
+    "tags": [
+      "tables",
+      "data",
+      "dashboard",
+      "headless"
+    ],
+    "frameworks": [
+      "React",
+      "Vue",
+      "Solid",
+      "Svelte"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/TanStack/table",
+    "source": "https://github.com/TanStack/table/tree/main/packages",
+    "website": "https://tanstack.com/table",
+    "license": "MIT",
+    "attribution": "See upstream license for redistribution terms.",
+    "install": "npm install @tanstack/react-table",
+    "usage": "Create a table instance with your columns and data; refer to the upstream guide.",
+    "version": "See upstream releases",
+    "maintenance": "Check upstream activity",
+    "preview": "table",
+    "verified": {
+      "repository": true,
+      "license": true
+    }
+  },
+  {
+    "slug": "motion",
+    "name": "Motion",
+    "type": "animation",
+    "category": "Animation",
+    "description": "Animation library for expressive UI motion, gestures, and scroll-driven interactions.",
+    "tags": [
+      "transitions",
+      "gestures",
+      "scroll",
+      "micro-interactions"
+    ],
+    "frameworks": [
+      "React",
+      "JavaScript",
+      "Vue"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/motiondivision/motion",
+    "source": "https://github.com/motiondivision/motion/tree/main/packages",
+    "website": "https://motion.dev",
+    "license": "MIT",
+    "attribution": "See upstream license and package-specific notices.",
+    "install": "npm install motion",
+    "usage": "Import the framework-specific API and follow the upstream quick start.",
+    "version": "See upstream releases",
+    "maintenance": "Check upstream activity",
+    "preview": "motion",
+    "verified": {
+      "repository": true,
+      "license": true
+    }
+  },
+  {
+    "slug": "playwright-mcp",
+    "name": "Playwright MCP",
+    "type": "agent",
+    "category": "Agent tool",
+    "description": "A browser automation MCP server from Microsoft for agent-driven web interaction.",
+    "tags": [
+      "mcp",
+      "browser",
+      "automation",
+      "testing"
+    ],
+    "frameworks": [
+      "MCP"
+    ],
+    "runtime": "Node.js",
+    "repository": "https://github.com/microsoft/playwright-mcp",
+    "source": "https://github.com/microsoft/playwright-mcp/tree/main/src",
+    "website": "https://github.com/microsoft/playwright-mcp",
+    "license": "Apache-2.0",
+    "attribution": "Apache-2.0 includes notice and license obligations; inspect upstream files.",
+    "install": "npx @playwright/mcp@latest",
+    "usage": "Configure this server in your MCP client using the upstream instructions. Review permissions before enabling browser access.",
+    "version": "See upstream releases",
+    "maintenance": "Check upstream activity",
+    "preview": null,
+    "verified": {
+      "repository": true,
+      "license": true
+    }
+  },
+  {
+    "slug": "zustand",
+    "name": "Zustand",
+    "type": "utility",
+    "category": "Developer utility",
+    "description": "A small state management library with a hook-based API for React applications.",
+    "tags": [
+      "state",
+      "hooks",
+      "utilities"
+    ],
+    "frameworks": [
+      "React"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/pmndrs/zustand",
+    "source": "https://github.com/pmndrs/zustand/tree/main/src",
+    "website": "https://zustand.docs.pmnd.rs",
+    "license": "MIT",
+    "attribution": "See upstream license for redistribution terms.",
+    "install": "npm install zustand",
+    "usage": "Create a store with create and consume its hook in React; see upstream docs.",
+    "version": "See upstream releases",
+    "maintenance": "Check upstream activity",
+    "preview": null,
+    "verified": {
+      "repository": true,
+      "license": true
+    }
+  },
+  {
+    "slug": "react-hook-form",
+    "name": "React Hook Form",
+    "type": "utility",
+    "category": "Developer utility",
+    "description": "Performant form-state and validation utilities for React.",
+    "tags": [
+      "forms",
+      "hooks",
+      "validation"
+    ],
+    "frameworks": [
+      "React"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/react-hook-form/react-hook-form",
+    "source": "https://github.com/react-hook-form/react-hook-form/tree/master/src",
+    "website": "https://react-hook-form.com",
+    "license": "MIT",
+    "attribution": "See upstream license for redistribution terms.",
+    "install": "npm install react-hook-form",
+    "usage": "Use the useForm hook and register inputs; consult the upstream documentation.",
+    "version": "See upstream releases",
+    "maintenance": "Check upstream activity",
+    "preview": null,
+    "verified": {
+      "repository": true,
+      "license": true
+    }
+  },
+  {
+    "slug": "accessible-command-menu",
+    "name": "Command menu",
+    "type": "ui",
+    "category": "Navigation",
+    "description": "A keyboard-first command menu with grouped actions, fuzzy search, and a clear empty state.",
+    "tags": [
+      "keyboard",
+      "search",
+      "navigation"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/accessible-command-menu.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/accessible-command-menu.zip and open accessible-command-menu.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Arrow-key navigation, Escape to close, accessible results announcements, and a command callback.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "accessible-command-menu",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "async-combobox",
+    "name": "Async combobox",
+    "type": "ui",
+    "category": "Inputs & forms",
+    "description": "A searchable choice field that handles delayed results without losing the user's selection.",
+    "tags": [
+      "forms",
+      "search",
+      "async"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/async-combobox.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/async-combobox.zip and open async-combobox.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Debounced queries, loading and error states, keyboard selection, and request cancellation.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "async-combobox",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "inline-edit-field",
+    "name": "Inline editor",
+    "type": "ui",
+    "category": "Inputs & forms",
+    "description": "An editable text field with explicit save, cancel, and validation states.",
+    "tags": [
+      "forms",
+      "editing",
+      "validation"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/inline-edit-field.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/inline-edit-field.zip and open inline-edit-field.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Edit and read modes, optimistic save feedback, Escape to cancel, and focus restoration.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "inline-edit-field",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "multi-step-form",
+    "name": "Step form",
+    "type": "ui",
+    "category": "Inputs & forms",
+    "description": "A guided form that preserves entered values while moving between steps.",
+    "tags": [
+      "forms",
+      "workflow",
+      "validation"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/multi-step-form.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/multi-step-form.zip and open multi-step-form.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Per-step validation, back navigation, progress announcement, and a final review step.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "multi-step-form",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "validation-summary",
+    "name": "Validation summary",
+    "type": "ui",
+    "category": "Inputs & forms",
+    "description": "A form-error summary that links each issue back to its field.",
+    "tags": [
+      "forms",
+      "accessibility",
+      "errors"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/validation-summary.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/validation-summary.zip and open validation-summary.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Field-level errors, summary links, focus management, and screen-reader announcements.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "validation-summary",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "tag-editor",
+    "name": "Tag editor",
+    "type": "ui",
+    "category": "Inputs & forms",
+    "description": "A compact chip input for adding, removing, and editing a list of labels.",
+    "tags": [
+      "forms",
+      "tags",
+      "keyboard"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/tag-editor.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/tag-editor.zip and open tag-editor.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Duplicate prevention, Enter and Backspace behavior, paste handling, and readable selected tags.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "tag-editor",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "file-drop-zone",
+    "name": "File drop zone",
+    "type": "ui",
+    "category": "Inputs & forms",
+    "description": "A file picker that explains type and size limits before a file is chosen.",
+    "tags": [
+      "files",
+      "forms",
+      "validation"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/file-drop-zone.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/file-drop-zone.zip and open file-drop-zone.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Keyboard file picker, drag-and-drop, size/type feedback, and a removable selection.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "file-drop-zone",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "otp-code-input",
+    "name": "Verification code",
+    "type": "ui",
+    "category": "Inputs & forms",
+    "description": "A one-time-code input designed for paste, autofill, and mobile keyboards.",
+    "tags": [
+      "forms",
+      "authentication",
+      "mobile"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/otp-code-input.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/otp-code-input.zip and open otp-code-input.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Single logical input, numeric mode, paste support, and error and completion states.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "otp-code-input",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "date-range-picker",
+    "name": "Date range picker",
+    "type": "ui",
+    "category": "Inputs & forms",
+    "description": "A start-and-end date picker with clear range boundaries and keyboard access.",
+    "tags": [
+      "dates",
+      "calendar",
+      "forms"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/date-range-picker.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/date-range-picker.zip and open date-range-picker.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Calendar navigation, blocked dates, range validation, and localized display.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "date-range-picker",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "filter-bar",
+    "name": "Filter bar",
+    "type": "ui",
+    "category": "Navigation",
+    "description": "A set of removable filters that keeps active criteria easy to scan.",
+    "tags": [
+      "filters",
+      "search",
+      "navigation"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/filter-bar.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/filter-bar.zip and open filter-bar.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Filter chips, clear-all action, responsive wrapping, and accessible result counts.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "filter-bar",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "responsive-nav-drawer",
+    "name": "Navigation drawer",
+    "type": "ui",
+    "category": "Navigation",
+    "description": "A compact-site navigation panel that works with touch and keyboard input.",
+    "tags": [
+      "navigation",
+      "mobile",
+      "accessibility"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/responsive-nav-drawer.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/responsive-nav-drawer.zip and open responsive-nav-drawer.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Open and close controls, focus return, scroll locking, and reduced-motion behavior.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "responsive-nav-drawer",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "nested-menu",
+    "name": "Nested menu",
+    "type": "ui",
+    "category": "Navigation",
+    "description": "A multi-level menu that makes depth visible without trapping keyboard users.",
+    "tags": [
+      "navigation",
+      "menu",
+      "keyboard"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/nested-menu.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/nested-menu.zip and open nested-menu.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Arrow-key movement, submenu open/close rules, outside click, and touch targets.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "nested-menu",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "overflow-tabs",
+    "name": "Overflow tabs",
+    "type": "ui",
+    "category": "Navigation",
+    "description": "A tab strip that keeps long labels and narrow screens usable.",
+    "tags": [
+      "tabs",
+      "responsive",
+      "keyboard"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/overflow-tabs.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/overflow-tabs.zip and open overflow-tabs.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Roving focus, active-panel semantics, scroll-into-view, and narrow-screen overflow.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "overflow-tabs",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "breadcrumbs",
+    "name": "Breadcrumb trail",
+    "type": "ui",
+    "category": "Navigation",
+    "description": "A path indicator that remains readable as navigation depth grows.",
+    "tags": [
+      "navigation",
+      "paths",
+      "responsive"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/breadcrumbs.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/breadcrumbs.zip and open breadcrumbs.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Current-page announcement, optional collapsed middle segments, and semantic links.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "breadcrumbs",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "table-of-contents",
+    "name": "Reading outline",
+    "type": "ui",
+    "category": "Navigation",
+    "description": "An in-page outline that tracks the section currently being read.",
+    "tags": [
+      "content",
+      "scroll",
+      "navigation"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/table-of-contents.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/table-of-contents.zip and open table-of-contents.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Heading discovery, active-section tracking, reduced-motion scrolling, and deep links.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "table-of-contents",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "pagination-controls",
+    "name": "Pagination controls",
+    "type": "ui",
+    "category": "Navigation",
+    "description": "A compact page navigator with useful first, previous, next, and last states.",
+    "tags": [
+      "pagination",
+      "data",
+      "navigation"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/pagination-controls.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/pagination-controls.zip and open pagination-controls.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Page range ellipsis, disabled states, keyboard labels, and result-count context.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "pagination-controls",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "collapsible-tree",
+    "name": "Collapsible tree",
+    "type": "ui",
+    "category": "Navigation",
+    "description": "A hierarchical explorer for folders, categories, or document sections.",
+    "tags": [
+      "tree",
+      "keyboard",
+      "navigation"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/collapsible-tree.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/collapsible-tree.zip and open collapsible-tree.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Nested selection, arrow-key tree navigation, expansion state, and long-label handling.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "collapsible-tree",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "data-table",
+    "name": "Data table",
+    "type": "ui",
+    "category": "Data display",
+    "description": "A responsive table for scanning, sorting, and selecting small datasets.",
+    "tags": [
+      "table",
+      "sorting",
+      "selection"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/data-table.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/data-table.zip and open data-table.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Sortable headers, row selection, empty state, and mobile horizontal scrolling.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "data-table",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "virtual-list",
+    "name": "Virtual list",
+    "type": "ui",
+    "category": "Data display",
+    "description": "A long-list view intended to stay responsive while only visible rows are rendered.",
+    "tags": [
+      "performance",
+      "lists",
+      "data"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/virtual-list.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/virtual-list.zip and open virtual-list.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Stable keyboard focus, measured row heights, loading boundaries, and accessible item counts.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "virtual-list",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "kanban-lanes",
+    "name": "Kanban lanes",
+    "type": "ui",
+    "category": "Data display",
+    "description": "A task board with move controls that do not rely on dragging alone.",
+    "tags": [
+      "tasks",
+      "drag",
+      "keyboard"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/kanban-lanes.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/kanban-lanes.zip and open kanban-lanes.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Pointer reordering, keyboard move actions, status updates, and an undo path.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "kanban-lanes",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "activity-timeline",
+    "name": "Activity timeline",
+    "type": "ui",
+    "category": "Data display",
+    "description": "A chronological feed that groups updates without hiding their timestamps.",
+    "tags": [
+      "timeline",
+      "activity",
+      "content"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/activity-timeline.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/activity-timeline.zip and open activity-timeline.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Readable time labels, grouped events, load-more state, and semantic ordering.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "activity-timeline",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "schedule-calendar",
+    "name": "Schedule calendar",
+    "type": "ui",
+    "category": "Data display",
+    "description": "A monthly schedule that keeps dense event days readable on small screens.",
+    "tags": [
+      "calendar",
+      "events",
+      "responsive"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/schedule-calendar.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/schedule-calendar.zip and open schedule-calendar.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Month navigation, selected-day agenda, overflow summaries, and keyboard date movement.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "schedule-calendar",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "comparison-grid",
+    "name": "Comparison grid",
+    "type": "ui",
+    "category": "Data display",
+    "description": "A side-by-side comparison with a layout that survives narrow viewports.",
+    "tags": [
+      "comparison",
+      "data",
+      "responsive"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/comparison-grid.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/comparison-grid.zip and open comparison-grid.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Sticky labels on desktop, stacked rows on mobile, and explicit missing values.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "comparison-grid",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "status-dashboard",
+    "name": "Status dashboard",
+    "type": "ui",
+    "category": "Data display",
+    "description": "A small metrics view that distinguishes normal, delayed, and unavailable data.",
+    "tags": [
+      "dashboard",
+      "status",
+      "data"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/status-dashboard.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/status-dashboard.zip and open status-dashboard.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Timestamped values, unavailable-data labels, compact charts, and plain-language status.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "status-dashboard",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "toast-stack",
+    "name": "Toast stack",
+    "type": "ui",
+    "category": "Feedback",
+    "description": "Transient notices that remain readable and never block essential controls.",
+    "tags": [
+      "feedback",
+      "notifications",
+      "accessibility"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/toast-stack.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/toast-stack.zip and open toast-stack.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Queueing, dismissal, polite announcements, and persistent action feedback when needed.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "toast-stack",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "action-confirmation",
+    "name": "Action confirmation",
+    "type": "ui",
+    "category": "Feedback",
+    "description": "A focused confirmation dialog for a reversible or destructive action.",
+    "tags": [
+      "dialog",
+      "feedback",
+      "safety"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/action-confirmation.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/action-confirmation.zip and open action-confirmation.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Clear action labels, Escape behavior, focus return, and a required confirmation state.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "action-confirmation",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "progress-steps",
+    "name": "Progress steps",
+    "type": "ui",
+    "category": "Feedback",
+    "description": "A task-progress indicator that says what has completed and what remains.",
+    "tags": [
+      "progress",
+      "workflow",
+      "accessibility"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/progress-steps.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/progress-steps.zip and open progress-steps.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Current-step semantics, completed and blocked states, and compact mobile layout.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "progress-steps",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "notification-center",
+    "name": "Notification center",
+    "type": "ui",
+    "category": "Feedback",
+    "description": "An inbox for updates with clear read, unread, and empty states.",
+    "tags": [
+      "notifications",
+      "inbox",
+      "feedback"
+    ],
+    "frameworks": [
+      "JavaScript"
+    ],
+    "runtime": "Browser",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/public/examples/notification-center.js",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "Download /examples/notification-center.zip and open notification-center.html; no package install is required.",
+    "usage": "Use the HTML, CSS, and JavaScript in the ZIP together. The live preview runs those same files. Read status, grouping, bulk actions, and a reliable unread count.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": "notification-center",
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "repo-structure-map",
+    "name": "Repository map",
+    "type": "agent",
+    "category": "Code intelligence",
+    "description": "An offline read-only tool that summarizes a repository's folders and entry points.",
+    "tags": [
+      "repository",
+      "navigation",
+      "analysis"
+    ],
+    "frameworks": [
+      "Node.js"
+    ],
+    "runtime": "Node.js 20+",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/agents/repo-structure-map.mjs",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "git clone https://github.com/GraphicMiles/Motionshelf.git",
+    "usage": "From the cloned repository run node agents/repo-structure-map.mjs --help, or download /agents/repo-structure-map.zip, extract it, and run node repo-structure-map.mjs sample.json. Requires Node.js 20+. Bounded file discovery, ignored paths, source citations, and no code execution.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": null,
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "pr-change-risk",
+    "name": "Change risk review",
+    "type": "agent",
+    "category": "Code review",
+    "description": "An offline assistant that identifies likely impact areas in a pull-request diff.",
+    "tags": [
+      "review",
+      "diff",
+      "risk"
+    ],
+    "frameworks": [
+      "Node.js"
+    ],
+    "runtime": "Node.js 20+",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/agents/pr-change-risk.mjs",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "git clone https://github.com/GraphicMiles/Motionshelf.git",
+    "usage": "From the cloned repository run node agents/pr-change-risk.mjs --help, or download /agents/pr-change-risk.zip, extract it, and run node pr-change-risk.mjs sample.json. Requires Node.js 20+. Diff-size limits, affected-path summary, evidence links, and uncertainty labels.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": null,
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "test-gap-finder",
+    "name": "Test gap finder",
+    "type": "agent",
+    "category": "Code review",
+    "description": "An offline diff reviewer that highlights changed behavior without nearby tests.",
+    "tags": [
+      "testing",
+      "review",
+      "coverage"
+    ],
+    "frameworks": [
+      "Node.js"
+    ],
+    "runtime": "Node.js 20+",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/agents/test-gap-finder.mjs",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "git clone https://github.com/GraphicMiles/Motionshelf.git",
+    "usage": "From the cloned repository run node agents/test-gap-finder.mjs --help, or download /agents/test-gap-finder.zip, extract it, and run node test-gap-finder.mjs sample.json. Requires Node.js 20+. Map changed files to tests, report gaps with paths, and avoid invented coverage claims.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": null,
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "dependency-impact-trace",
+    "name": "Dependency impact",
+    "type": "agent",
+    "category": "Code intelligence",
+    "description": "An offline read-only dependency map for spotting consumers of changed modules.",
+    "tags": [
+      "dependencies",
+      "analysis",
+      "review"
+    ],
+    "frameworks": [
+      "Node.js"
+    ],
+    "runtime": "Node.js 20+",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/agents/dependency-impact-trace.mjs",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "git clone https://github.com/GraphicMiles/Motionshelf.git",
+    "usage": "From the cloned repository run node agents/dependency-impact-trace.mjs --help, or download /agents/dependency-impact-trace.zip, extract it, and run node dependency-impact-trace.mjs sample.json. Requires Node.js 20+. Static import graph, bounded traversal, cycle handling, and explicit unknown edges.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": null,
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "license-notice-check",
+    "name": "License notice check",
+    "type": "agent",
+    "category": "Repository hygiene",
+    "description": "An offline inventory of declared licenses and bundled attribution files.",
+    "tags": [
+      "license",
+      "compliance",
+      "inventory"
+    ],
+    "frameworks": [
+      "Node.js"
+    ],
+    "runtime": "Node.js 20+",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/agents/license-notice-check.mjs",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "git clone https://github.com/GraphicMiles/Motionshelf.git",
+    "usage": "From the cloned repository run node agents/license-notice-check.mjs --help, or download /agents/license-notice-check.zip, extract it, and run node license-notice-check.mjs sample.json. Requires Node.js 20+. Report file-level evidence and missing notices without giving legal conclusions.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": null,
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "docs-staleness-check",
+    "name": "Documentation freshness",
+    "type": "agent",
+    "category": "Repository hygiene",
+    "description": "An offline checker for documentation references that no longer match repository files.",
+    "tags": [
+      "documentation",
+      "links",
+      "maintenance"
+    ],
+    "frameworks": [
+      "Node.js"
+    ],
+    "runtime": "Node.js 20+",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/agents/docs-staleness-check.mjs",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "git clone https://github.com/GraphicMiles/Motionshelf.git",
+    "usage": "From the cloned repository run node agents/docs-staleness-check.mjs --help, or download /agents/docs-staleness-check.zip, extract it, and run node docs-staleness-check.mjs sample.json. Requires Node.js 20+. Validate local paths and commands against source files; flag ambiguous references for review.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": null,
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "api-contract-diff",
+    "name": "API contract diff",
+    "type": "agent",
+    "category": "Code review",
+    "description": "An offline comparison of two API schemas with emphasis on breaking changes.",
+    "tags": [
+      "api",
+      "schema",
+      "compatibility"
+    ],
+    "frameworks": [
+      "Node.js"
+    ],
+    "runtime": "Node.js 20+",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/agents/api-contract-diff.mjs",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "git clone https://github.com/GraphicMiles/Motionshelf.git",
+    "usage": "From the cloned repository run node agents/api-contract-diff.mjs --help, or download /agents/api-contract-diff.zip, extract it, and run node api-contract-diff.mjs sample.json. Requires Node.js 20+. Schema-size limits, route/field changes, citations, and versioned output.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": null,
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "accessibility-review-assistant",
+    "name": "Accessibility review",
+    "type": "agent",
+    "category": "Quality assurance",
+    "description": "An offline checklist assistant that ties UI findings to observable markup.",
+    "tags": [
+      "accessibility",
+      "review",
+      "markup"
+    ],
+    "frameworks": [
+      "Node.js"
+    ],
+    "runtime": "Node.js 20+",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/agents/accessibility-review-assistant.mjs",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "git clone https://github.com/GraphicMiles/Motionshelf.git",
+    "usage": "From the cloned repository run node agents/accessibility-review-assistant.mjs --help, or download /agents/accessibility-review-assistant.zip, extract it, and run node accessibility-review-assistant.mjs sample.json. Requires Node.js 20+. Evidence from supplied HTML, keyboard-flow checklist, and no claim of a full audit.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": null,
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "release-checklist-builder",
+    "name": "Release checklist",
+    "type": "agent",
+    "category": "Quality assurance",
+    "description": "An offline release checklist assembled from repository configuration and changes.",
+    "tags": [
+      "release",
+      "workflow",
+      "testing"
+    ],
+    "frameworks": [
+      "Node.js"
+    ],
+    "runtime": "Node.js 20+",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/agents/release-checklist-builder.mjs",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "git clone https://github.com/GraphicMiles/Motionshelf.git",
+    "usage": "From the cloned repository run node agents/release-checklist-builder.mjs --help, or download /agents/release-checklist-builder.zip, extract it, and run node release-checklist-builder.mjs sample.json. Requires Node.js 20+. Read-only evidence, human sign-off steps, and explicit unverified checks.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": null,
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "build-log-triage",
+    "name": "Build log triage",
+    "type": "agent",
+    "category": "Quality assurance",
+    "description": "An offline parser that groups build failures by likely root cause.",
+    "tags": [
+      "build",
+      "logs",
+      "debugging"
+    ],
+    "frameworks": [
+      "Node.js"
+    ],
+    "runtime": "Node.js 20+",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/agents/build-log-triage.mjs",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "git clone https://github.com/GraphicMiles/Motionshelf.git",
+    "usage": "From the cloned repository run node agents/build-log-triage.mjs --help, or download /agents/build-log-triage.zip, extract it, and run node build-log-triage.mjs sample.json. Requires Node.js 20+. Log truncation, secret redaction, grouped errors, and references to exact lines.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": null,
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "issue-duplicate-finder",
+    "name": "Issue similarity",
+    "type": "agent",
+    "category": "Team workflow",
+    "description": "An offline helper for finding possibly related issues without merging them automatically.",
+    "tags": [
+      "issues",
+      "search",
+      "triage"
+    ],
+    "frameworks": [
+      "Node.js"
+    ],
+    "runtime": "Node.js 20+",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/agents/issue-duplicate-finder.mjs",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "git clone https://github.com/GraphicMiles/Motionshelf.git",
+    "usage": "From the cloned repository run node agents/issue-duplicate-finder.mjs --help, or download /agents/issue-duplicate-finder.zip, extract it, and run node issue-duplicate-finder.mjs sample.json. Requires Node.js 20+. Similarity scoring, evidence snippets, and human confirmation before action.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": null,
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "prompt-boundary-probe",
+    "name": "Prompt boundary probe",
+    "type": "agent",
+    "category": "Safety tooling",
+    "description": "An offline offline test harness for known prompt-injection boundary cases.",
+    "tags": [
+      "security",
+      "prompts",
+      "testing"
+    ],
+    "frameworks": [
+      "Node.js"
+    ],
+    "runtime": "Node.js 20+",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/agents/prompt-boundary-probe.mjs",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "git clone https://github.com/GraphicMiles/Motionshelf.git",
+    "usage": "From the cloned repository run node agents/prompt-boundary-probe.mjs --help, or download /agents/prompt-boundary-probe.zip, extract it, and run node prompt-boundary-probe.mjs sample.json. Requires Node.js 20+. Fixture-based inputs, pass/fail criteria, no secret-bearing targets, and reproducible reports.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": null,
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "secret-pattern-audit",
+    "name": "Secret pattern audit",
+    "type": "agent",
+    "category": "Safety tooling",
+    "description": "A local scanner that flags likely credential strings without printing them.",
+    "tags": [
+      "security",
+      "secrets",
+      "repository"
+    ],
+    "frameworks": [
+      "Node.js"
+    ],
+    "runtime": "Node.js 20+",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/agents/secret-pattern-audit.mjs",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "git clone https://github.com/GraphicMiles/Motionshelf.git",
+    "usage": "From the cloned repository run node agents/secret-pattern-audit.mjs --help, or download /agents/secret-pattern-audit.zip, extract it, and run node secret-pattern-audit.mjs sample.json. Requires Node.js 20+. Allowlisted file types, false-positive controls, masked output, and no external upload.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": null,
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  },
+  {
+    "slug": "localization-consistency-check",
+    "name": "Localization consistency",
+    "type": "agent",
+    "category": "Quality assurance",
+    "description": "An offline comparison of translation keys, placeholders, and missing locale entries.",
+    "tags": [
+      "localization",
+      "i18n",
+      "quality"
+    ],
+    "frameworks": [
+      "Node.js"
+    ],
+    "runtime": "Node.js 20+",
+    "repository": "https://github.com/GraphicMiles/Motionshelf",
+    "source": "https://github.com/GraphicMiles/Motionshelf/blob/main/agents/localization-consistency-check.mjs",
+    "website": "https://github.com/GraphicMiles/Motionshelf",
+    "license": "MIT",
+    "attribution": "MotionShelf first-party example. Retain the project MIT license and copyright notice.",
+    "install": "git clone https://github.com/GraphicMiles/Motionshelf.git",
+    "usage": "From the cloned repository run node agents/localization-consistency-check.mjs --help, or download /agents/localization-consistency-check.zip, extract it, and run node localization-consistency-check.mjs sample.json. Requires Node.js 20+. Key-set diff, placeholder matching, source references, and no invented translations.",
+    "version": "See repository history",
+    "maintenance": "First-party maintained",
+    "preview": null,
+    "verified": {
+      "repository": true,
+      "license": true
+    },
+    "firstParty": true
+  }
 ]

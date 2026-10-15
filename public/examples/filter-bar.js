@@ -1,0 +1,3 @@
+const tasks=[['Design tokens','design'],['Build sidebar','code'],['Review labels','review'],['Polish buttons','design']],items=document.querySelector('#items'),status=document.querySelector('#status');document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));const selected=button.dataset.filter,visible=tasks.filter(([_,type])=>selected==='all'||selected===type);items.replaceChildren(...visible.map(([name])=>{const li=document.createElement('li');li.textContent=name;return li}));status.textContent=visible.length+' tasks shown'}));document.querySelector('[data-filter=all]').click();
+
+document.body.dataset.ready="true";

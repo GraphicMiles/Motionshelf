@@ -18,7 +18,7 @@ for(const width of [280,320,390,768,1440]){
   if(action==='copy'&&await page.locator('[data-copy-card]:not([disabled])').count()){await page.locator('[data-copy-card]:not([disabled])').first().click();await page.waitForTimeout(70)}
   if(action==='clear'){if(await page.locator('#empty').isVisible())await page.locator('#clearFilters').click();else{await page.locator('#search').fill('');await page.locator('[data-type=all]').click();await page.locator('#frameworkFilter').selectOption('all');await page.locator('#licenseFilter').selectOption('all')}}
   check(`${width}px action ${i} ${action} stays aligned`,await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
-  check(`${width}px action ${i} cards remain operable`,await page.locator('.resource-card').count()<=7);
+  check(`${width}px action ${i} cards remain operable`,await page.locator('.resource-card').count()<=49);
   }catch(e){failures.push(`${width}px action ${i} ${action}: ${e.message.slice(0,140)}`)}
  }
  check(`${width}px no uncaught errors`,errors.length===0,errors.join('; '));await context.close();

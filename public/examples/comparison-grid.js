@@ -1,0 +1,3 @@
+const values=[['Export','CSV','CSV'],['Projects','3','Unlimited'],['Support','Email','Priority'],['History','30 days','30 days']],rows=document.querySelector('#rows'),toggle=document.querySelector('#differences'),status=document.querySelector('#status');function draw(){const visible=values.filter(x=>!toggle.checked||x[1]!==x[2]);rows.replaceChildren(...visible.map(item=>{const tr=document.createElement('tr');for(const value of item){const td=document.createElement('td');td.textContent=value;tr.append(td)}return tr}));status.textContent=visible.length+' features shown'}toggle.addEventListener('change',draw);draw();
+
+document.body.dataset.ready="true";

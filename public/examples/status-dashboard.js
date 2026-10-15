@@ -1,0 +1,3 @@
+const status=document.querySelector('#status');let sample=0;document.querySelector('#refresh').addEventListener('click',()=>{sample++;document.querySelector('#requests').textContent=String(120+sample*3);document.querySelector('#latency').textContent=String(40+sample*2)+' ms';document.querySelector('#service').textContent='Operational';status.textContent='Sample updated at '+new Date().toLocaleTimeString()});document.querySelector('#unavailable').addEventListener('click',()=>{for(const id of ['requests','latency','service'])document.getElementById(id).textContent='Unavailable';status.textContent='Metrics unavailable; last value is not shown as current'});document.querySelector('#refresh').click();
+
+document.body.dataset.ready="true";
