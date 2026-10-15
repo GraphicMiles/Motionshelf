@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: motionshelf-api
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run validate
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: FRONTEND_ORIGIN
+        fromService:
+          name: motionshelf-web
+          type: web
+          envVarKey: RENDER_EXTERNAL_URL
+  - type: web
+    name: motionshelf-web
+    runtime: static
+    buildCommand: npm ci && npm run build:frontend
+    staticPublishPath: ./dist
+    envVars:
+      - key: API_HOST
+        fromService:
+          name: motionshelf-api
+          type: web
+          envVarKey: RENDER_EXTERNAL_HOSTNAME
