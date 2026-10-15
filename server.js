@@ -1,6 +1,7 @@
 import http from 'node:http';
 import {fileURLToPath} from 'node:url';
 import {loadCatalog,validateResource} from './validation.js';
+import {githubStars} from './github-stars.js';
 import {db,credentials,identity,published,verifyUpstream,burstAllowed,turnstile,hasCuratedExample} from './moderation.js';
 const allowedOrigin=process.env.FRONTEND_ORIGIN || '';
 function json(res,status,data){res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});res.end(JSON.stringify(data));}
@@ -14,6 +15,10 @@ export const server=http.createServer(async(req,res)=>{
  if(req.method==='GET'&&pathname==='/health')return json(res,200,{status:'ok'});
  if(req.method==='GET'&&pathname==='/health/storage'){
   try{const snapshot=await db('/rest/v1/rpc/motionshelf_storage_snapshot',{method:'POST'});const percent=Math.round(snapshot.databaseBytes/(500*1024*1024)*100);const status=percent>=80?'critical':percent>=70?'warning':'ok';return json(res,status==='critical'?503:200,{status,storage:'reachable',databaseBytes:snapshot.databaseBytes,quotaBytes:500*1024*1024,percent,pending:snapshot.pending,oldestPending:snapshot.oldestPending,budgetThisHour:snapshot.budgetThisHour||0})}catch(e){return json(res,503,{status:'degraded',storage:'unavailable'})}
+ }
+ if(req.method==='GET'&&pathname==='/api/github-stars'){
+  try{return json(res,200,await githubStars(new URL(req.url,'http://localhost').searchParams.get('refresh')==='1'))}
+  catch{return json(res,503,{errors:['GitHub star count is temporarily unavailable']})}
  }
  if(req.method==='GET'&&pathname==='/api/resources'){
   try{return json(res,200,await published())}catch(e){console.error('Catalog storage failure:',e.name,e.status||'');return json(res,200,loadCatalog())}
