@@ -12,7 +12,7 @@ const fixture={...catalog[0],slug:'audit-not-published',repository:'https://gith
 // Blueprint, SQL, validation and API: 20 checks.
 await check('Blueprint defines API and static site',()=>assert.equal((render.match(/- type: web/g)||[]).length,2));
 await check('API runs on free Node plan',()=>assert.match(render,/name: motionshelf-api\n\s+runtime: node\n\s+plan: free/));
-await check('static site is explicitly free',()=>assert.match(render,/name: motionshelf-web\n\s+runtime: static\n\s+plan: free/));
+await check('static site omits unsupported plan',()=>{const site=render.slice(render.lastIndexOf('name: motionshelf-web'));assert.match(site,/runtime: static/);assert.doesNotMatch(site,/\bplan:/)});
 await check('static publish path is generated dist',()=>assert.match(render,/staticPublishPath: \.\/dist/));
 await check('API health check is declared',()=>assert.match(render,/healthCheckPath: \/health/));
 await check('static API host references API service',()=>assert.match(render,/key: API_HOST\n\s+fromService:\n\s+name: motionshelf-api/));

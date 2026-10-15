@@ -4,7 +4,7 @@
 
 1. **Critical: newer Supabase keys.** The old API sent every key in `Authorization: Bearer`. New `sb_secret_…` keys are opaque, not JWTs. The API now sends new secret keys in `apikey` only; legacy service-role JWTs retain both headers. The Render Blueprint prompts for `SUPABASE_SECRET_KEY` instead of the legacy name.
 2. **Schema privileges.** `scripts/supabase.sql` now enables RLS, revokes table and identity-sequence access from `anon` and `authenticated`, grants schema/table/sequence access to `service_role`, and leaves no client policies. It has unique slug/repository constraints and a review-status check.
-3. **Free-tier certainty.** The static site now explicitly specifies `plan: free` as well as the API. No Render disk or paid database is declared.
+3. **Static site plan corrected.** Render rejected `plan: free` on the `runtime: static` service (`services[1].plan`). The static site now omits the unsupported `plan` field; only the Node API declares `plan: free`. No Render disk or paid database is declared.
 4. **Malformed metadata.** A non-string repository previously could trigger a validation exception during duplicate checking; validation now returns errors instead.
 5. **Build configuration.** The static build fails if Render has no API host. It accepts properly formed custom hostnames without accepting paths or protocols. The API refuses a non-HTTPS Supabase URL on Render.
 
