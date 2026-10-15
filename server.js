@@ -1,7 +1,7 @@
 import http from 'node:http';
 import {fileURLToPath} from 'node:url';
 import {loadCatalog,validateResource} from './validation.js';
-import {db,credentials,identity,published,verifyUpstream,burstAllowed,turnstile} from './moderation.js';
+import {db,credentials,identity,published,verifyUpstream,burstAllowed,turnstile,hasCuratedExample} from './moderation.js';
 const allowedOrigin=process.env.FRONTEND_ORIGIN || '';
 function json(res,status,data){res.writeHead(status,{'Content-Type':'application/json; charset=utf-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff'});res.end(JSON.stringify(data));}
 async function parse(req){if(!/^application\/json(?:\s*;|$)/i.test(req.headers['content-type']||''))throw Object.assign(Error('Submit JSON metadata. File uploads are not supported.'),{status:415});let size=0;const chunks=[];for await(const chunk of req){size+=chunk.length;if(size>30000)throw Object.assign(Error('Submission too large'),{status:413});chunks.push(chunk)}try{return JSON.parse(Buffer.concat(chunks).toString('utf8'))}catch{throw Object.assign(Error('Invalid JSON'),{status:400})}}
@@ -83,6 +83,7 @@ export const server=http.createServer(async(req,res)=>{
     const verification=await verifyUpstream(row.metadata);
     if(body.decision==='approved'&&!verification.ok)return json(res,422,{errors:['Upstream verification failed',...(verification.errors||[])]});
     if(body.decision==='approved'){
+     if(['ui','animation'].includes(row.metadata.type)&&!hasCuratedExample(row.metadata.slug))return json(res,422,{errors:['A curated, copyable example is required before publishing this UI or animation resource.']});
      const current=await published();const duplicate=validateResource(row.metadata,current);if(duplicate.length)return json(res,422,{errors:duplicate});
     }
     const done=await db('/rest/v1/rpc/motionshelf_decide',{method:'POST',body:{p_id:id,p_reviewer:user.id,p_decision:body.decision,p_verification:verification}});

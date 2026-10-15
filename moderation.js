@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import {createHash} from 'node:crypto';
 import {validateResource,loadCatalog} from './validation.js';
 export const credentials=()=>({url:process.env.SUPABASE_URL,key:process.env.SUPABASE_SECRET_KEY||process.env.SUPABASE_SERVICE_ROLE_KEY});
@@ -17,8 +18,9 @@ export async function identity(token){
  const rows=await db(`/rest/v1/motionshelf_maintainers?user_id=eq.${encodeURIComponent(user.id)}&select=user_id,email&limit=1`);
  return rows?.[0]?.email?.toLowerCase()===user.email?.toLowerCase()?user:null;
 }
+export function hasCuratedExample(slug){if(typeof slug!=='string'||!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug))return false;return ['html','css','js','zip'].every(ext=>fs.existsSync(new URL(`./public/examples/${slug}.${ext}`,import.meta.url)));}
 export function publicMetadata(row){const m=row.metadata;return {...m,verified:{repository:true,license:true},verification:undefined};}
-export async function published(){const rows=await db('/rest/v1/resource_submissions?status=eq.approved&select=metadata,verification&limit=200&order=created_at.desc');const staticCatalog=loadCatalog();const used=new Set(staticCatalog.map(r=>r.slug));for(const row of rows){const m=publicMetadata(row);if(row.verification?.repository?.ok&&row.verification?.license?.ok&&!validateResource(m,staticCatalog).length&&!used.has(m.slug)){staticCatalog.push(m);used.add(m.slug)}}return staticCatalog;}
+export async function published(){const rows=await db('/rest/v1/resource_submissions?status=eq.approved&select=metadata,verification&limit=200&order=created_at.desc');const staticCatalog=loadCatalog();const used=new Set(staticCatalog.map(r=>r.slug));for(const row of rows){const m=publicMetadata(row);if(row.verification?.repository?.ok&&row.verification?.license?.ok&&(!['ui','animation'].includes(m.type)||hasCuratedExample(m.slug))&&!validateResource(m,staticCatalog).length&&!used.has(m.slug)){staticCatalog.push(m);used.add(m.slug)}}return staticCatalog;}
 export async function verifyUpstream(metadata){
  const errors=validateResource(metadata,loadCatalog());if(errors.length)return {ok:false,errors};
  const repo=new URL(metadata.repository), source=new URL(metadata.source);
