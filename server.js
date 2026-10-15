@@ -3,6 +3,7 @@ import {inspect} from './source-inspector.js';
 import {contribution,storeFiles,loadFiles,removeFiles} from './contribution.js';
 import {fileURLToPath} from 'node:url';
 import {loadCatalog,validateResource} from './validation.js';
+import {loadRoadmap} from './roadmap.js';
 import {githubStars} from './github-stars.js';
 import {db,credentials,identity,published,verifyUpstream,burstAllowed,turnstile,hasCuratedExample} from './moderation.js';
 const allowedOrigin=process.env.FRONTEND_ORIGIN || '';
@@ -25,6 +26,7 @@ export const server=http.createServer(async(req,res)=>{
  if(req.method==='GET'&&pathname==='/api/resources'){
   try{return json(res,200,await published())}catch(e){console.error('Catalog storage failure:',e.name,e.status||'');return json(res,200,loadCatalog())}
  }
+ if(req.method==='GET'&&pathname==='/api/roadmap'){try{return json(res,200,loadRoadmap())}catch(e){console.error('Roadmap loading failed:',e.message);return json(res,503,{errors:['Roadmap temporarily unavailable']})}}
  if(pathname.startsWith('/api/')&&origin&&allowedOrigin&&origin!==allowedOrigin)return json(res,403,{errors:['Origin not allowed']});
  if(req.method==='POST'&&/^\/api\/analyze\/(?:live|github|files)$/.test(pathname)){
   if(!burstAllowed(req))return json(res,429,{errors:['Too many attempts. Try again shortly.']});
@@ -35,7 +37,7 @@ export const server=http.createServer(async(req,res)=>{
   if(!/^application\/json(?:\s*;|$)/i.test(req.headers['content-type']||''))return json(res,415,{errors:['Use the contribution form to send bounded source files as JSON.']});
   if(!burstAllowed(req))return json(res,429,{errors:['Too many attempts. Try again in 10 minutes.']});
   try{
-   const data=await parse(req,2900000);if(!data||typeof data!=='object'||Array.isArray(data))return json(res,422,{errors:['Metadata must be an object']});const proposed=data.sourceKind?contribution(data):null;const errors=proposed?.errors||validateResource(data,loadCatalog());if(errors.length)return json(res,422,{errors});if(loadCatalog().some(r=>r.slug===data.slug))return json(res,409,{errors:['That slug is already in the catalog.']});
+   const data=await parse(req,2900000);if(!data||typeof data!=='object'||Array.isArray(data))return json(res,422,{errors:['Metadata must be an object']});const proposed=data.sourceKind?contribution(data):null;const errors=proposed?.errors||validateResource(data,loadCatalog());if(errors.length)return json(res,422,{errors});if(loadCatalog().some(r=>r.slug===data.slug)||loadRoadmap().some(r=>r.slug===data.slug))return json(res,409,{errors:['That slug is already in the catalog or roadmap.']});
   if(!credentials().url||!credentials().key)return json(res,503,{errors:['Submission storage is not configured']});
   if(process.env.RENDER&&!credentials().url.startsWith('https://'))return json(res,503,{errors:['Submission storage URL must use HTTPS']});
    const budget=await db('/rest/v1/rpc/motionshelf_take_budget',{method:'POST',body:{p_limit:120}});
