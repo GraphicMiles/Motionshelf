@@ -15,11 +15,11 @@ services:
         sync: false
       - key: FRONTEND_ORIGIN
         fromService:
-          name: motionshelf-web
+          name: motionshelf
           type: web
           envVarKey: RENDER_EXTERNAL_URL
   - type: web
-    name: motionshelf-web
+    name: motionshelf
     runtime: static
     buildCommand: npm ci && npm run build:frontend
     staticPublishPath: ./dist

@@ -18,7 +18,7 @@ The local frontend server proxies `/api/*` to the separate API process. For loca
 
 Connect this repository as a Render Blueprint (`render.yaml`). It defines:
 
-- **motionshelf-web**: static site, published from the generated `dist/` folder. `API_HOST` is populated from the API service's Render hostname during the static build; `config.js` is generated at build time. Rebuild after changing the API host.
+- **motionshelf**: static site, published from the generated `dist/` folder. `API_HOST` is populated from the API service's Render hostname during the static build; `config.js` is generated at build time. Rebuild after changing the API host.
 - **motionshelf-api**: free Node web service, serves only `/health`, `/api/resources` and `/api/submissions`. `FRONTEND_ORIGIN` is populated from the static site's Render URL for CORS.
 
 Before accepting submissions, create a Supabase project, run `scripts/supabase.sql` in its SQL editor, and set these **secret environment variables on the API service** in the Render dashboard when prompted: `SUPABASE_URL` (project URL) and `SUPABASE_SECRET_KEY` (server-side secret key (`sb_secret_…`)). Never add the secret key to the static site's environment or the repo. A legacy service-role JWT is also supported via `SUPABASE_SERVICE_ROLE_KEY` for existing deployments, but new projects should use the secret key. Supabase's free plan limits apply. Render's free web service can sleep while idle, so the first request after inactivity may be slow. No paid persistent Render disk is required.
