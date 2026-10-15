@@ -29,13 +29,13 @@ export const server=http.createServer(async(req,res)=>{
  if(req.method==='POST'&&/^\/api\/analyze\/(?:live|github|files)$/.test(pathname)){
   if(!burstAllowed(req))return json(res,429,{errors:['Too many attempts. Try again shortly.']});
   try{const input=await parse(req,2900000);return json(res,200,await inspect({...input,kind:pathname.split('/').at(-1)}))}
-  catch(e){return json(res,422,{errors:[e.message||'Source could not be inspected. Enter details manually.']})}
+  catch(e){if([400,413,415].includes(e.status))return error(res,e);return json(res,422,{errors:[e.message||'Source could not be inspected. Enter details manually.']})}
  }
  if(req.method==='POST'&&pathname==='/api/submissions'){
   if(!/^application\/json(?:\s*;|$)/i.test(req.headers['content-type']||''))return json(res,415,{errors:['Use the contribution form to send bounded source files as JSON.']});
   if(!burstAllowed(req))return json(res,429,{errors:['Too many attempts. Try again in 10 minutes.']});
   try{
-   const data=await parse(req,2900000);const proposed=data.sourceKind?contribution(data):null;const errors=proposed?.errors||validateResource(data,loadCatalog());if(errors.length)return json(res,422,{errors});if(loadCatalog().some(r=>r.slug===data.slug))return json(res,409,{errors:['That slug is already in the catalog.']});
+   const data=await parse(req,2900000);if(!data||typeof data!=='object'||Array.isArray(data))return json(res,422,{errors:['Metadata must be an object']});const proposed=data.sourceKind?contribution(data):null;const errors=proposed?.errors||validateResource(data,loadCatalog());if(errors.length)return json(res,422,{errors});if(loadCatalog().some(r=>r.slug===data.slug))return json(res,409,{errors:['That slug is already in the catalog.']});
   if(!credentials().url||!credentials().key)return json(res,503,{errors:['Submission storage is not configured']});
   if(process.env.RENDER&&!credentials().url.startsWith('https://'))return json(res,503,{errors:['Submission storage URL must use HTTPS']});
    const budget=await db('/rest/v1/rpc/motionshelf_take_budget',{method:'POST',body:{p_limit:120}});
