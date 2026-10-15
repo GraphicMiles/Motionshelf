@@ -29,6 +29,9 @@ services:
       - path: /examples/assets/fa/*
         name: Access-Control-Allow-Origin
         value: "*"
+      - path: /interactions/*
+        name: Access-Control-Allow-Origin
+        value: "*"
     envVars:
       - key: TURNSTILE_SITE_KEY
         sync: false
