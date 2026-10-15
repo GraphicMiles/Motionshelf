@@ -12,7 +12,8 @@
     "audit:50": "node scripts/audit50.mjs",
     "audit:100": "node scripts/audit100.mjs",
     "audit:review": "node scripts/audit-review.mjs",
-    "audit:followup": "node scripts/audit-followup.mjs"
+    "audit:followup": "node scripts/audit-followup.mjs",
+    "audit:admin-ui": "node scripts/audit-admin-ui.mjs"
   },
   "engines": {
     "node": ">=20"
