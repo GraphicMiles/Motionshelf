@@ -12,7 +12,9 @@
     "audit:review": "node scripts/audit-review.mjs",
     "audit:followup": "node scripts/audit-followup.mjs",
     "audit:admin-ui": "node scripts/audit-admin-ui.mjs",
-    "audit:gallery": "node scripts/audit-gallery.mjs"
+    "audit:gallery": "node scripts/audit-gallery.mjs",
+    "audit:interactions": "node scripts/audit-interactions.mjs",
+    "build:interaction-exports": "node scripts/build-interaction-exports.mjs"
   },
   "engines": {
     "node": ">=20"

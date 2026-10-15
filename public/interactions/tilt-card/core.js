@@ -1,0 +1,11 @@
+export function mount(root,initial={}){
+ let options={angle:14,depth:18,...initial},raf=0,playing=null;
+ root.innerHTML='<div class="tc-stage"><span class="tc-guide">POINTER / PERSPECTIVE</span><div class="tc-perspective"><div class="tc-card" tabindex="0" role="img" aria-label="Interactive perspective card. Move your pointer over it to tilt."><span class="tc-top">FORM / 05</span><span class="tc-orbit" aria-hidden="true"><i></i></span><span class="tc-bottom"><strong>A different angle.</strong><small>DEPTH IN THE DETAILS</small></span></div></div><span class="tc-hint">MOVE TO EXPLORE</span></div>';
+ const stage=root.firstElementChild,card=root.querySelector('.tc-card');const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function apply(x=0,y=0){card.style.transform=reduced()?'rotateX(0) rotateY(0)':`rotateX(${y}deg) rotateY(${x}deg)`;card.style.setProperty('--tc-depth',Math.max(0,Math.min(48,Number(options.depth)||0))+'px')}
+ function move(e){if(reduced())return;cancelAnimationFrame(raf);const b=card.getBoundingClientRect(),angle=Math.max(3,Math.min(28,Number(options.angle)||14));let x=((e.clientX-b.left)/b.width-.5)*2,y=((e.clientY-b.top)/b.height-.5)*2;x=Math.max(-1,Math.min(1,x));y=Math.max(-1,Math.min(1,y));raf=requestAnimationFrame(()=>apply(x*angle,-y*angle))}
+ function leave(){cancelAnimationFrame(raf);apply()}
+ function replay(){playing?.cancel();if(reduced()){apply();return}const a=Math.max(3,Math.min(28,Number(options.angle)||14));playing=card.animate([{transform:'rotateX(0) rotateY(0)'},{transform:`rotateX(${-a*.55}deg) rotateY(${a}deg)`},{transform:`rotateX(${a*.35}deg) rotateY(${-a*.65}deg)`},{transform:'rotateX(0) rotateY(0)'}],{duration:1000,easing:'ease-in-out'});playing.finished.catch(()=>{}).finally(()=>playing=null)}
+ stage.addEventListener('pointermove',move);stage.addEventListener('pointerleave',leave);card.addEventListener('focus',replay);apply();
+ return{update(next){options={...options,...next};apply()},replay,destroy(){playing?.cancel();cancelAnimationFrame(raf);stage.removeEventListener('pointermove',move);stage.removeEventListener('pointerleave',leave);card.removeEventListener('focus',replay);root.replaceChildren()}};
+}

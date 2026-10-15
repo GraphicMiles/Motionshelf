@@ -1,0 +1,9 @@
+export function mount(root,initial={}){
+ let options={duration:620,distance:34,...initial},observer;
+ root.innerHTML='<div class="sr-shell"><div class="sr-top"><span>FIELD NOTES / 01</span><strong>In the flow</strong><small>Scroll inside to continue</small></div><div class="sr-scroll" tabindex="0" aria-label="Scroll reveal sequence"><div class="sr-item"><span>01 / ATTENTION</span><strong>A little room to breathe.</strong><p>Let each idea arrive when it matters.</p></div><div class="sr-item"><span>02 / TIMING</span><strong>Motion with intent.</strong><p>No rush. Just the next step.</p></div><div class="sr-item"><span>03 / MOMENTUM</span><strong>Stay in the flow.</strong><p>Scroll is the invitation.</p></div><div class="sr-item"><span>04 / FINISH</span><strong>Make it memorable.</strong><p>One considered entrance at a time.</p></div></div><span class="sr-hint" aria-hidden="true">SCROLL TO EXPLORE</span></div>';
+ const viewport=root.querySelector('.sr-scroll'),items=[...root.querySelectorAll('.sr-item')];
+ function apply(){root.style.setProperty('--sr-duration',Math.max(180,Math.min(1200,Number(options.duration)||620))+'ms');root.style.setProperty('--sr-distance',Math.max(8,Math.min(80,Number(options.distance)||34))+'px')}
+ function observe(){observer?.disconnect();if(!('IntersectionObserver'in window)){items.forEach(el=>el.classList.add('seen'));return}observer=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting){entry.target.classList.add('seen');observer.unobserve(entry.target)}},{root:viewport,threshold:.3});items.forEach(el=>observer.observe(el))}
+ apply();items[0].classList.add('seen');observe();
+ return{update(next){options={...options,...next};apply()},replay(){observer?.disconnect();items.forEach(el=>el.classList.remove('seen'));viewport.scrollTop=0;requestAnimationFrame(()=>{items[0].classList.add('seen');observe()})},destroy(){observer?.disconnect();root.replaceChildren()}};
+}
