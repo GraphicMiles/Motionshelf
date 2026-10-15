@@ -12,11 +12,11 @@ const fixture={...catalog[0],slug:'audit-not-published',repository:'https://gith
 // Blueprint, SQL, validation and API: 20 checks.
 await check('Blueprint defines API and static site',()=>assert.equal((render.match(/- type: web/g)||[]).length,2));
 await check('API runs on free Node plan',()=>assert.match(render,/name: motionshelf-api\n\s+runtime: node\n\s+plan: free/));
-await check('static site omits unsupported plan',()=>{const site=render.slice(render.lastIndexOf('name: motionshelf-web'));assert.match(site,/runtime: static/);assert.doesNotMatch(site,/\bplan:/)});
+await check('static site omits unsupported plan',()=>{const site=render.slice(render.lastIndexOf('    name: motionshelf\n'));assert.match(site,/runtime: static/);assert.doesNotMatch(site,/\bplan:/)});
 await check('static publish path is generated dist',()=>assert.match(render,/staticPublishPath: \.\/dist/));
 await check('API health check is declared',()=>assert.match(render,/healthCheckPath: \/health/));
 await check('static API host references API service',()=>assert.match(render,/key: API_HOST\n\s+fromService:\n\s+name: motionshelf-api/));
-await check('API CORS origin references static service',()=>assert.match(render,/key: FRONTEND_ORIGIN\n\s+fromService:\n\s+name: motionshelf-web/));
+await check('API CORS origin references static service',()=>assert.match(render,/key: FRONTEND_ORIGIN\n\s+fromService:\n\s+name: motionshelf/));
 await check('Supabase secrets prompt rather than commit',()=>{assert.match(render,/key: SUPABASE_SECRET_KEY\n\s+sync: false/);assert.match(render,/key: SUPABASE_URL\n\s+sync: false/)});
 await check('Blueprint has no paid disk',()=>assert.doesNotMatch(render,/\bdisk:|starter|standard/));
 await check('SQL enables RLS, revokes clients, grants service role',()=>{for(const text of ['enable row level security','revoke all on table','grant insert, select on table'])assert.ok(sql.includes(text))});
