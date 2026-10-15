@@ -20,7 +20,7 @@ Commit `8109f99` is on `main`; the Render static site and API served the new rou
 
 ## Interactive gallery and email-link follow-up — 15 October 2026
 
-Deployed commits `aee9e7b` and `55b0084` add metadata sorting, per-card in-place guidance for curated demos, restrained reduced-motion-aware entrance transitions, and a responsive MotionShelf footer. The footer credits GraphicMiles, links the project's source/license, and clearly labels Bencho as interaction-study inspiration rather than the maker of MotionShelf.
+Deployed commits `aee9e7b` and `55b0084` add metadata sorting, per-card in-place guidance for curated demos, restrained reduced-motion-aware entrance transitions, and a responsive MotionShelf footer. The footer credits GraphicMiles and links the project's source/license. The later footer correction removed an unsolicited external reference and tightened mobile spacing.
 
 The maintainer account is now confirmed: the first invitation was consumed, but it landed on the public site without showing password setup. The public landing page now forwards Supabase Auth fragments to `/admin.html` before the catalog app starts. Review setup also accepts recovery fragments and alternate `token_hash` email links, clears link credentials from the address bar, and exposes recovery when links expire. A new password recovery email was requested for `rfarouq69@gmail.com`; the Supabase Auth row recorded `recovery_sent_at` on 15 October 2026 at 14:50 UTC. **The owner must open that email and set a password.** The service cannot inspect their inbox or complete the password choice for them. If the email expires, request another from `/admin.html` using the password-link form.
 

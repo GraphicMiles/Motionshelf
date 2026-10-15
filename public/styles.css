@@ -24,17 +24,20 @@
 @keyframes hint-enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .resource-card{animation:card-arrive .35s ease both}.resource-card:nth-child(2){animation-delay:.04s}.resource-card:nth-child(3){animation-delay:.08s}
 @keyframes card-arrive{from{opacity:.65;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
-.footer{display:block;border:0;padding:76px 0 42px;margin-top:45px;font-size:12px;color:#bdbdbd}
-.footer-signature{display:flex;align-items:center;flex-direction:column;gap:19px;text-align:center;padding-bottom:66px}
-.footer-mark{display:grid;place-items:center;width:46px;height:46px;border-radius:15px;background:#242424;color:#777;transform:rotate(-10deg);font-size:19px}.footer-mark i{margin:0;transform:rotate(10deg)}
-.footer-signature p{margin:0;color:#858585;line-height:1.5;font-size:12px}
-.footer-bottom{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:end;gap:20px}
-.footer-credit{justify-self:start}.footer-credit a{color:#f3f3f3;text-decoration:underline;text-decoration-color:#666;text-underline-offset:3px}.footer-credit span{color:#858585}
-.footer-year{justify-self:center;color:#8f8f8f;white-space:nowrap}
-.footer-links{justify-self:end;display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:12px;font-size:12px}
-.footer-links a,.footer-links button{color:#d4d4d4;font-size:12px}.footer-links a:hover,.footer-links button:hover,.footer-credit a:hover{color:#fff}
-.footer-links button{padding:0}.footer-links i{font-size:10px;margin-left:3px}.footer-inspiration{color:#7f7f7f;white-space:nowrap}.footer-inspiration a{color:#aaa}
-@media(max-width:1050px){.footer-bottom{grid-template-columns:1fr;justify-items:center;gap:18px;text-align:center}.footer-credit,.footer-year,.footer-links{justify-self:center}.footer-links{justify-content:center}}
-@media(max-width:700px){.filters{flex-wrap:wrap}.filters select{min-width:calc(50% - 5px)}.filters #sortFilter{flex:1 1 100%}.guide-btn{top:20px;right:59px}.footer{margin-top:20px;padding:58px 0 30px}.footer-signature{padding-bottom:54px}.footer-credit span{display:none}.footer-links{gap:11px}.footer-inspiration{flex-basis:100%}}
+.footer{display:block;border:0;margin:42px 0 0;padding:28px 0 32px;color:#bdbdbd;font-size:12px}
+.footer-main{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.footer-identity{display:flex;align-items:center;gap:13px;min-width:0}
+.footer-mark{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:#242424;color:#aaa;transform:rotate(-10deg);font-size:16px}
+.footer-mark i{margin:0;transform:rotate(10deg)}
+.footer-identity strong{display:block;color:#ededed;font:500 14px Space;letter-spacing:-.2px;margin-bottom:2px}
+.footer-credit{color:#999}.footer-credit a{color:#ededed;text-decoration:underline;text-decoration-color:#777;text-underline-offset:3px}
+.footer-links{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:10px 18px}
+.footer-links a,.footer-links button{color:#ccc;font-size:12px;white-space:nowrap}.footer-links a:hover,.footer-links button:hover,.footer-credit a:hover{color:#fff}
+.footer-links button{padding:0}.footer-links i{font-size:10px;margin-left:3px}
+.footer-copy{margin:25px 0 0;color:#858585;font-size:11px}
+@media(max-width:700px){.filters{flex-wrap:wrap}.filters select{min-width:calc(50% - 5px)}.filters #sortFilter{flex:1 1 100%}.guide-btn{top:20px;right:59px}.footer{margin:34px 0 0;padding:24px 0 30px}.footer-main{align-items:flex-start;flex-direction:column;gap:24px}.footer-links{justify-content:flex-start;gap:13px 19px}.footer-copy{margin-top:19px}}
 @media(prefers-reduced-motion:reduce){.resource-card,.guide-hint{animation:none}.guide-btn{transition:none}}
-.footer-inspiration a{text-decoration:underline;text-underline-offset:3px;text-decoration-color:currentColor}
+
+/* Let the shelf end naturally instead of leaving a blank panel before the footer. */
+.library{padding-bottom:20px}
+@media(max-width:700px){.library{padding-bottom:12px}.footer{margin-top:22px}}
