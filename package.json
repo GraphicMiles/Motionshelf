@@ -1,0 +1,21 @@
+{
+  "name": "motionshelf",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev:frontend": "node scripts/dev-frontend.js",
+    "build:frontend": "node scripts/build-frontend.js",
+    "test": "node --test tests/*.test.js",
+    "validate": "node scripts/validate.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@fontsource/dm-sans": "^5.3.0",
+    "@fontsource/space-grotesk": "^5.3.0",
+    "@fortawesome/fontawesome-free": "^7.3.1"
+  }
+}
