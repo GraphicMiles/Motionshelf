@@ -8,3 +8,7 @@ dist/
 uploads/
 
 .local/
+
+# Visual study and review captures (kept in the workspace, not deployed)
+bencho-study/
+followup-footer-*.png
