@@ -55,3 +55,9 @@ Scope: local Chromium against the running static frontend (port 3001) and separa
 - No actual Supabase project URL, service-role key, or table was provided. `scripts/supabase.sql` and Render secret variables still need to be configured; the live contribution path cannot persist data until then.
 - The public submission endpoint has no authentication, CAPTCHA, or rate limiting; it should not be treated as abuse-resistant. Published catalog changes remain a maintainer review task.
 - Live upstream code is not executed here. Illustrative previews and compatibility/maintenance claims are not independently verified.
+
+## Visual direction update — Bencho reference (15 October 2026)
+
+The directory was redesigned after the initial audit. The reference was studied for its near-black canvas, restrained white typography, pill search and filters, vertical mobile feed, oversized rounded preview surfaces, and interaction-first discovery. MotionShelf uses its own content and locally authored illustrations; it does not copy Bencho's components or execute upstream resource code.
+
+Follow-up Chromium checks at 1440, 720, 390 and 320 pixels found seven rendered resources, no JavaScript exceptions, and no horizontal overflow. Search, mobile navigation, bookmarks, resource details, illustrative command filtering, dialog, table reorder, motion replay, counter, and form feedback were exercised. One preview issue was corrected: table sorting previously reversed only the visual flex order, not the DOM order. Axe-core checks on home, detail and contribution screens at 1440 and 390 pixels reported no detected violations after contrast adjustment. Production Render and Supabase integration remain unverified without a deployment and credentials.
