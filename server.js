@@ -36,6 +36,16 @@ export const server=http.createServer(async(req,res)=>{
    return json(res,201,{message:'Submission saved for review. It is not published or verified yet.',slug:data.slug});
   }catch(e){return error(res,e)}
  }
+ if(req.method==='POST'&&pathname==='/api/admin/verify-link'){
+  if(!burstAllowed(req))return json(res,429,{errors:['Too many requests. Try again later.']});
+  try{const body=await parse(req);if(typeof body.token_hash!=='string'||!/^[-_a-zA-Z0-9]{20,256}$/.test(body.token_hash)||!['invite','recovery'].includes(body.type))return json(res,400,{errors:['Invalid email link']});
+   const {url,key}=credentials();if(!url||!key)throw Error('Storage not configured');
+   const response=await fetch(new URL('/auth/v1/verify',url),{method:'POST',headers:{apikey:key,'Content-Type':'application/json'},body:JSON.stringify({token_hash:body.token_hash,type:body.type}),signal:AbortSignal.timeout(10000)});
+   if(!response.ok)return json(res,401,{errors:['Email link is expired or already used. Request a new password link.']});
+   const session=await response.json();const user=await identity(session.access_token);if(!user)return json(res,403,{errors:['Not authorized as a maintainer']});
+   return json(res,200,{access_token:session.access_token});
+  }catch(e){return error(res,e)}
+ }
  if(req.method==='POST'&&pathname==='/api/admin/recover'){
   if(!burstAllowed(req))return json(res,429,{errors:['Too many requests. Try again later.']});
   try{const body=await parse(req);if(typeof body.email!=='string'||body.email.length>254)return json(res,400,{errors:['Enter a valid email address']});
