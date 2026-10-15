@@ -21,7 +21,7 @@ export const server=http.createServer(async(req,res)=>{
       if(response.status===409)return json(res,409,{errors:['Duplicate slug or repository']});
       if(!response.ok){console.error('Submission storage error:',response.status);return json(res,502,{errors:['Submission storage unavailable. Please retry later.']});}
       return json(res,201,{message:'Submission saved for review. It is not published or verified yet.',slug:data.slug});
-    }catch(e){return json(res,400,{errors:[e.message]});}
+    }catch(e){if(e.name==='TimeoutError' || e.name==='AbortError' || e instanceof TypeError){console.error('Submission storage request failed:',e.name);return json(res,502,{errors:['Submission storage unavailable. Please retry later.']});}return json(res,e.message==='Submission too large'?413:400,{errors:[e.message]});}
   }
   return json(res,404,{errors:['Not found']});
 });
