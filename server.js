@@ -11,6 +11,7 @@ export const server=http.createServer(async(req,res)=>{
   if(req.method==='GET' && pathname==='/health')return json(res,200,{status:'ok'});
   if(req.method==='GET' && pathname==='/api/resources')return json(res,200,loadCatalog());
   if(req.method==='POST' && pathname==='/api/submissions') {
+    if(!/^application\/json(?:\s*;|$)/i.test(req.headers['content-type']||''))return json(res,415,{errors:['Submit JSON metadata. File uploads are not supported.']});
     if(origin && allowedOrigin && origin!==allowedOrigin)return json(res,403,{errors:['Origin not allowed']});
     let body=''; try {for await(const chunk of req){body+=chunk;if(body.length>30000)throw Error('Submission too large');}const data=JSON.parse(body);
       const errors=validateResource(data,loadCatalog());if(errors.length)return json(res,422,{errors});
