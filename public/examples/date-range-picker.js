@@ -1,0 +1,3 @@
+const start=document.querySelector('#start'),end=document.querySelector('#end'),status=document.querySelector('#status');function update(){end.min=start.value||'';if(!start.value||!end.value){status.textContent='Choose both dates';return}const a=new Date(start.value+'T12:00:00Z'),b=new Date(end.value+'T12:00:00Z');status.textContent=b<a?'End must not be before start':Math.round((b-a)/86400000)+1+' days selected'}start.addEventListener('change',update);end.addEventListener('change',update);document.querySelector('#clear').addEventListener('click',()=>{start.value=end.value='';update();start.focus()});update();
+
+document.body.dataset.ready="true";

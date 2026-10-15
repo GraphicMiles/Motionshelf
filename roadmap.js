@@ -3,7 +3,7 @@ import {loadCatalog} from './validation.js';
 const path=new URL('./data/roadmap.json',import.meta.url);
 export function validateRoadmap(entries,existing=loadCatalog()){
  const errors=[],used=new Set(existing.map(r=>r.slug));
- if(!Array.isArray(entries)||entries.length>50||entries.length<1)return['Roadmap must have 1–50 entries'];
+ if(!Array.isArray(entries)||entries.length>50)return['Roadmap must have 0–50 entries'];
  for(const [index,item] of entries.entries()){
   const where=`Roadmap entry ${index+1}`;
   if(!item||typeof item!=='object'||Array.isArray(item)){errors.push(`${where} is not an object`);continue}

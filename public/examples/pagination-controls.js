@@ -1,0 +1,3 @@
+const results=document.querySelector('#results'),label=document.querySelector('#page'),previous=document.querySelector('#previous'),next=document.querySelector('#next'),items=Array.from({length:12},(_,i)=>'Item '+(i+1));let page=0;function draw(){results.replaceChildren(...items.slice(page*3,page*3+3).map(name=>{const li=document.createElement('li');li.textContent=name;return li}));label.textContent='Page '+(page+1)+' of 4';previous.disabled=page===0;next.disabled=page===3}previous.addEventListener('click',()=>{page--;draw()});next.addEventListener('click',()=>{page++;draw()});draw();
+
+document.body.dataset.ready="true";

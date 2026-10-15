@@ -1,0 +1,3 @@
+const toggle=document.querySelector('#toggle'),drawer=document.querySelector('#drawer'),close=document.querySelector('#close'),status=document.querySelector('#status');function set(open){drawer.hidden=!open;toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'Menu open':'Open menu';status.textContent=open?'Menu open':'Menu closed';(open?close:toggle).focus()}toggle.addEventListener('click',()=>set(drawer.hidden));close.addEventListener('click',()=>set(false));drawer.addEventListener('click',e=>{if(e.target.matches('a')){status.textContent=e.target.textContent+' selected';set(false)}});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!drawer.hidden)set(false)});
+
+document.body.dataset.ready="true";
