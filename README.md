@@ -6,7 +6,7 @@ Explore the [library](https://motionshelf.onrender.com/), search and save resour
 
 ## Contribute
 
-Suggest a resource from the website or open a pull request. Include a clear description, the original source, and its license. Submissions are reviewed before publication.
+Suggest a resource from the website or open a pull request. Provide a description, original source link, and license; a JSON metadata file can fill the form. Submissions are reviewed before publication. Copyable MotionShelf examples are curated separately; submitted code is not uploaded or executed.
 
 ## License
 
