@@ -25,6 +25,10 @@ services:
     runtime: static
     buildCommand: npm ci && npm run build:frontend
     staticPublishPath: ./dist
+    headers:
+      - path: /examples/assets/fa/*
+        name: Access-Control-Allow-Origin
+        value: "*"
     envVars:
       - key: TURNSTILE_SITE_KEY
         sync: false
