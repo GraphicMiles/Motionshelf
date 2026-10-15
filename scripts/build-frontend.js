@@ -2,6 +2,8 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 const source=new URL('../public/',import.meta.url), target=new URL('../dist/',import.meta.url);
 await fs.rm(target,{recursive:true,force:true});await fs.cp(source,target,{recursive:true});
+await fs.mkdir(new URL('contribute/',target),{recursive:true});
+await fs.copyFile(new URL('contribute.html',target),new URL('contribute/index.html',target));
 const host=process.env.API_HOST?.trim();
 if(process.env.RENDER && !host)throw Error('API_HOST is required for the Render static build');
 if(host && (!/^(?:[a-z0-9-]+\.)+[a-z0-9-]+$/i.test(host) || host.includes('..')))throw Error('API_HOST must be a hostname without protocol, path, or port');
