@@ -18,6 +18,7 @@ export function validateResource(value, existing = []) {
   };
   const repo = parseRepoUrl(value.repository,'repository'), source = parseRepoUrl(value.source,'source');
   if (repo && source && !(repo.hostname === source.hostname && (source.pathname.toLowerCase() === repo.pathname.toLowerCase() || source.pathname.toLowerCase().startsWith(repo.pathname.replace(/\/$/,'').toLowerCase()+'/')))) errors.push('source must belong to the repository');
+  if (value.website !== undefined && value.website !== '') { try { const u=new URL(value.website);if(u.protocol!=='https:' || u.username || u.password || u.port || !u.hostname.includes('.')) throw Error(); } catch { errors.push('website must be a clean HTTPS URL'); } }
   for (const key of required) if (typeof value[key] === 'string' && value[key].length > (key === 'usage' || key === 'description' ? 2000 : 500)) errors.push(`${key} is too long`);
   for (const key of ['tags','frameworks']) if(Array.isArray(value[key]) && (value[key].length>20 || value[key].some(x=>typeof x==='string' && x.length>80))) errors.push(`${key} has too many or oversized values`);
   if (value.type === 'agent' && (!value.runtime || !value.install || !value.usage)) errors.push('agent tools require runtime, installation, and client configuration guidance');

@@ -1,0 +1,35 @@
+name: Production storage monitor
+on:
+  schedule:
+    - cron: '17 */2 * * *'
+  workflow_dispatch:
+permissions:
+  contents: read
+  issues: write
+jobs:
+  storage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const title = 'MotionShelf production storage alert';
+            let problem = '';
+            let snapshot;
+            try {
+              const response = await fetch('https://motionshelf-api.onrender.com/health/storage', {signal: AbortSignal.timeout(100000)});
+              snapshot = await response.json();
+              if (!response.ok || snapshot.status !== 'ok') problem = `Storage readiness: ${response.status}, status: ${snapshot.status || 'unknown'}`;
+              if (snapshot.oldestPending && Date.now() - Date.parse(snapshot.oldestPending) > 7*86400000) problem += '\nOldest pending submission is over 7 days old.';
+              if (snapshot.percent >= 70) problem += `\nDatabase usage: ${snapshot.percent}% of the assumed 500 MiB free-tier allowance.`;
+            } catch (error) { problem = `Health check failed: ${error.name}`; }
+            const issues = await github.paginate(github.rest.issues.listForRepo, {owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 100});
+            const existing = issues.find(issue => !issue.pull_request && issue.title === title);
+            if (problem) {
+              if (!existing) await github.rest.issues.create({owner: context.repo.owner, repo: context.repo.repo, title, body: `${problem}\n\nCheck Render logs, Supabase usage dashboard, pending submissions, and the runbook in README.md. This is an automated alert; GitHub notifications depend on your repository watch settings.`});
+              core.setFailed(problem);
+            } else if (existing) {
+              await github.rest.issues.createComment({owner: context.repo.owner, repo: context.repo.repo, issue_number: existing.number, body: 'Storage monitor recovered.'});
+              await github.rest.issues.update({owner: context.repo.owner, repo: context.repo.repo, issue_number: existing.number, state: 'closed'});
+            }
