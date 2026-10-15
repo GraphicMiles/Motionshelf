@@ -21,7 +21,6 @@ services:
   - type: web
     name: motionshelf-web
     runtime: static
-    plan: free
     buildCommand: npm ci && npm run build:frontend
     staticPublishPath: ./dist
     envVars:
