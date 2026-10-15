@@ -7,12 +7,12 @@
 | Check | Outcome |
 | --- | --- |
 | Automated API and source tests | 47/47 passed after fixes |
-| Seeded randomized UI/API journeys | 4 seeds × 172 = 688/688 passed locally |
+| Seeded randomized UI/API journeys | 4 seeds × 172 = 688/688 passed locally; one seed 172/172 passed on production after deployment |
 | Catalog and copy adversarial checks | 64/64 passed locally |
 | Contribution accessibility and responsive flow | 33/33 passed locally |
 | Gallery, browsing follow-up, admin UI | 109/109, 39/39, 15/15 passed |
 | Six interactions (production) | 157/157 passed |
-| Production read-only contribution smoke checks | 5/5 passed |
+| Production read-only contribution smoke checks | 5/5 passed after deployment; oversized body returned 413, null submission 422, local hostname 422 |
 
 Randomized runs exercised search/filter/sort/detail/copy sequences at widths 280, 320, 390, 768, and 1440 px; URL and file-source changes during analysis; manual fallback and intercepted submission; clipboard rejection; missing snippets; transient GitHub-count failure; malformed JSON and ZIP mutation; and oversized request limits. No randomized test created a production submission.
 
@@ -30,4 +30,4 @@ Randomized runs exercised search/filter/sort/detail/copy sequences at widths 280
 - **Storage telemetry covers the database, not private uploaded-file bytes.** Free-tier Storage usage and cleanup of rejected/abandoned uploads need an explicit retention/monitoring policy before sustained upload traffic. This is a capacity/operations gap, not evidence of a current outage.
 - The star count can still be absent while GitHub remains unavailable; the link remains usable and a false number is never shown.
 
-**Deployment note:** Local fixes must be pushed and Render redeployed before the five fixes above apply to production. The rest of the production read-only checks reflect the previously deployed version.
+**Deployment:** Commit `4c91e23` was pushed. The updated browser assets and API were verified on production; no real submission or authenticated decision was created.
