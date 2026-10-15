@@ -13,6 +13,8 @@ services:
         sync: false
       - key: SUPABASE_SECRET_KEY
         sync: false
+      - key: TURNSTILE_SECRET_KEY
+        sync: false
       - key: FRONTEND_ORIGIN
         fromService:
           name: motionshelf
@@ -24,6 +26,8 @@ services:
     buildCommand: npm ci && npm run build:frontend
     staticPublishPath: ./dist
     envVars:
+      - key: TURNSTILE_SITE_KEY
+        sync: false
       - key: API_HOST
         fromService:
           name: motionshelf-api

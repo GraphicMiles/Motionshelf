@@ -10,7 +10,8 @@
     "test": "node --test tests/*.test.js",
     "validate": "node scripts/validate.js",
     "audit:50": "node scripts/audit50.mjs",
-    "audit:100": "node scripts/audit100.mjs"
+    "audit:100": "node scripts/audit100.mjs",
+    "audit:review": "node scripts/audit-review.mjs"
   },
   "engines": {
     "node": ">=20"
