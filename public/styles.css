@@ -16,3 +16,25 @@
 .demo-top kbd{color:#d3d3d3}
 
 .metadata-import{padding:14px 16px;background:#282828;border-radius:15px;margin:0 0 19px;display:flex;flex-direction:column;gap:7px;font-size:12px}.metadata-import label{font-weight:600}.metadata-import small{color:#aaa;line-height:1.5}.metadata-import input{max-width:100%;font-size:11px;color:#ddd}#botChallenge{margin-top:18px}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,a:focus-visible{outline:2px solid #fff;outline-offset:3px}
+/* In-place preview guidance and quiet, credited gallery close. */
+.guide-btn{position:absolute;right:62px;top:26px;z-index:3;width:34px;height:34px;display:grid;place-items:center;border:0;border-radius:50%;background:#f1f1f1;color:#171717;font-size:15px;opacity:.78;transition:opacity .18s ease,transform .18s ease}
+.guide-btn:hover,.guide-btn[aria-expanded="true"]{opacity:1;transform:translateY(-2px)}
+.guide-hint{position:absolute;z-index:5;left:22px;right:22px;bottom:47px;background:#f0f0ed;color:#171717;border-radius:18px;padding:16px 18px;box-shadow:0 14px 34px #0007;animation:hint-enter .2s ease-out}
+.guide-hint[hidden]{display:none}.guide-hint strong{font-size:12px}.guide-hint p{font-size:12px;line-height:1.5;color:#414141;margin:6px 0 13px}.guide-hint button{border:0;border-radius:22px;background:#1c1c1c;color:#fff;padding:8px 12px;font-size:11px}
+@keyframes hint-enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.resource-card{animation:card-arrive .35s ease both}.resource-card:nth-child(2){animation-delay:.04s}.resource-card:nth-child(3){animation-delay:.08s}
+@keyframes card-arrive{from{opacity:.65;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+.footer{display:block;border:0;padding:76px 0 42px;margin-top:45px;font-size:12px;color:#bdbdbd}
+.footer-signature{display:flex;align-items:center;flex-direction:column;gap:19px;text-align:center;padding-bottom:66px}
+.footer-mark{display:grid;place-items:center;width:46px;height:46px;border-radius:15px;background:#242424;color:#777;transform:rotate(-10deg);font-size:19px}.footer-mark i{margin:0;transform:rotate(10deg)}
+.footer-signature p{margin:0;color:#858585;line-height:1.5;font-size:12px}
+.footer-bottom{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:end;gap:20px}
+.footer-credit{justify-self:start}.footer-credit a{color:#f3f3f3;text-decoration:underline;text-decoration-color:#666;text-underline-offset:3px}.footer-credit span{color:#858585}
+.footer-year{justify-self:center;color:#8f8f8f;white-space:nowrap}
+.footer-links{justify-self:end;display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:12px;font-size:12px}
+.footer-links a,.footer-links button{color:#d4d4d4;font-size:12px}.footer-links a:hover,.footer-links button:hover,.footer-credit a:hover{color:#fff}
+.footer-links button{padding:0}.footer-links i{font-size:10px;margin-left:3px}.footer-inspiration{color:#7f7f7f;white-space:nowrap}.footer-inspiration a{color:#aaa}
+@media(max-width:1050px){.footer-bottom{grid-template-columns:1fr;justify-items:center;gap:18px;text-align:center}.footer-credit,.footer-year,.footer-links{justify-self:center}.footer-links{justify-content:center}}
+@media(max-width:700px){.filters{flex-wrap:wrap}.filters select{min-width:calc(50% - 5px)}.filters #sortFilter{flex:1 1 100%}.guide-btn{top:20px;right:59px}.footer{margin-top:20px;padding:58px 0 30px}.footer-signature{padding-bottom:54px}.footer-credit span{display:none}.footer-links{gap:11px}.footer-inspiration{flex-basis:100%}}
+@media(prefers-reduced-motion:reduce){.resource-card,.guide-hint{animation:none}.guide-btn{transition:none}}
+.footer-inspiration a{text-decoration:underline;text-underline-offset:3px;text-decoration-color:currentColor}

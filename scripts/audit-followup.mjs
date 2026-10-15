@@ -1,0 +1,15 @@
+import {chromium} from 'playwright';import AxeBuilder from '@axe-core/playwright';
+const base=process.env.AUDIT_BASE||'http://127.0.0.1:3011';const browser=await chromium.launch({headless:true});let checks=0;const failures=[];
+const check=(name,truth)=>{checks++;if(!truth)failures.push(name)};
+for(const width of [1440,390,320]){const context=await browser.newContext({viewport:{width,height:850}});const page=await context.newPage();try{
+ await page.goto(base+'/');await page.locator('.resource-card').first().waitFor();
+ const first=await page.locator('.resource-card h3').allTextContents();await page.locator('#sortFilter').selectOption('az');const sorted=await page.locator('.resource-card h3').allTextContents();check(`${width} alphabetical sort`,sorted.join('|')===first.toSorted((a,b)=>a.localeCompare(b)).join('|'));
+ await page.locator('#sortFilter').selectOption('featured');check(`${width} featured order restored`,(await page.locator('.resource-card h3').allTextContents()).join('|')===first.join('|'));
+ await page.locator('[data-guide]').first().click();check(`${width} guide opens`,await page.locator('.guide-hint').first().isVisible());await page.locator('[data-guide-close]').first().click();check(`${width} guide closes`,!(await page.locator('.guide-hint').first().isVisible()));
+ check(`${width} source credit`,await page.locator('.footer-credit a').getAttribute('href')==='https://github.com/GraphicMiles');check(`${width} no horizontal overflow`,await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+ const axe=await new AxeBuilder({page}).analyze();check(`${width} homepage axe`,axe.violations.length===0);if(axe.violations.length)console.log('axe',width,axe.violations.map(v=>v.id));
+ await page.goto(base+'/#access_token=fixture&type=invite');await page.reload();await page.waitForURL('**/admin.html');await page.locator('#passwordForm').waitFor({state:'visible'});check(`${width} root invite forwarded to password setup`,await page.locator('#passwordForm').isVisible());check(`${width} token removed from address`,!page.url().includes('access_token'));
+ await page.goto(base+'/admin.html#error=access_denied&error_description=expired');await page.reload();await page.locator('#recoverToggle').click();check(`${width} expired link offers recovery`,await page.locator('#recoverForm').isVisible());
+ if(width!==320){await page.goto(base+'/');await page.locator('.resource-card').first().waitFor();await page.locator('footer').scrollIntoViewIfNeeded();await page.screenshot({path:`/home/user/followup-footer-${width}.png`});}
+ }catch(e){failures.push(`${width} exception ${e.message}`)}finally{await context.close()}}
+await browser.close();console.log(`${checks-failures.length}/${checks} follow-up checks passed`,failures);if(failures.length)process.exitCode=1;

@@ -36,6 +36,15 @@ export const server=http.createServer(async(req,res)=>{
    return json(res,201,{message:'Submission saved for review. It is not published or verified yet.',slug:data.slug});
   }catch(e){return error(res,e)}
  }
+ if(req.method==='POST'&&pathname==='/api/admin/recover'){
+  if(!burstAllowed(req))return json(res,429,{errors:['Too many requests. Try again later.']});
+  try{const body=await parse(req);if(typeof body.email!=='string'||body.email.length>254)return json(res,400,{errors:['Enter a valid email address']});
+   const {url,key}=credentials();if(!url||!key)throw Error('Storage not configured');
+   const rows=await db(`/rest/v1/motionshelf_maintainers?email=eq.${encodeURIComponent(body.email.trim().toLowerCase())}&select=user_id&limit=1`);
+   if(rows?.length){const redirect=new URL('/admin.html',allowedOrigin||'http://localhost:3001');const response=await fetch(new URL('/auth/v1/recover?redirect_to='+encodeURIComponent(redirect.toString()),url),{method:'POST',headers:{apikey:key,'Content-Type':'application/json'},body:JSON.stringify({email:body.email.trim().toLowerCase()}),signal:AbortSignal.timeout(10000)});if(!response.ok)console.error('Maintainer recovery delivery failed:',response.status)}
+   return json(res,200,{message:'If this address is a maintainer account, a password link has been sent.'});
+  }catch(e){return error(res,e)}
+ }
  if(req.method==='POST'&&pathname==='/api/admin/login'){
   if(!burstAllowed(req))return json(res,429,{errors:['Too many login attempts. Try again later.']});
   try{const body=await parse(req);if(typeof body.email!=='string'||typeof body.password!=='string'||body.password.length>256)return json(res,400,{errors:['Invalid credentials']});
