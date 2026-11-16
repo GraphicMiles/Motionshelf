@@ -1,4 +1,4 @@
-# MotionShelf — adversarial retest
+# MotionShelf - adversarial retest
 
 **Scope:** public catalog, resource previews and copying, six interaction exports, contribution analysis and submission boundaries, maintainer UI, API authentication and source inspection. Tests were read-only against production; mocked requests and local API tests covered mutations and submissions without creating fake production records.
 
