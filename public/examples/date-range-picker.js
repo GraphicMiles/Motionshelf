@@ -12,7 +12,7 @@ const glider=(el,fn)=>{ // move a shared indicator to a target, in one frame
 
 
 const grid=$('#drGrid'),monthEl=$('#drMonth'),fromEl=$('#drFrom'),toEl=$('#drTo'),
-      sumBox=$('#drSum'),sumText=$('#drSumText'),nights=$('#drNights'),
+      nights=$('#drNights'),
       status=$('#status'),trigger=$('#drTrigger'),clearBtn=$('#drClear');
 const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
 const today=new Date();today.setHours(0,0,0,0);
@@ -80,8 +80,7 @@ function pick(d){
     const n=Math.round((hi-lo)/86400000);
     fromEl.textContent=fmt(lo);toEl.textContent=fmt(hi);
     clearBtn.hidden=false;trigger.classList.add('filled');
-    sumBox.hidden=false;
-    sumText.textContent=fmt(lo)+' → '+fmt(hi);
+    nights.hidden=false;
     nights.textContent=(n||0)+' night'+(n===1?'':'s');
     status.textContent=n+' night'+(n===1?'':'s')+' selected.';
   }
@@ -93,7 +92,7 @@ clearBtn.addEventListener('click',e=>{
   e.stopPropagation();
   start=end=hover=null;
   fromEl.textContent='Start date';toEl.textContent='End date';
-  trigger.classList.remove('filled');clearBtn.hidden=true;sumBox.hidden=true;
+  trigger.classList.remove('filled');clearBtn.hidden=true;nights.hidden=true;
   status.textContent='Range cleared. Pick a start date.';
   paint();
 });

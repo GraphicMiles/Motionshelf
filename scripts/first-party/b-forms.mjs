@@ -4,6 +4,7 @@ export const tagEditor = {
 slug: 'tag-editor',
 title: 'Tag editor',
 tag: 'enter to add',
+layout: 'stage--opt',
 body: `
 <div class="te">
   <div class="te-top">
@@ -135,17 +136,17 @@ body: `
 css: `
 .fd{display:flex;flex-direction:column;gap:0}
 .fd-zone{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;
-  min-height:150px;padding:18px 14px;border-radius:var(--r-lg);
+  min-height:150px;padding:14px 12px;border-radius:var(--r-lg);
   background:
-    radial-gradient(120% 90% at 50% 0%,rgba(201,247,90,.045),transparent 62%),
+    radial-gradient(120% 90% at 50% 0%,rgba(0,0,0,.028),transparent 62%),
     var(--s2);
   border:1px dashed var(--line-3);cursor:pointer;overflow:hidden;text-align:center;
   transition:border-color var(--t-2) var(--ease-out),background var(--t-2) var(--ease-out),transform var(--t-2) var(--ease-out)}
-.fd-zone:hover{border-color:var(--line-3);background:radial-gradient(120% 90% at 50% 0%,rgba(201,247,90,.07),transparent 62%),var(--s3)}
+.fd-zone:hover{border-color:var(--line-3);background:radial-gradient(120% 90% at 50% 0%,rgba(0,0,0,.04),transparent 62%),var(--s3)}
 .fd-zone:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .fd-zone.dragging{border-color:var(--accent);border-style:solid;transform:scale(.988);
-  background:radial-gradient(120% 90% at 50% 0%,rgba(201,247,90,.12),transparent 62%),var(--s3)}
-.fd-zone.done{border-style:solid;border-color:var(--accent-line);background:radial-gradient(120% 90% at 50% 0%,rgba(201,247,90,.08),transparent 62%),var(--s2)}
+  background:radial-gradient(120% 90% at 50% 0%,rgba(0,0,0,.055),transparent 62%),var(--s3)}
+.fd-zone.done{border-style:solid;border-color:var(--accent-line);background:radial-gradient(120% 90% at 50% 0%,rgba(0,0,0,.045),transparent 62%),var(--s2)}
 .fd-ring{position:absolute;width:150px;height:150px;border-radius:50%;border:1px solid var(--accent-line);
   opacity:0;transform:scale(.5);pointer-events:none}
 .fd-zone.dragging .fd-ring{animation:m-ring 900ms var(--ease-out) forwards}
@@ -157,8 +158,7 @@ css: `
 .fd-zone.done .fd-icon{color:var(--accent);background:var(--accent-soft);border-color:var(--accent-line)}
 .fd-title{font-size:12.5px;font-weight:600;color:var(--fg)}
 .fd-help{font-size:10.5px;color:var(--fg-4);line-height:1.4;text-wrap:balance}
-@container preview (max-width:330px){.fd-zone{min-height:132px;padding:14px 10px}.fd-title{font-size:11.5px}}
-.fd-link{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+@container preview (max-width:330px){.fd-zone{min-height:132px;padding:14px 12px;text-decoration:underline;text-underline-offset:2px}
 .fd-bar{width:100%;height:3px;border-radius:2px;background:var(--s5);overflow:hidden;margin-top:4px}
 .fd-bar span{display:block;height:100%;width:0;background:var(--accent);transition:width var(--t-4) var(--ease-out)}
 .fd-file{display:flex;align-items:center;gap:7px;width:100%;justify-content:center;
@@ -232,6 +232,7 @@ export const otp = {
 slug: 'otp-code-input',
 title: 'Verification code',
 tag: '6 digits',
+layout: 'stage--opt',
 body: `
 <div class="otp">
   <div class="otp-head">
@@ -273,7 +274,7 @@ css: `
 .otp-slot.filled{background:var(--s3);border-color:var(--line-3);color:var(--fg)}
 .otp-slot.pop{animation:m-pop-tight 260ms var(--spring)}
 .otp-slots[data-state=ok] .otp-slot{border-color:var(--accent-line);background:var(--accent-soft);color:var(--accent)}
-.otp-slots[data-state=err] .otp-slot{border-color:rgba(251,113,133,.5);background:rgba(251,113,133,.08);color:#ffb3be;
+.otp-slots[data-state=err] .otp-slot{border-color:rgba(251,113,133,.5);background:rgba(251,113,133,.08);color:var(--danger);
   animation:m-shake 380ms var(--ease-in-out)}
 .otp-state{min-height:16px;margin-top:8px;font-size:11px;color:var(--fg-3);transition:color var(--t-2)}
 .otp-state.ok{color:var(--accent);font-weight:600}
@@ -369,7 +370,7 @@ title: 'Validation summary',
 tag: 'inline errors',
 body: `
 <form id="form" class="vs" novalidate>
-  <div class="vs-head">
+  <div class="vs-head vs-head-tight">
     <span class="vs-count" id="vsCount">3 fields need attention</span>
     <span class="vs-pill" id="vsPill">0 of 3 valid</span>
   </div>
@@ -380,22 +381,32 @@ body: `
     </div>
     <ol id="vsList"></ol>
   </div>
-  <label class="label" for="name">Full name</label>
-  <input class="input" id="name" required autocomplete="name" placeholder="Amina Okafor">
-  <p class="vs-err" id="nameErr" hidden></p>
-  <label class="label" for="email" style="margin-top:9px">Email</label>
-  <input class="input" id="email" type="email" required autocomplete="email" placeholder="you@studio.com">
-  <p class="vs-err" id="emailErr" hidden></p>
-  <label class="label" for="handle" style="margin-top:9px">Handle</label>
+  <div class="vs-two">
+    <div><label class="label" for="name">Full name</label>
+      <input class="input" id="name" required autocomplete="name" placeholder="Amina Okafor">
+      <p class="vs-err" id="nameErr" hidden></p></div>
+    <div><label class="label" for="email">Email</label>
+      <input class="input" id="email" type="email" required autocomplete="email" placeholder="you@studio.com">
+      <p class="vs-err" id="emailErr" hidden></p></div>
+  </div>
+  <label class="label" for="handle" style="margin-top:8px">Handle</label>
   <div class="vs-prefix"><span>@</span><input class="input" id="handle" required pattern="[a-z0-9_]{3,15}" placeholder="amina_design"></div>
   <p class="vs-err" id="handleErr" hidden></p>
-  <button class="btn btn-primary" type="submit" style="width:100%;margin-top:13px">Create account</button>
-  <p id="status" class="hint" role="status" aria-live="polite" style="margin-top:8px;min-height:15px"></p>
+  <button class="btn btn-primary" type="submit" style="width:100%;margin-top:8px">Create account</button>
+  <p id="status" class="viv" role="status" aria-live="polite"></p>
 </form>
 `,
 css: `
-.vs{display:flex;flex-direction:column;--err:var(--danger)}
-.vs-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px;gap:8px}
+.vs{display:flex;flex-direction:column;--err:var(--danger);min-width:0;gap:0}
+.viv{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.vs-two{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:4px}
+@media (max-height:310px){.vs .input{min-height:28px}.vs .label{margin-bottom:2px}.vs-two{margin-top:2px}.vs .btn{margin-top:6px!important}}
+.vs .input{min-height:30px;font-size:12.25px}
+.vs .label{margin-bottom:3px;font-size:11.5px}
+@container preview (max-width:360px){.vs-two{grid-template-columns:1fr}}
+.vs-box:empty,.vs-box[hidden]{display:none!important}
+.vs-err[hidden]{display:none!important}
+.vs-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;gap:8px}
 .vs-count{font-size:10.5px;color:var(--fg-4)}
 .vs-pill{font-size:10px;padding:3px 8px;border-radius:var(--r-full);background:var(--s3);color:var(--fg-3);
   border:1px solid var(--line-2);font-variant-numeric:tabular-nums;font-weight:600;
@@ -405,23 +416,23 @@ css: `
 .vs-box{background:rgba(251,113,133,.075);border:1px solid rgba(251,113,133,.28);
   border-radius:var(--r-md);padding:10px 11px;margin-bottom:11px;
   animation:m-rise-sm var(--t-3) var(--ease-out) both}
-.vs-box-h{display:flex;align-items:center;gap:6px;color:#ffb3be;margin-bottom:7px}
+.vs-box-h{display:flex;align-items:center;gap:6px;color:var(--danger);margin-bottom:7px}
 .vs-box-h strong{font-size:11.5px;font-weight:650}
 #vsList{display:grid;gap:1px;counter-reset:v}
 #vsList li{counter-increment:v}
 #vsList a{display:flex;align-items:flex-start;gap:7px;padding:4px 5px;border-radius:var(--r-xs);
-  font-size:11px;color:#ffc4cc;line-height:1.45;text-align:left;width:100%;
+  font-size:11px;color:var(--danger);line-height:1.45;text-align:left;width:100%;
   transition:background var(--t-1),color var(--t-1)}
 #vsList a::before{content:counter(v);flex:none;display:grid;place-items:center;width:14px;height:14px;
-  border-radius:50%;background:rgba(251,113,133,.24);font-size:8.5px;font-weight:700;color:#ffb3be;margin-top:1px}
-#vsList a:hover{background:rgba(251,113,133,.12);color:#ffe0e4}
+  border-radius:50%;background:var(--danger-bg);font-size:8.5px;font-weight:700;color:var(--danger);margin-top:1px}
+#vsList a:hover{background:var(--danger-bg);color:#ffe0e4}
 .vs-err{font-size:10.5px;color:var(--danger);margin-top:4px;display:flex;align-items:center;gap:4px;
   animation:m-rise-sm var(--t-2) var(--ease-out) both}
 .vs-prefix{position:relative;display:flex;align-items:center}
 .vs-prefix span{position:absolute;left:10px;color:var(--fg-4);font-size:12px;pointer-events:none}
 .vs-prefix .input{padding-left:24px}
 .field-ok{position:relative}
-.input[data-ok=true]{border-color:rgba(92,224,160,.4)}
+.input[data-ok=true]{border-color:var(--ok)}
 `,
 js: `
 const form=$('#form'),box=$('#errors'),list=$('#vsList'),status=$('#status'),
@@ -498,14 +509,17 @@ tag: 'range select',
 body: `
 <div class="dr">
   <div class="dr-trigger" id="drTrigger">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
     <span id="drFrom">Start date</span>
     <span class="dr-arrow">→</span>
     <span id="drTo">End date</span>
+    <span class="spacer"></span>
+    <span class="badge" id="drNights" hidden></span>
     <button class="dr-x" id="drClear" type="button" aria-label="Clear range" hidden>
       <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
   </div>
+  <span id="status" class="viv" role="status" aria-live="polite">Pick a start date, then an end date.</span>
   <div class="dr-cal" id="drCal">
     <div class="dr-head">
       <button class="btn btn-icon btn-ghost" id="drPrev" type="button" aria-label="Previous month">
@@ -519,34 +533,28 @@ body: `
     <div class="dr-week" aria-hidden="true"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
     <div class="dr-grid" id="drGrid" role="group" aria-label="Choose a date range"></div>
   </div>
-  <div class="dr-sum" id="drSum" hidden>
-    <span class="dot dot-ok" aria-hidden="true"></span>
-    <span id="drSumText"></span>
-    <span class="spacer"></span>
-    <span class="badge" id="drNights"></span>
-  </div>
-  <p id="status" class="hint" role="status" aria-live="polite">Pick a start date, then an end date.</p>
 </div>
 `,
 css: `
-.dr{display:flex;flex-direction:column;gap:0}
-.dr-trigger{display:flex;align-items:center;gap:8px;height:34px;padding:0 10px;margin-bottom:9px;
+.dr{display:flex;flex-direction:column;gap:0;min-height:0}
+.dr-trigger{display:flex;align-items:center;gap:7px;height:29px;padding:0 9px;margin-bottom:5px;flex:none;
   background:var(--s2);border:1px solid var(--line-2);border-radius:var(--r-sm);
   font-size:11.5px;color:var(--fg-3);transition:border-color var(--t-2) var(--ease-out)}
 .dr-trigger.filled{border-color:var(--accent-line);background:var(--accent-soft)}
 .dr-trigger.filled #drFrom,.dr-trigger.filled #drTo{color:var(--accent);font-weight:600}
+.dr-status{font-size:10.5px;margin-top:5px;flex:none}
 .dr-arrow{color:var(--fg-4);font-size:10px}
 .dr-x{display:grid;place-items:center;width:17px;height:17px;margin-left:auto;border-radius:50%;
-  background:rgba(201,247,90,.16);color:var(--accent);transition:background var(--t-1)}
-.dr-x:hover{background:rgba(251,113,133,.22);color:var(--danger)}
-.dr-cal{background:var(--s2);border:1px solid var(--line);border-radius:var(--r-md);padding:9px}
-.dr-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+  background:var(--s4);color:var(--fg);transition:background var(--t-1)}
+.dr-x:hover{background:var(--danger-bg);color:var(--danger)}
+.dr-cal{padding:6px 7px 4px;background:var(--s2);border:1px solid var(--line);border-radius:var(--r-md);flex:none}
+.dr-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px}
 .dr-month{font-size:12px;font-weight:600;letter-spacing:-.01em;white-space:nowrap}
 .dr-head .btn-icon{min-height:24px;width:24px;border-radius:var(--r-xs)}
-.dr-week{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:3px}
+.dr-week{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:2px}
 .dr-week span{text-align:center;font-size:9px;font-weight:700;color:var(--fg-4);letter-spacing:.05em;height:14px;line-height:14px}
-.dr-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;position:relative}
-.dr-day{position:relative;height:27px;display:grid;place-items:center;border-radius:var(--r-xs);
+.dr-grid{display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:23px;gap:1px;position:relative}
+.dr-day{position:relative;height:23px;display:grid;place-items:center;border-radius:var(--r-xs);
   font-size:11px;color:var(--fg-2);font-variant-numeric:tabular-nums;
   transition:background var(--t-1) var(--ease-out),color var(--t-1) var(--ease-out),transform var(--t-1) var(--spring)}
 .dr-day:hover{background:var(--s4);color:var(--fg);transform:scale(1.06)}
@@ -555,12 +563,12 @@ css: `
 .dr-day.today::after{content:"";position:absolute;bottom:3px;width:3px;height:3px;border-radius:50%;background:var(--accent)}
 .dr-day.in-range{background:var(--accent-soft);border-radius:0;color:var(--fg)}
 .dr-day.edge{background:var(--accent);color:var(--accent-ink);font-weight:700;border-radius:var(--r-xs);z-index:1}
-.dr-day.edge:hover{background:#d9ff7e}
-.dr-day.preview{background:rgba(201,247,90,.07);border-radius:0}
+.dr-day.edge:hover{background:var(--accent)}
+.dr-day.preview{background:rgba(0,0,0,.05);border-radius:0}
 .dr-sum{display:flex;align-items:center;gap:7px;margin-top:9px;padding:7px 10px;border-radius:var(--r-sm);
   background:var(--accent-soft);border:1px solid var(--accent-line);font-size:11px;color:var(--fg);
   animation:m-rise-sm var(--t-3) var(--ease-out) both}
-.dr-sum .badge{background:rgba(201,247,90,.18);color:var(--accent);font-weight:700}
+.dr-sum .badge{background:var(--s4);color:var(--fg);font-weight:700}
 @keyframes dr-slide-r{from{opacity:0;transform:translateX(9px)}to{opacity:1;transform:none}}
 @keyframes dr-slide-l{from{opacity:0;transform:translateX(-9px)}to{opacity:1;transform:none}}
 .dr-grid.slide-r{animation:dr-slide-r var(--t-2) var(--ease-out)}
@@ -568,7 +576,7 @@ css: `
 `,
 js: `
 const grid=$('#drGrid'),monthEl=$('#drMonth'),fromEl=$('#drFrom'),toEl=$('#drTo'),
-      sumBox=$('#drSum'),sumText=$('#drSumText'),nights=$('#drNights'),
+      nights=$('#drNights'),
       status=$('#status'),trigger=$('#drTrigger'),clearBtn=$('#drClear');
 const MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
 const today=new Date();today.setHours(0,0,0,0);
@@ -636,8 +644,7 @@ function pick(d){
     const n=Math.round((hi-lo)/86400000);
     fromEl.textContent=fmt(lo);toEl.textContent=fmt(hi);
     clearBtn.hidden=false;trigger.classList.add('filled');
-    sumBox.hidden=false;
-    sumText.textContent=fmt(lo)+' → '+fmt(hi);
+    nights.hidden=false;
     nights.textContent=(n||0)+' night'+(n===1?'':'s');
     status.textContent=n+' night'+(n===1?'':'s')+' selected.';
   }
@@ -649,7 +656,7 @@ clearBtn.addEventListener('click',e=>{
   e.stopPropagation();
   start=end=hover=null;
   fromEl.textContent='Start date';toEl.textContent='End date';
-  trigger.classList.remove('filled');clearBtn.hidden=true;sumBox.hidden=true;
+  trigger.classList.remove('filled');clearBtn.hidden=true;nights.hidden=true;
   status.textContent='Range cleared. Pick a start date.';
   paint();
 });

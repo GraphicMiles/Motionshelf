@@ -22,19 +22,13 @@ stepsEl.innerHTML=NAMES.map((n,i)=>
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>'+
   '<span class="ps-lab">'+n+'</span><span class="ps-line"><span></span></span></li>').join('');
 
-function panelFor(i){
-  if(i===0)return '<div class="ps-f"><label class="label" for="psName">Project name</label>'+
+function panelFor(i){if(i===0)return '<div class="ps-f"><label class="label" for="psName">Project name</label>'+
     '<input class="input" id="psName" value="'+state.name+'" placeholder="Atlas"></div>'+
     '<div class="ps-f"><label class="label" for="psTier">Plan</label>'+
-    '<select class="input" id="psTier">'+['Starter','Studio','Scale'].map(t=>'<option'+(t===state.tier?' selected':'')+'>'+t+'</option>').join('')+'</select></div>';
-  if(i===1)return '<label class="ps-check'+(state.email?' on':'')+'" id="cEmail"><input type="checkbox" '+(state.email?'checked':'')+'> Email me release notes</label>'+
-    '<label class="ps-check'+(state.digest?' on':'')+'" id="cDigest" style="margin-top:6px"><input type="checkbox" '+(state.digest?'checked':'')+'> Weekly digest</label>';
-  return '<div class="ps-review">'+
+    '<select class="input" id="psTier">'+['Starter','Studio','Scale'].map(t=>'<option'+(t===state.tier?' selected':'')+'>'+t+'</option>').join('')+'</select></div>';if(i===1)return '<label class="ps-check'+(state.email?' on':'')+'" id="cEmail"><input type="checkbox" '+(state.email?'checked':'')+'> Email me release notes</label>'+
+    '<label class="ps-check'+(state.digest?' on':'')+'" id="cDigest" style="margin-top:6px"><input type="checkbox" '+(state.digest?'checked':'')+'> Weekly digest</label>';return '<div class="ps-review">'+
     [['Project',state.name||'Atlas'],['Plan',state.tier],['Email notes',state.email?'Yes':'No'],['Digest',state.digest?'Yes':'No']]
-      .map(([k,v],idx)=>'<div class="ps-row" style="display:flex;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:10.5px">'+
-        '<span style="color:var(--fg-4);width:78px;flex:none;text-transform:uppercase;letter-spacing:.06em;font-size:9px">'+k+'</span>'+
-        '<span style="color:var(--fg)">'+v+'</span></div>').join('')+'</div>';
-}
+      .map(([k,v])=>'<div class="ps-row"><span class="ps-k">'+k+'</span><span class="ps-v">'+v+'</span></div>').join('')+'</div>';}
 function paint(){
   $$('.ps-step').forEach((li,i)=>{
     li.dataset.state=i<step?'done':i===step?'active':'todo';

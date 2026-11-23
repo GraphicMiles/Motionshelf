@@ -28,6 +28,9 @@ function set(next,focus){
   }
 }
 parent.addEventListener('click',()=>set(!open));
+// A flyout demo should display the flyout. Open on load, keep focus on the trigger
+// so keyboard users start in the expected place.
+set(true,parent);
 parent.addEventListener('keydown',e=>{
   if(e.key==='ArrowDown'||e.key==='ArrowRight'||e.key==='Enter'||e.key===' '){
     e.preventDefault();if(!open)set(true);

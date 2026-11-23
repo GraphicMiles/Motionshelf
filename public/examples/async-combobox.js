@@ -31,7 +31,8 @@ const svg=(p,s=12)=>'<svg width="'+s+'" height="'+s+'" viewBox="0 0 24 24" fill=
 const TICK='<span class="tick">'+svg('<path d="M20 6 9 17l-5-5"/>')+'</span>';
 const input=$('#city'),pop=$('#cbPop'),list=$('#cbList'),glide=$('#cbGlide'),empty=$('#cbEmpty'),
       spin=$('#cbSpin'),clearBtn=$('#cbClear'),status=$('#status'),
-      selBox=$('#cbSelected'),selText=$('#cbSelText'),selTz=$('#cbSelTz');
+      selBox=$('#cbSelected'),selText=$('#cbSelText'),selTz=$('#cbSelTz'),
+      sugg=$('#cbSuggestList');
 let timer,ticket=0,active=0,options=[],selected=null,open=false;
 
 function openPop(){pop.hidden=false;open=true;input.setAttribute('aria-expanded','true')}
@@ -111,5 +112,14 @@ clearBtn.addEventListener('click',()=>{
 input.addEventListener('focus',()=>{if(input.value.trim().length>=2&&!open){const q=input.value.trim().toLowerCase();
   draw(CITIES.filter(c=>c[0].toLowerCase().includes(q)).slice(0,7),q);openPop()}});
 document.addEventListener('click',e=>{if(!e.target.closest('.cb-anchor')&&open)closePop()});
+const POPULAR=['Lisbon','Lagos','Tokyo','Nairobi','Oslo'];
+sugg.replaceChildren(...POPULAR.map(n=>{
+  const r=CITIES.find(c=>c[0]===n); if(!r) return null;
+  const b=document.createElement('button');
+  b.type='button'; b.className='cb-c'; b.dataset.city=r[0];
+  b.innerHTML='<span class="cb-cn">'+r[0]+'</span><span class="cb-cc">'+r[3]+'</span>';
+  b.addEventListener('click',()=>{choose([r[0],r[1],r[2],true]);input.focus()});
+  return b;
+}).filter(Boolean));
 
 document.body.dataset.ready="true";

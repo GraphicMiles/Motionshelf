@@ -35,7 +35,7 @@ css: `
   opacity:0;z-index:0}
 .cm-group{position:relative;z-index:1}
 .cm-group + .cm-group{margin-top:5px}
-.cm-gh{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3);font-weight:650;padding:6px 8px 3px}
+.cm-gh{font-size:11px;letter-spacing:-.004em;color:var(--fg-3);font-weight:520;padding:6px 8px 3px}
 .cm-item{display:flex;align-items:center;gap:9px;width:100%;height:31px;padding:0 8px;border-radius:var(--r-sm);font-size:12px;color:var(--fg-2);text-align:left;position:relative;transition:color var(--t-1) var(--ease-out)}
 .cm-item[aria-selected=true]{color:var(--fg)}
 .cm-item .ico{color:var(--fg-3);flex:none;transition:color var(--t-1) var(--ease-out),transform var(--t-2) var(--spring)}
@@ -184,6 +184,7 @@ export const combobox = {
 slug: 'async-combobox',
 title: 'Async combobox',
 tag: 'debounced',
+layout: 'stage--opt',
 body: `
 <div class="cb">
   <label class="label" for="city">Destination city</label>
@@ -201,6 +202,10 @@ body: `
       <div class="cb-empty" id="cbEmpty" hidden>No city matches that search.</div>
     </div>
   </div>
+  <div class="cb-suggest" id="cbSuggest">
+    <span class="cb-suggest-h">Popular this month</span>
+    <div class="cb-suggest-list" id="cbSuggestList"></div>
+  </div>
   <div class="cb-selected" id="cbSelected" hidden>
     <span class="dot dot-ok" aria-hidden="true"></span>
     <span id="cbSelText"></span>
@@ -209,8 +214,16 @@ body: `
   <p id="status" class="hint" role="status" aria-live="polite">Type two letters to search 40 cities.</p>
 </div>
 `,
-css: `
-.cb{display:flex;flex-direction:column;gap:2px}
+css: `.cb-suggest{margin-top:9px;flex:1 1 0;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+.cb-suggest-h{font-size:11px;font-weight:520;color:var(--fg-3);margin-bottom:4px;flex:none}
+.cb-suggest-list{display:flex;flex-direction:column;gap:0;min-height:0;overflow:auto;scrollbar-width:thin}
+.cb-c{padding:5px 9px;border-radius:var(--r-xs);font-size:12.5px;color:var(--fg-2);text-align:left;
+  display:flex;align-items:center;gap:8px;transition:background var(--t-1) var(--ease-out),color var(--t-1)}
+.cb-c:hover{background:var(--s3);color:var(--fg)}
+.cb-c .cb-cn{font-weight:510;color:var(--fg)}
+.cb-c .cb-cc{margin-left:auto;font-size:10.5px;color:var(--fg-4);font-variant-numeric:tabular-nums}
+
+.cb{display:flex;flex-direction:column;min-height:0;flex:1;display:flex;flex-direction:column;gap:2px}
 .cb-anchor{position:relative}
 .cb-trigger{display:flex;align-items:center;gap:8px;height:36px;padding:0 10px;background:var(--s2);
   border:1px solid var(--line-2);border-radius:var(--r-sm);color:var(--fg-3);
@@ -244,7 +257,7 @@ css: `
 .cb-selected{display:flex;align-items:center;gap:7px;margin-top:9px;padding:7px 10px;border-radius:var(--r-sm);
   background:var(--accent-soft);border:1px solid var(--accent-line);font-size:11.5px;color:var(--fg);
   animation:m-rise-sm var(--t-3) var(--ease-out) both}
-.cb-selected .badge{background:rgba(201,247,90,.16);color:var(--accent)}
+.cb-selected .badge{background:var(--s4);color:var(--fg)}
 `,
 js: `
 const CITIES=[
@@ -267,7 +280,8 @@ const svg=(p,s=12)=>'<svg width="'+s+'" height="'+s+'" viewBox="0 0 24 24" fill=
 const TICK='<span class="tick">'+svg('<path d="M20 6 9 17l-5-5"/>')+'</span>';
 const input=$('#city'),pop=$('#cbPop'),list=$('#cbList'),glide=$('#cbGlide'),empty=$('#cbEmpty'),
       spin=$('#cbSpin'),clearBtn=$('#cbClear'),status=$('#status'),
-      selBox=$('#cbSelected'),selText=$('#cbSelText'),selTz=$('#cbSelTz');
+      selBox=$('#cbSelected'),selText=$('#cbSelText'),selTz=$('#cbSelTz'),
+      sugg=$('#cbSuggestList');
 let timer,ticket=0,active=0,options=[],selected=null,open=false;
 
 function openPop(){pop.hidden=false;open=true;input.setAttribute('aria-expanded','true')}
@@ -347,6 +361,16 @@ clearBtn.addEventListener('click',()=>{
 input.addEventListener('focus',()=>{if(input.value.trim().length>=2&&!open){const q=input.value.trim().toLowerCase();
   draw(CITIES.filter(c=>c[0].toLowerCase().includes(q)).slice(0,7),q);openPop()}});
 document.addEventListener('click',e=>{if(!e.target.closest('.cb-anchor')&&open)closePop()});
+const POPULAR=['Lisbon','Lagos','Tokyo','Nairobi','Oslo'];
+sugg.replaceChildren(...POPULAR.map(n=>{
+  const r=CITIES.find(c=>c[0]===n); if(!r) return null;
+  const b=document.createElement('button');
+  b.type='button'; b.className='cb-c'; b.dataset.city=r[0];
+  b.innerHTML='<span class="cb-cn">'+r[0]+'</span><span class="cb-cc">'+r[3]+'</span>';
+  b.addEventListener('click',()=>{choose([r[0],r[1],r[2],true]);input.focus()});
+  return b;
+}).filter(Boolean));
+
 `
 };
 
@@ -354,6 +378,7 @@ export const inlineEdit = {
 slug: 'inline-edit-field',
 title: 'Inline editor',
 tag: 'save / cancel',
+layout: 'stage--opt',
 body: `
 <div class="ie">
   <div class="ie-kicker">Project title</div>
@@ -383,7 +408,7 @@ body: `
 `,
 css: `
 .ie{display:flex;flex-direction:column;gap:0}
-.ie-kicker{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3);font-weight:650;margin-bottom:5px}
+.ie-kicker{font-size:11px;letter-spacing:-.004em;color:var(--fg-3);font-weight:520;margin-bottom:5px}
 .ie-view{display:flex;align-items:flex-start;gap:6px;min-height:34px;padding:2px 0;border-radius:var(--r-sm)}
 @container preview (max-width:330px){.ie-edit{opacity:1;transform:none;padding:0 5px;font-size:10px}}
 .ie-value{font-size:15px;font-weight:600;letter-spacing:-.021em;line-height:1.28;flex:1;min-width:0;
@@ -402,10 +427,10 @@ css: `
 .ie-err{font-size:10.5px;color:var(--danger)}
 .ie-actions{display:flex;align-items:center;gap:6px;margin-top:10px;animation:m-rise-sm var(--t-3) var(--ease-out) both}
 .ie-history{margin-top:13px;border-top:1px solid var(--line);padding-top:10px;animation:m-rise var(--t-3) var(--ease-out) both}
-.ie-hh{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-4);font-weight:650;margin-bottom:6px}
+.ie-hh{font-size:11px;letter-spacing:-.004em;color:var(--fg-4);font-weight:520;margin-bottom:6px}
 #ieLog{display:grid;gap:0}
 #ieLog li{display:flex;align-items:baseline;gap:7px;font-size:11px;padding:4px 0;color:var(--fg-2);
-  border-bottom:1px solid rgba(255,255,255,.035)}
+  border-bottom:1px solid rgba(0,0,0,.02)}
 #ieLog li:last-child{border:0}
 #ieLog li .old{text-decoration:line-through;color:var(--fg-3)}
 #ieLog li .new{color:var(--fg-2)}
@@ -515,7 +540,7 @@ body: `
 </div>
 `,
 css: `
-.ms{display:flex;flex-direction:column;flex:1;min-height:0}
+.ms{display:flex;flex-direction:column;flex:1;min-height:0;height:100%;overflow:hidden}
 .ms-steps{position:relative;display:flex;justify-content:space-between;margin-bottom:14px;padding:0 3px}
 @container preview (max-width:330px){.ms-steps{margin-bottom:10px}.ms-name{font-size:9px}}
 .ms-steps li{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:5px;flex:1}
@@ -532,8 +557,8 @@ css: `
 .ms-rail{position:absolute;left:16.6%;right:16.6%;top:11px;height:1px;background:var(--line-2);z-index:0}
 .ms-fill{display:block;height:100%;width:0;background:var(--accent);border-radius:1px;
   transition:width var(--t-4) var(--ease-out)}
-.ms-body{flex:1;min-height:0;overflow:auto;scrollbar-width:thin}
-.ms-panel{animation:m-rise-sm var(--t-3) var(--ease-out) both}
+.ms-body{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;overflow:auto;overflow-x:hidden;scrollbar-width:thin}
+.ms-panel{flex:1 1 auto;min-height:0;animation:m-rise-sm var(--t-3) var(--ease-out) both}
 .ms-panel[data-dir=back]{animation-name:m-slide-in-left}
 .ms-seg{display:flex;gap:4px;padding:3px;background:var(--s2);border:1px solid var(--line);border-radius:var(--r-sm)}
 .ms-seg button{flex:1;height:26px;border-radius:var(--r-xs);font-size:11px;color:var(--fg-3);
@@ -542,9 +567,9 @@ css: `
 .ms-review{display:grid;gap:7px}
 .ms-dl{margin:0;display:grid;gap:7px}
 .ms-rrow{display:flex;align-items:baseline;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);margin:0}
-.ms-rrow dt{font-size:10.5px;color:var(--fg-4);width:74px;flex:none;text-transform:uppercase;letter-spacing:.06em}
+.ms-rrow dt{font-size:11px;color:var(--fg-4);width:74px;flex:none;letter-spacing:-.004em}
 .ms-rrow dd{margin:0;font-size:12.5px;color:var(--fg);overflow-wrap:anywhere}
-.ms-foot{display:flex;align-items:center;gap:7px;margin-top:13px;padding-top:12px;border-top:1px solid var(--line);flex:none}
+.ms-foot{display:flex;align-items:center;gap:7px;margin-top:10px;padding-top:10px;border-top:1px solid var(--line);flex:0 0 auto;background:var(--s1);position:relative;z-index:1}
 `,
 js: `
 const panels=$$('[data-panel]'),steps=$$('#msSteps li'),fill=$('#msFill'),

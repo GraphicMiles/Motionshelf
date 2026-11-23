@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Async combobox — MotionShelf</title><link rel="stylesheet" href="./async-combobox.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Async combobox</span><span class="frame-tag">debounced</span></div><h1 class="sr-only">Async combobox</h1><div class="stage">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Async combobox — MotionShelf</title><link rel="stylesheet" href="./async-combobox.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Async combobox</span><span class="frame-tag">debounced</span></div><h1 class="sr-only">Async combobox</h1><div class="stage stage--opt">
 <div class="cb">
   <label class="label" for="city">Destination city</label>
   <div class="cb-anchor">
@@ -14,6 +14,10 @@
       </div>
       <div class="cb-empty" id="cbEmpty" hidden>No city matches that search.</div>
     </div>
+  </div>
+  <div class="cb-suggest" id="cbSuggest">
+    <span class="cb-suggest-h">Popular this month</span>
+    <div class="cb-suggest-list" id="cbSuggestList"></div>
   </div>
   <div class="cb-selected" id="cbSelected" hidden>
     <span class="dot dot-ok" aria-hidden="true"></span>

@@ -15,7 +15,7 @@ if (new Set(components.map((c) => c.slug)).size !== 28) throw Error('Duplicate s
 const dir = new URL('../public/examples/', import.meta.url);
 
 for (const item of components) {
-  const html = htmlShell(item.title, item.slug, item.body, item.tag ?? '');
+  const html = htmlShell(item.title, item.slug, item.body, item.tag ?? '', item.layout ?? '');
   const css = (sharedCSS + '\n' + item.css).trimEnd() + '\n';
   const js = (prelude + '\n' + item.js).trimEnd() + '\n\ndocument.body.dataset.ready="true";\n';
   await fs.writeFile(new URL(`${item.slug}.html`, dir), html);

@@ -18,7 +18,7 @@ body: `
     <button class="fb-clear" id="fbClear" type="button">Clear all</button>
   </div>
   <ul class="fb-list" id="items"></ul>
-  <p id="status" class="hint" role="status" aria-live="polite"></p>
+  <p id="status" class="sr-only" role="status" aria-live="polite"></p>
 </div>
 `,
 css: `
@@ -30,13 +30,13 @@ css: `
              transform var(--t-2) var(--spring),box-shadow var(--t-2) var(--ease-out)}
 .fb-chip:hover{background:var(--s3);color:var(--fg-2);transform:translateY(-1px)}
 .fb-chip[aria-pressed=true]{background:var(--accent);border-color:transparent;color:var(--accent-ink);font-weight:650;
-  box-shadow:0 4px 14px -6px rgba(201,247,90,.55)}
-.fb-chip[aria-pressed=true]:hover{background:#d7ff6b;color:var(--accent-ink)}
+  box-shadow:none}
+.fb-chip[aria-pressed=true]:hover{background:#262626;color:var(--accent-ink)}
 .fb-chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .fb-n{font-size:9.5px;font-variant-numeric:tabular-nums;opacity:.62;font-weight:600}
 .fb-active{display:flex;align-items:center;gap:6px;margin-top:9px;padding:6px 8px;border-radius:var(--r-sm);
   background:var(--s2);border:1px solid var(--line);animation:m-rise-sm var(--t-2) var(--ease-out) both}
-.fb-lab{font-size:9px;text-transform:uppercase;letter-spacing:.09em;color:var(--fg-4);font-weight:650}
+.fb-lab{font-size:11px;letter-spacing:-.004em;color:var(--fg-4);font-weight:520}
 .fb-chips{display:flex;flex-wrap:wrap;gap:4px;flex:1;min-width:0}
 .fb-tag{display:inline-flex;align-items:center;gap:3px;height:19px;padding:0 3px 0 7px;border-radius:var(--r-full);
   background:var(--s4);border:1px solid var(--line-2);font-size:10px;color:var(--fg-2);
@@ -45,14 +45,15 @@ css: `
 .fb-tag button:hover{background:rgba(251,113,133,.2);color:var(--danger)}
 .fb-clear{font-size:10px;color:var(--fg-3);white-space:nowrap;transition:color var(--t-1)}
 .fb-clear:hover{color:var(--danger)}
-.fb-list{display:grid;gap:0;margin-top:11px}
-.fb-item{display:flex;align-items:center;gap:8px;min-height:30px;padding:0 2px;
-  border-bottom:1px solid rgba(255,255,255,.04);font-size:11.5px;color:var(--fg-2);
+.fb-list{display:grid;gap:0;margin-top:11px;overflow:auto;min-height:0}
+.fb-item{display:flex;align-items:center;gap:8px;height:22px;padding:0 2px;
+  border-bottom:1px solid rgba(0,0,0,.03);font-size:11.5px;color:var(--fg-2);
   animation:m-slide-only var(--t-3) var(--ease-out) both}
 @keyframes m-slide-only{from{transform:translateY(4px)}to{transform:none}}
 .fb-item:last-child{border:0}
 .fb-item .dot{flex:none}
-.fb-item .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fb-item .nm{display:flex;flex-direction:column;min-height:0;flex:1}
+.nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .fb-item .tagm{font-size:9.5px;color:var(--fg-3);letter-spacing:.02em}
 .fb-empty{padding:16px 4px;text-align:center;font-size:11px;color:var(--fg-4)}
 `,
@@ -157,7 +158,7 @@ body: `
 `,
 css: `
 .nd{display:flex;flex-direction:column;flex:1;min-height:0;position:relative;margin:-14px;border-radius:0}
-.nd-bar{display:flex;align-items:center;gap:9px;padding:9px 12px;border-bottom:1px solid var(--line);flex:none}
+.nd-bar{display:flex;align-items:center;gap:9px;padding:8px 12px;border-bottom:1px solid var(--line);flex:none}
 .nd-burger{display:grid;gap:3.5px;place-content:center;width:28px;height:28px;border-radius:var(--r-xs);
   background:var(--s3);border:1px solid var(--line-2);transition:background var(--t-1),border-color var(--t-1)}
 .nd-burger:hover{background:var(--s4);border-color:var(--line-3)}
@@ -174,7 +175,7 @@ css: `
 .nd-body{flex:1;min-height:0;padding:14px 12px;overflow:auto}
 .nd-hero h2{font-size:16px;margin:6px 0 2px}
 .nd-hero p{font-size:11px;color:var(--fg-3)}
-.nd-scrim{position:absolute;inset:0;background:rgba(4,4,6,.62);backdrop-filter:blur(1.5px);
+.nd-scrim{position:absolute;inset:0;background:rgba(23,23,26,.34);backdrop-filter:blur(1.5px);
   animation:m-fade var(--t-3) var(--ease-out) both;z-index:8}
 .nd-drawer{position:absolute;top:0;bottom:0;left:0;width:74%;max-width:210px;z-index:9;
   display:flex;flex-direction:column;gap:0;
@@ -281,7 +282,7 @@ body: `
 `,
 css: `
 .nm{display:flex;flex-direction:column;position:relative;min-height:0}
-.nm-bar{position:relative;z-index:2}
+.nm-bar{z-index:2;flex:none}
 .nm-trigger{display:flex;align-items:center;gap:8px;width:100%;height:34px;padding:0 10px;
   background:var(--s2);border:1px solid var(--line-2);border-radius:var(--r-sm);font-size:12px;color:var(--fg-2);
   transition:background var(--t-1),border-color var(--t-2),color var(--t-1),box-shadow var(--t-2) var(--ease-out)}
@@ -293,20 +294,20 @@ css: `
 .nm-txt{flex:1;text-align:left}
 .nm-chev{color:var(--fg-4);transition:transform var(--t-3) var(--spring),color var(--t-2)}
 .nm-trigger[aria-expanded=true] .nm-chev{transform:rotate(180deg);color:var(--accent)}
-.nm-pop{position:absolute;left:0;right:0;top:38px;z-index:6;
-  background:var(--s3);border-radius:var(--r-md);box-shadow:var(--shadow-pop);padding:4px;
+.nm-pop{position:relative;margin-top:6px;z-index:6;flex:1 1 auto;min-height:0;overflow:auto;
+  background:var(--s1);border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--shadow-pop);padding:5px;
   transform-origin:top center;animation:m-rise-sm var(--t-2) var(--ease-out) both}
 .nm-pop::before{content:"";position:absolute;left:14px;top:-5px;width:8px;height:8px;background:var(--s3);
   transform:rotate(45deg);border-radius:1px;border-left:1px solid var(--line-2);border-top:1px solid var(--line-2)}
-.nm-glab{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-4);font-weight:700;padding:5px 7px 4px}
+.nm-glab{font-size:11px;letter-spacing:-.004em;color:var(--fg-4);font-weight:520;padding:5px 7px 4px}
 .nm-pop button{display:flex;align-items:center;gap:8px;width:100%;height:29px;padding:0 7px;border-radius:var(--r-xs);
   font-size:11.5px;color:var(--fg-2);text-align:left;transition:background var(--t-1),color var(--t-1),padding-left var(--t-2) var(--ease-out)}
 .nm-pop button span{flex:1;min-width:0}
 .nm-pop button:hover,.nm-pop button:focus-visible{background:var(--s4);color:var(--fg);padding-left:9px;outline:none}
 .nm-pop button:focus-visible{box-shadow:inset 0 0 0 1px var(--accent-line)}
-.nm-pop button .kbd{opacity:.55}
-.nm-danger{color:#ffb3be!important}
-.nm-danger:hover{background:rgba(251,113,133,.14)!important;color:#ffc4cc!important}
+.nm-pop button .kbd{opacity:1;color:var(--fg-3);background:var(--s3)}
+.nm-danger{color:var(--danger)!important}
+.nm-danger:hover{background:var(--danger-bg)!important;color:var(--danger)!important}
 .nm-sep{height:1px;background:var(--line);margin:4px 3px}
 .nm-result{display:flex;align-items:center;gap:7px;margin-top:11px;padding:8px 10px;border-radius:var(--r-sm);
   background:var(--accent-soft);border:1px solid var(--accent-line);font-size:11px;color:var(--accent);
@@ -330,6 +331,9 @@ function set(next,focus){
   }
 }
 parent.addEventListener('click',()=>set(!open));
+// A flyout demo should display the flyout. Open on load, keep focus on the trigger
+// so keyboard users start in the expected place.
+set(true,parent);
 parent.addEventListener('keydown',e=>{
   if(e.key==='ArrowDown'||e.key==='ArrowRight'||e.key==='Enter'||e.key===' '){
     e.preventDefault();if(!open)set(true);
@@ -359,6 +363,7 @@ export const overflowTabs = {
 slug: 'overflow-tabs',
 title: 'Overflow tabs',
 tag: 'scroll + glide',
+layout: 'stage--opt',
 body: `
 <div class="ot">
   <div class="ot-wrap">
@@ -390,7 +395,7 @@ css: `
 .ot-tabs button{position:relative;flex:none;height:31px;padding:0 10px;font-size:11.5px;color:var(--fg-3);
   border-radius:var(--r-xs) var(--r-xs) 0 0;white-space:nowrap;
   transition:color var(--t-2) var(--ease-out),background var(--t-1)}
-.ot-tabs button:hover{color:var(--fg-2);background:rgba(255,255,255,.03)}
+.ot-tabs button:hover{color:var(--fg-2);background:rgba(0,0,0,.03)}
 .ot-tabs button[aria-selected=true]{color:var(--fg);font-weight:600}
 .ot-tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
 .ot-ink{position:absolute;bottom:-1px;left:0;height:2px;width:0;background:var(--accent);border-radius:1px;
@@ -407,7 +412,7 @@ css: `
 #panel p{font-size:11.5px;color:var(--fg-3);line-height:1.6}
 .ot-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:11px}
 .ot-stat{background:var(--s2);border:1px solid var(--line);border-radius:var(--r-sm);padding:7px 8px}
-.ot-stat span{display:block;font-size:9px;color:var(--fg-3);text-transform:uppercase;letter-spacing:.06em}
+.ot-stat span{display:block;font-size:11px;color:var(--fg-3);letter-spacing:-.004em}
 .ot-stat strong{display:block;font-size:13px;margin-top:3px;font-variant-numeric:tabular-nums}
 `,
 js: `
@@ -468,6 +473,7 @@ export const breadcrumbs = {
 slug: 'breadcrumbs',
 title: 'Breadcrumb trail',
 tag: 'collapse',
+layout: 'stage--opt',
 body: `
 <nav class="bc" aria-label="Breadcrumb">
   <ol class="bc-list" id="trail">
@@ -509,7 +515,7 @@ css: `
 .bc-cur{display:inline-flex;align-items:center;height:22px;padding:0 7px;border-radius:var(--r-xs);
   font-size:11px;font-weight:650;color:var(--fg);background:var(--s3);border:1px solid var(--line)}
 .bc-page{margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
-.bc-kicker{font-size:9px;letter-spacing:.11em;text-transform:uppercase;color:var(--fg-3);font-weight:700}
+.bc-kicker{font-size:11px;letter-spacing:-.004em;color:var(--fg-3);font-weight:520}
 .bc-page h2{font-size:16px;margin:4px 0 3px}
 .bc-page p{font-size:11px;color:var(--fg-4)}
 `,
@@ -623,7 +629,7 @@ css: `
 .pg{display:flex;flex-direction:column;gap:0;min-height:0;flex:1}
 .pg-results{display:grid;gap:0;flex:1;min-height:0;overflow:auto;align-content:start}
 .pg-row{display:flex;align-items:center;gap:8px;min-height:29px;padding:0 2px;
-  border-bottom:1px solid rgba(255,255,255,.04);font-size:11.5px;color:var(--fg-2);
+  border-bottom:1px solid rgba(0,0,0,.03);font-size:11.5px;color:var(--fg-2);
   animation:m-slide-only var(--t-3) var(--ease-out) both}
 @keyframes m-slide-only{from{transform:translateY(4px)}to{transform:none}}
 .pg-row .ix{font-size:9.5px;color:var(--fg-3);font-variant-numeric:tabular-nums;width:16px;flex:none}
@@ -638,7 +644,7 @@ css: `
   transition:background var(--t-1),color var(--t-1),border-color var(--t-1),transform var(--t-1) var(--spring)}
 .pg-btn:hover:not([disabled]):not([aria-current]){background:var(--s3);color:var(--fg);transform:translateY(-1px)}
 .pg-btn[aria-current=page]{background:var(--accent);color:var(--accent-ink);border-color:transparent;
-  box-shadow:0 3px 10px -4px rgba(201,247,90,.5)}
+  box-shadow:none}
 .pg-btn[disabled]{opacity:.28;pointer-events:none}
 .pg-btn svg{width:11px;height:11px}
 .pg-gap{display:grid;place-items:center;min-width:16px;height:24px;font-size:10px;color:var(--fg-3)}
@@ -741,7 +747,7 @@ css: `
 .tr-meta{font-size:9px;color:var(--fg-3);font-variant-numeric:tabular-nums}
 .tr-group{position:relative;overflow:hidden}
 .tr-group::before{content:"";position:absolute;left:var(--guide,14px);top:0;bottom:0;width:1px;
-  background:linear-gradient(180deg,var(--line-2),rgba(255,255,255,.02))}
+  background:linear-gradient(180deg,var(--line-2),rgba(0,0,0,.02))}
 .tr-group.collapsed{display:none}
 .tr-group.opening{animation:m-unfold var(--t-3) var(--ease-out) both}
 @keyframes m-unfold{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}

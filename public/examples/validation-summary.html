@@ -1,6 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Validation summary — MotionShelf</title><link rel="stylesheet" href="./validation-summary.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Validation summary</span><span class="frame-tag">inline errors</span></div><h1 class="sr-only">Validation summary</h1><div class="stage">
 <form id="form" class="vs" novalidate>
-  <div class="vs-head">
+  <div class="vs-head vs-head-tight">
     <span class="vs-count" id="vsCount">3 fields need attention</span>
     <span class="vs-pill" id="vsPill">0 of 3 valid</span>
   </div>
@@ -11,16 +11,18 @@
     </div>
     <ol id="vsList"></ol>
   </div>
-  <label class="label" for="name">Full name</label>
-  <input class="input" id="name" required autocomplete="name" placeholder="Amina Okafor">
-  <p class="vs-err" id="nameErr" hidden></p>
-  <label class="label" for="email" style="margin-top:9px">Email</label>
-  <input class="input" id="email" type="email" required autocomplete="email" placeholder="you@studio.com">
-  <p class="vs-err" id="emailErr" hidden></p>
-  <label class="label" for="handle" style="margin-top:9px">Handle</label>
+  <div class="vs-two">
+    <div><label class="label" for="name">Full name</label>
+      <input class="input" id="name" required autocomplete="name" placeholder="Amina Okafor">
+      <p class="vs-err" id="nameErr" hidden></p></div>
+    <div><label class="label" for="email">Email</label>
+      <input class="input" id="email" type="email" required autocomplete="email" placeholder="you@studio.com">
+      <p class="vs-err" id="emailErr" hidden></p></div>
+  </div>
+  <label class="label" for="handle" style="margin-top:8px">Handle</label>
   <div class="vs-prefix"><span>@</span><input class="input" id="handle" required pattern="[a-z0-9_]{3,15}" placeholder="amina_design"></div>
   <p class="vs-err" id="handleErr" hidden></p>
-  <button class="btn btn-primary" type="submit" style="width:100%;margin-top:13px">Create account</button>
-  <p id="status" class="hint" role="status" aria-live="polite" style="margin-top:8px;min-height:15px"></p>
+  <button class="btn btn-primary" type="submit" style="width:100%;margin-top:8px">Create account</button>
+  <p id="status" class="viv" role="status" aria-live="polite"></p>
 </form>
 </div></main><script src="./validation-summary.js" defer></script></body></html>

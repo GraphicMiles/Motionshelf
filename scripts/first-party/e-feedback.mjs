@@ -17,19 +17,17 @@ body: `
   </div>
   <div class="cal-week" aria-hidden="true" id="calWeek"></div>
   <div class="cal-grid" id="days" role="group" aria-label="Month days"></div>
-  <div class="cal-legend">
-    <span><i class="lg lg-today"></i>Today</span>
-    <span><i class="lg lg-dot"></i>Has events</span>
+  <div class="cal-foot">
+    <span class="cal-agenda" id="agenda" role="status" aria-live="polite"><span class="cal-agenda-i">Pick a date</span></span>
     <span class="cal-mode" id="calMode">Range</span>
-  </div>
-  <div class="cal-agenda" id="agenda" role="status" aria-live="polite">
-    <span class="cal-agenda-i">Pick a date</span>
   </div>
 </div>
 `,
 css: `
 .cal{display:flex;flex-direction:column;min-height:0;flex:1}
-.cal-head{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex:none}
+.cal-foot{display:flex;align-items:center;gap:8px;margin-top:6px;flex:none;min-width:0}
+.cal-foot .cal-agenda{margin-top:0;flex:1;min-width:0}
+.cal-head{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex:none}
 .cal-month{flex:1;text-align:center;font-size:12px;font-weight:650;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
 .cal-nav{display:grid;place-items:center;width:24px;height:24px;border-radius:var(--r-xs);
   background:var(--s2);border:1px solid var(--line-2);color:var(--fg-3);
@@ -38,9 +36,9 @@ css: `
 .cal-nav:active{transform:scale(.94)}
 .cal-week{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:4px;flex:none}
 .cal-week span{text-align:center;font-size:9px;font-weight:700;color:var(--fg-4);letter-spacing:.05em;height:13px;line-height:13px}
-.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;flex:none;position:relative}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);grid-auto-rows:24px;gap:1px;flex:none;position:relative}
 @container preview (max-height:340px){.cal-day{height:24px;font-size:10px}}
-.cal-day{position:relative;display:grid;place-items:center;height:27px;border-radius:var(--r-xs);
+.cal-day{position:relative;display:grid;place-items:center;height:24px;border-radius:var(--r-xs);
   font-size:11px;color:var(--fg-2);font-variant-numeric:tabular-nums;
   transition:background var(--t-1) var(--ease-out),color var(--t-1),transform var(--t-1) var(--spring)}
 .cal-day:hover{background:var(--s3);color:var(--fg);transform:scale(1.07);z-index:2}
@@ -50,16 +48,16 @@ css: `
   width:3px;height:3px;border-radius:50%;background:var(--accent)}
 .cal-day.has-ev::after{content:"";position:absolute;top:4px;right:5px;width:3px;height:3px;border-radius:50%;background:var(--info)}
 .cal-day.in-range{background:var(--accent-soft);border-radius:0;color:var(--fg)}
-.cal-day.preview{background:rgba(201,247,90,.07);border-radius:0}
+.cal-day.preview{background:rgba(0,0,0,.05);border-radius:0}
 .cal-day.edge{background:var(--accent);color:var(--accent-ink);font-weight:700;border-radius:var(--r-xs);z-index:1;
-  box-shadow:0 2px 8px -3px rgba(201,247,90,.6)}
+  box-shadow:none}
 .cal-day.edge::after{display:none}
-.cal-day.edge:hover{background:#d9ff7e;color:var(--accent-ink)}
+.cal-day.edge:hover{background:var(--ok);color:var(--accent-ink)}
 @keyframes cal-r{from{opacity:0;transform:translateX(10px)}to{opacity:1;transform:none}}
 @keyframes cal-l{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:none}}
 .cal-grid.r{animation:cal-r var(--t-2) var(--ease-out)}
 .cal-grid.l{animation:cal-l var(--t-2) var(--ease-out)}
-.cal-legend{display:flex;align-items:center;gap:10px;margin-top:8px;padding-top:8px;border-top:1px solid var(--line);
+.cal-legend{display:flex;align-items:center;gap:10px;margin-top:5px;padding-top:8px;border-top:1px solid var(--line);
   font-size:9px;color:var(--fg-3);flex:none}
 .cal-legend span{display:inline-flex;align-items:center;gap:4px}
 .cal-mode{margin-left:auto;padding:1px 6px;border-radius:var(--r-full);background:var(--s3);
@@ -176,39 +174,37 @@ body: `
     <button class="btn btn-sm" type="button" id="refresh">Refresh sample</button>
     <button class="btn btn-sm btn-ghost" type="button" id="unavailable">Simulate outage</button>
   </div>
-  <p id="status" class="hint" role="status" aria-live="polite"></p>
+  <p id="status" class="sr-only" role="status" aria-live="polite"></p>
 </div>
 `,
 css: `
 .sd{display:flex;flex-direction:column;min-height:0;flex:1}
-.sd-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;flex:none}
-.sd-live{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:650;color:var(--ok);
-  text-transform:uppercase;letter-spacing:.07em}
+.sd-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;flex:none}
+.sd-live{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:520;color:var(--ok);letter-spacing:-.004em}
 .sd-ping{position:relative;width:5px;height:5px;border-radius:50%;background:var(--ok)}
 .sd-ping::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:1px solid var(--ok);
   opacity:0;animation:sd-ping 2s var(--ease-out) infinite}
 @keyframes sd-ping{0%{opacity:.7;transform:scale(.6)}70%,100%{opacity:0;transform:scale(1.5)}}
 .sd-ts{font-size:9.5px;color:var(--fg-3);font-variant-numeric:tabular-nums}
-.sd-metrics{display:grid;grid-template-columns:1fr;gap:5px;flex:none}
-.sd-m{display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--s2);
+.sd-metrics{display:grid;grid-template-columns:1fr;gap:4px;flex:none}
+.sd-m{display:flex;align-items:center;gap:8px;padding:5px 9px;background:var(--s2);
   border:1px solid var(--line);border-radius:var(--r-sm);
   transition:background var(--t-2),border-color var(--t-2)}
-.sd-m .sd-lbl{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--fg-3);
-  font-weight:650;flex:none;width:52px}
+.sd-m .sd-lbl{font-size:11px;letter-spacing:-.004em;color:var(--fg-3);font-weight:520;flex:none;width:52px}
 .sd-m .sd-val{font-size:13px;font-weight:650;letter-spacing:-.015em;font-variant-numeric:tabular-nums;
   flex:1;min-width:0;overflow-wrap:break-word;line-height:1.2}
 .sd-m .sd-trend{font-size:9px;font-variant-numeric:tabular-nums;padding:1px 5px;border-radius:var(--r-full);flex:none}
-.sd-m .sd-trend.up{background:rgba(92,224,160,.12);color:var(--ok)}
-.sd-m .sd-trend.down{background:rgba(251,113,133,.12);color:var(--danger)}
+.sd-m .sd-trend.up{background:var(--ok-bg);color:var(--ok)}
+.sd-m .sd-trend.down{background:var(--danger-bg);color:var(--danger)}
 .sd-m .sd-dot{width:5px;height:5px;border-radius:50%;flex:none}
-.sd-m.outage{background:rgba(251,113,133,.06);border-color:rgba(251,113,133,.24)}
-.sd-m.outage .sd-val{color:#ffb3be;font-size:11px}
-.sd-spark{margin-top:9px;flex:none;height:44px;border-radius:var(--r-sm);background:var(--s2);
+.sd-m.outage{background:rgba(251,113,133,.06);border-color:var(--danger-bg)}
+.sd-m.outage .sd-val{color:var(--danger);font-size:11px}
+.sd-spark{margin-top:9px;flex:none;height:26px;border-radius:var(--r-sm);background:var(--s2);
   border:1px solid var(--line);padding:5px 7px;display:flex;align-items:flex-end;gap:2px}
-.sd-bar{flex:1;background:var(--s5);border-radius:1.5px 1.5px 0 0;min-height:2px;
+.sd-bar{flex:1;background:var(--s4);border-radius:2px 2px 0 0;min-height:2px;
   transition:height var(--t-4) var(--ease-out),background var(--t-2)}
-.sd-bar.hi{background:var(--accent)}
-.sd-bar.mid{background:rgba(201,247,90,.45)}
+.sd-bar.hi{background:var(--fg)}
+.sd-bar.mid{background:var(--fg-4)}
 .sd-actions{display:flex;gap:5px;margin-top:10px;flex:none}
 .sd-actions .btn{flex:1;min-width:0;padding:0 6px;font-size:10.5px}
 `,
@@ -288,17 +284,16 @@ body: `
 css: `
 .ts{display:flex;flex-direction:column;min-height:0;flex:1}
 .ts-bar{display:flex;align-items:baseline;justify-content:space-between;flex:none;margin-bottom:5px}
-.ts-k{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--fg-3);font-weight:700}
+.ts-k{font-size:11px;letter-spacing:-.004em;color:var(--fg-3);font-weight:520}
 .ts-n{font-size:9.5px;color:var(--fg-3);font-variant-numeric:tabular-nums}
 .ts-demo{display:grid;grid-template-columns:1fr 1fr;gap:4px;flex:none;margin-bottom:10px}
-.ts-demo .btn{min-height:27px;font-size:10.5px}
+.ts-demo .btn{min-height:30px;font-size:12px;background:var(--s1);border:1px solid var(--line-2);box-shadow:var(--shadow-1)}
+.ts-demo .btn:hover{background:var(--s2)}
 .ts-stage{position:relative;flex:1;min-height:0;border-radius:var(--r-md);
-  background:
-    repeating-linear-gradient(45deg,rgba(255,255,255,.012) 0 8px,transparent 8px 16px),
-    var(--s1);
+  background:var(--s2);
   border:1px dashed var(--line-2);overflow:hidden}
-.ts-empty{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:5px;
-  font-size:10.5px;color:var(--fg-4);transition:opacity var(--t-3),transform var(--t-3)}
+.ts-empty{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:6px;
+  font-size:12px;color:var(--fg-4);transition:opacity var(--t-3),transform var(--t-3)}
 .ts-empty.hide{opacity:0;transform:scale(.96);pointer-events:none}
 .ts-stack{position:absolute;left:8px;right:8px;bottom:8px;display:flex;flex-direction:column-reverse;gap:5px;
   max-height:100%;overflow:hidden;justify-content:flex-start}
@@ -321,11 +316,11 @@ css: `
   transform-origin:left;animation:m-timer linear forwards}
 @keyframes m-timer{from{transform:scaleX(1)}to{transform:scaleX(0)}}
 .toast[data-kind=success]{border-left:2px solid var(--ok)}
-.toast[data-kind=success] .ic{background:rgba(92,224,160,.14);color:var(--ok)}
+.toast[data-kind=success] .ic{background:var(--ok-bg);color:var(--ok)}
 .toast[data-kind=warn]{border-left:2px solid var(--warn)}
-.toast[data-kind=warn] .ic{background:rgba(245,196,81,.14);color:var(--warn)}
+.toast[data-kind=warn] .ic{background:var(--warn-bg);color:var(--warn)}
 .toast[data-kind=error]{border-left:2px solid var(--danger)}
-.toast[data-kind=error] .ic{background:rgba(251,113,133,.14);color:var(--danger)}
+.toast[data-kind=error] .ic{background:var(--danger-bg);color:var(--danger)}
 .toast[data-kind=info]{border-left:2px solid var(--info)}
 .toast[data-kind=info] .ic{background:rgba(121,184,255,.14);color:var(--info)}
 `,
@@ -430,7 +425,7 @@ css: `
 .ac-item .rm{display:grid;place-items:center;width:20px;height:20px;border-radius:var(--r-xs);
   color:var(--fg-4);transition:background var(--t-1),color var(--t-1)}
 .ac-item .rm:hover{background:rgba(251,113,133,.16);color:var(--danger)}
-.ac-scrim{position:absolute;inset:-14px;background:rgba(4,4,6,.6);backdrop-filter:blur(1.5px);z-index:8;
+.ac-scrim{position:absolute;inset:-14px;background:rgba(23,23,26,.32);backdrop-filter:blur(1.5px);z-index:8;
   animation:m-fade var(--t-2) var(--ease-out) both}
 .ac-dialog{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:9;
   width:min(100%,258px);padding:14px;background:var(--s3);border:1px solid var(--line-2);
@@ -438,7 +433,7 @@ css: `
   animation:m-dialog-in var(--t-3) var(--spring) both}
 @keyframes m-dialog-in{0%{opacity:0;transform:translate(-50%,-46%) scale(.94)}100%{opacity:1;transform:translate(-50%,-50%) scale(1)}}
 .ac-icon{display:grid;place-items:center;width:30px;height:30px;border-radius:var(--r-sm);margin-bottom:9px;
-  background:rgba(251,113,133,.13);color:var(--danger)}
+  background:var(--danger-bg);color:var(--danger)}
 .ac-dialog h2{font-size:13px;margin-bottom:4px}
 .ac-dialog p{font-size:10.5px;color:var(--fg-3);line-height:1.5}
 .ac-actions{display:flex;gap:6px;margin-top:13px}
@@ -592,19 +587,13 @@ stepsEl.innerHTML=NAMES.map((n,i)=>
   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>'+
   '<span class="ps-lab">'+n+'</span><span class="ps-line"><span></span></span></li>').join('');
 
-function panelFor(i){
-  if(i===0)return '<div class="ps-f"><label class="label" for="psName">Project name</label>'+
+function panelFor(i){if(i===0)return '<div class="ps-f"><label class="label" for="psName">Project name</label>'+
     '<input class="input" id="psName" value="'+state.name+'" placeholder="Atlas"></div>'+
     '<div class="ps-f"><label class="label" for="psTier">Plan</label>'+
-    '<select class="input" id="psTier">'+['Starter','Studio','Scale'].map(t=>'<option'+(t===state.tier?' selected':'')+'>'+t+'</option>').join('')+'</select></div>';
-  if(i===1)return '<label class="ps-check'+(state.email?' on':'')+'" id="cEmail"><input type="checkbox" '+(state.email?'checked':'')+'> Email me release notes</label>'+
-    '<label class="ps-check'+(state.digest?' on':'')+'" id="cDigest" style="margin-top:6px"><input type="checkbox" '+(state.digest?'checked':'')+'> Weekly digest</label>';
-  return '<div class="ps-review">'+
+    '<select class="input" id="psTier">'+['Starter','Studio','Scale'].map(t=>'<option'+(t===state.tier?' selected':'')+'>'+t+'</option>').join('')+'</select></div>';if(i===1)return '<label class="ps-check'+(state.email?' on':'')+'" id="cEmail"><input type="checkbox" '+(state.email?'checked':'')+'> Email me release notes</label>'+
+    '<label class="ps-check'+(state.digest?' on':'')+'" id="cDigest" style="margin-top:6px"><input type="checkbox" '+(state.digest?'checked':'')+'> Weekly digest</label>';return '<div class="ps-review">'+
     [['Project',state.name||'Atlas'],['Plan',state.tier],['Email notes',state.email?'Yes':'No'],['Digest',state.digest?'Yes':'No']]
-      .map(([k,v],idx)=>'<div class="ps-row" style="display:flex;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:10.5px">'+
-        '<span style="color:var(--fg-4);width:78px;flex:none;text-transform:uppercase;letter-spacing:.06em;font-size:9px">'+k+'</span>'+
-        '<span style="color:var(--fg)">'+v+'</span></div>').join('')+'</div>';
-}
+      .map(([k,v])=>'<div class="ps-row"><span class="ps-k">'+k+'</span><span class="ps-v">'+v+'</span></div>').join('')+'</div>';}
 function paint(){
   $$('.ps-step').forEach((li,i)=>{
     li.dataset.state=i<step?'done':i===step?'active':'todo';
@@ -686,7 +675,7 @@ css: `
   border-radius:2px;background:var(--accent)}
 .nc-av{width:21px;height:21px;border-radius:50%;flex:none;display:grid;place-items:center;
   font-size:8.5px;font-weight:700;background:var(--s5);color:var(--fg-2);letter-spacing:.02em}
-.nc-n[data-tone=green] .nc-av{background:rgba(92,224,160,.16);color:var(--ok)}
+.nc-n[data-tone=green] .nc-av{background:var(--ok-bg);color:var(--ok)}
 .nc-n[data-tone=blue] .nc-av{background:rgba(121,184,255,.16);color:var(--info)}
 .nc-n[data-tone=amber] .nc-av{background:rgba(245,196,81,.16);color:var(--warn)}
 .nc-c{flex:1;min-width:0}

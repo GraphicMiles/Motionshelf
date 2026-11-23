@@ -84,9 +84,10 @@ const actions = {
     await p.waitForTimeout(120);
     await p.locator('.dr-day:not(.mute)').nth(6).click();
     await p.waitForTimeout(120);
-    return await p.locator('#drSum').isVisible()
+    return await p.locator('#drNights').isVisible()
       && await p.locator('.dr-day.edge').count() === 2
-      && (await p.locator('#drNights').innerText()).includes('night');
+      && (await p.locator('#drNights').innerText()).includes('night')
+      && !(await p.locator('#drFrom').innerText()).includes('Start');
   },
   'filter-bar': async p => {
     await p.locator('[data-filter=design]').click();
@@ -105,10 +106,14 @@ const actions = {
     return open && scrim && await p.locator('#drawer').evaluate(e => !e.classList.contains('open'));
   },
   'nested-menu': async p => {
+    // the flyout is open on load; clicking the trigger must close, then reopen it
+    const openOnLoad = await p.locator('#submenu').isVisible();
     await p.locator('#parent').click();
-    const open = await p.locator('#submenu').isVisible();
+    const closes = !(await p.locator('#submenu').isVisible());
+    await p.locator('#parent').click();
+    const reopens = await p.locator('#submenu').isVisible();
     await p.locator('[data-action=Share]').click();
-    return open && (await p.locator('#nmResult').innerText()).includes('Share');
+    return openOnLoad && closes && reopens && (await p.locator('#nmResult').innerText()).includes('Share');
   },
   'overflow-tabs': async p => {
     await p.getByRole('tab',{name:'Files'}).click();

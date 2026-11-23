@@ -1,14 +1,17 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Date range — MotionShelf</title><link rel="stylesheet" href="./date-range-picker.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Date range</span><span class="frame-tag">range select</span></div><h1 class="sr-only">Date range</h1><div class="stage">
 <div class="dr">
   <div class="dr-trigger" id="drTrigger">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
     <span id="drFrom">Start date</span>
     <span class="dr-arrow">→</span>
     <span id="drTo">End date</span>
+    <span class="spacer"></span>
+    <span class="badge" id="drNights" hidden></span>
     <button class="dr-x" id="drClear" type="button" aria-label="Clear range" hidden>
       <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
   </div>
+  <span id="status" class="viv" role="status" aria-live="polite">Pick a start date, then an end date.</span>
   <div class="dr-cal" id="drCal">
     <div class="dr-head">
       <button class="btn btn-icon btn-ghost" id="drPrev" type="button" aria-label="Previous month">
@@ -22,12 +25,5 @@
     <div class="dr-week" aria-hidden="true"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
     <div class="dr-grid" id="drGrid" role="group" aria-label="Choose a date range"></div>
   </div>
-  <div class="dr-sum" id="drSum" hidden>
-    <span class="dot dot-ok" aria-hidden="true"></span>
-    <span id="drSumText"></span>
-    <span class="spacer"></span>
-    <span class="badge" id="drNights"></span>
-  </div>
-  <p id="status" class="hint" role="status" aria-live="polite">Pick a start date, then an end date.</p>
 </div>
 </div></main><script src="./date-range-picker.js" defer></script></body></html>
