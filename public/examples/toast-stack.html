@@ -1,1 +1,19 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Toast stack — MotionShelf</title><link rel="stylesheet" href="./toast-stack.css"></head><body><main class="demo"><div class="eyebrow">MOTIONSHELF / FIRST PARTY</div><h1>Toast stack</h1><div class="row"><button id="add" class="primary" type="button">Save draft</button><button id="warning" type="button">Show warning</button></div><div id="toasts" aria-live="polite"></div><p class="status" id="status" role="status"></p></main><script src="./toast-stack.js" defer></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Toast stack — MotionShelf</title><link rel="stylesheet" href="./toast-stack.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Toast stack</span><span class="frame-tag">severity + timer</span></div><h1 class="sr-only">Toast stack</h1><div class="stage">
+<div class="ts">
+  <div class="ts-bar"><span class="ts-k">Trigger</span><span class="ts-n" id="tsCount">0 active</span></div>
+  <div class="ts-demo">
+    <button class="btn btn-sm" type="button" data-toast="success">Save draft</button>
+    <button class="btn btn-sm" type="button" data-toast="warn">Show warning</button>
+    <button class="btn btn-sm" type="button" data-toast="error">Trigger error</button>
+    <button class="btn btn-sm btn-ghost" type="button" data-toast="info">Sync</button>
+  </div>
+  <div class="ts-stage" id="stage">
+    <div class="ts-empty" id="tsEmpty">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+      <span>No notifications yet</span>
+    </div>
+    <div class="ts-stack" id="toasts" aria-live="polite" aria-relevant="additions"></div>
+  </div>
+  <p id="status" class="hint" role="status" aria-live="polite">Trigger a toast to see it stack.</p>
+</div>
+</div></main><script src="./toast-stack.js" defer></script></body></html>

@@ -1,1 +1,26 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Validation summary — MotionShelf</title><link rel="stylesheet" href="./validation-summary.css"></head><body><main class="demo"><div class="eyebrow">MOTIONSHELF / FIRST PARTY</div><h1>Validation summary</h1><form id="form" novalidate><label for="name">Name</label><input id="name" required><label for="email">Email</label><input id="email" type="email" required><button class="primary" type="submit" style="margin-top:12px">Check form</button></form><div id="errors" tabindex="-1" role="alert" hidden></div><p id="status" class="status" role="status"></p></main><script src="./validation-summary.js" defer></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Validation summary — MotionShelf</title><link rel="stylesheet" href="./validation-summary.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Validation summary</span><span class="frame-tag">inline errors</span></div><h1 class="sr-only">Validation summary</h1><div class="stage">
+<form id="form" class="vs" novalidate>
+  <div class="vs-head">
+    <span class="vs-count" id="vsCount">3 fields need attention</span>
+    <span class="vs-pill" id="vsPill">0 of 3 valid</span>
+  </div>
+  <div class="vs-box" id="errors" tabindex="-1" role="alert" hidden>
+    <div class="vs-box-h">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 8v5M12 16.5v.01"/><circle cx="12" cy="12" r="9"/></svg>
+      <strong id="vsTitle">Please fix these fields</strong>
+    </div>
+    <ol id="vsList"></ol>
+  </div>
+  <label class="label" for="name">Full name</label>
+  <input class="input" id="name" required autocomplete="name" placeholder="Amina Okafor">
+  <p class="vs-err" id="nameErr" hidden></p>
+  <label class="label" for="email" style="margin-top:9px">Email</label>
+  <input class="input" id="email" type="email" required autocomplete="email" placeholder="you@studio.com">
+  <p class="vs-err" id="emailErr" hidden></p>
+  <label class="label" for="handle" style="margin-top:9px">Handle</label>
+  <div class="vs-prefix"><span>@</span><input class="input" id="handle" required pattern="[a-z0-9_]{3,15}" placeholder="amina_design"></div>
+  <p class="vs-err" id="handleErr" hidden></p>
+  <button class="btn btn-primary" type="submit" style="width:100%;margin-top:13px">Create account</button>
+  <p id="status" class="hint" role="status" aria-live="polite" style="margin-top:8px;min-height:15px"></p>
+</form>
+</div></main><script src="./validation-summary.js" defer></script></body></html>

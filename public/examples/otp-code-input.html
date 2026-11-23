@@ -1,1 +1,23 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Verification code — MotionShelf</title><link rel="stylesheet" href="./otp-code-input.css"></head><body><main class="demo"><div class="eyebrow">MOTIONSHELF / FIRST PARTY</div><h1>Verification code</h1><label for="code">Six-digit code</label><input id="code" inputmode="numeric" autocomplete="one-time-code" aria-describedby="help" placeholder="000000"><p id="help">Paste or type six digits. Nothing is sent.</p><p id="status" class="status" role="status" aria-live="polite"></p></main><script src="./otp-code-input.js" defer></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Verification code — MotionShelf</title><link rel="stylesheet" href="./otp-code-input.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Verification code</span><span class="frame-tag">6 digits</span></div><h1 class="sr-only">Verification code</h1><div class="stage">
+<div class="otp">
+  <div class="otp-head">
+    <span class="label" style="margin:0" id="otpLabel">Enter the 6-digit code</span>
+    <span class="otp-timer" id="otpTimer"><span class="dot dot-warn"></span><span id="otpTime">0:42</span></span>
+  </div>
+  <div class="otp-slots" id="slots" role="group" aria-labelledby="otpLabel">
+    <input class="otp-slot" inputmode="numeric" autocomplete="one-time-code" maxlength="1" aria-label="Digit 1">
+    <input class="otp-slot" inputmode="numeric" maxlength="1" aria-label="Digit 2">
+    <input class="otp-slot" inputmode="numeric" maxlength="1" aria-label="Digit 3">
+    <span class="otp-gap" aria-hidden="true"></span>
+    <input class="otp-slot" inputmode="numeric" maxlength="1" aria-label="Digit 4">
+    <input class="otp-slot" inputmode="numeric" maxlength="1" aria-label="Digit 5">
+    <input class="otp-slot" inputmode="numeric" maxlength="1" aria-label="Digit 6">
+  </div>
+  <div class="otp-state" id="otpState" aria-live="polite" role="status">0 of 6 digits entered</div>
+  <div class="otp-foot">
+    <button class="btn btn-sm btn-ghost" id="otpResend" type="button">Resend code</button>
+    <span class="spacer"></span>
+    <button class="btn btn-sm btn-primary" id="otpVerify" type="button" disabled>Verify</button>
+  </div>
+</div>
+</div></main><script src="./otp-code-input.js" defer></script></body></html>

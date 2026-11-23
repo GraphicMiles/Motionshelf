@@ -1,1 +1,40 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Step form — MotionShelf</title><link rel="stylesheet" href="./multi-step-form.css"></head><body><main class="demo"><div class="eyebrow">MOTIONSHELF / FIRST PARTY</div><h1>Step form</h1><form id="wizard"><div class="eyebrow" id="progress">Step 1 of 3</div><section data-step="0"><label for="fullName">Name</label><input id="fullName" required autocomplete="name"></section><section data-step="1" hidden><label for="email">Email</label><input id="email" type="email" required autocomplete="email"></section><section data-step="2" hidden><p id="review"></p></section><div class="row" style="margin-top:14px"><button type="button" id="back" hidden>Back</button><button class="primary" type="button" id="next">Continue</button></div></form><p id="status" class="status" role="status"></p></main><script src="./multi-step-form.js" defer></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Step form — MotionShelf</title><link rel="stylesheet" href="./multi-step-form.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Step form</span><span class="frame-tag">3 steps</span></div><h1 class="sr-only">Step form</h1><div class="stage">
+<div class="ms">
+  <ol class="ms-steps" id="msSteps" aria-label="Progress">
+    <li data-step="0"><span class="ms-bullet">1</span><span class="ms-name">Details</span></li>
+    <li data-step="1"><span class="ms-bullet">2</span><span class="ms-name">Contact</span></li>
+    <li data-step="2"><span class="ms-bullet">3</span><span class="ms-name">Review</span></li>
+    <span class="ms-rail" aria-hidden="true"><span class="ms-fill" id="msFill"></span></span>
+  </ol>
+  <form id="wizard" class="ms-body" novalidate tabindex="0" aria-label="Step form">
+    <section data-panel="0" class="ms-panel" tabindex="-1">
+      <label class="label" for="fullName">Full name</label>
+      <input class="input" id="fullName" autocomplete="name" required placeholder="Amina Okafor">
+      <label class="label" for="role" style="margin-top:9px">Role</label>
+      <select class="input" id="role">
+        <option>Product designer</option><option>Engineer</option><option>Researcher</option><option>Founder</option>
+      </select>
+    </section>
+    <section data-panel="1" class="ms-panel" hidden>
+      <label class="label" for="email">Work email</label>
+      <input class="input" id="email" type="email" autocomplete="email" required placeholder="you@studio.com">
+      <label class="label" for="team" style="margin-top:9px">Team size</label>
+      <div class="ms-seg" id="team" role="radiogroup" aria-label="Team size">
+        <button type="button" role="radio" aria-checked="true" data-v="1–5">1–5</button>
+        <button type="button" role="radio" aria-checked="false" data-v="6–20">6–20</button>
+        <button type="button" role="radio" aria-checked="false" data-v="20+">20+</button>
+      </div>
+    </section>
+    <section data-panel="2" class="ms-panel" hidden>
+      <div class="ms-review" id="msReview"></div>
+    </section>
+  </form>
+  <div class="ms-foot">
+    <button class="btn btn-sm" type="button" id="back" hidden>Back</button>
+    <span class="spacer"></span>
+    <span class="hint" id="msHint">Step 1 of 3</span>
+    <button class="btn btn-primary btn-sm" type="button" id="next">Continue</button>
+  </div>
+  <p id="status" class="sr-only" role="status" aria-live="polite"></p>
+</div>
+</div></main><script src="./multi-step-form.js" defer></script></body></html>

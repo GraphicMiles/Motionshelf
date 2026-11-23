@@ -1,1 +1,36 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Navigation drawer — MotionShelf</title><link rel="stylesheet" href="./responsive-nav-drawer.css"></head><body><main class="demo"><div class="eyebrow">MOTIONSHELF / FIRST PARTY</div><h1>Navigation drawer</h1><button id="toggle" type="button" aria-expanded="false" aria-controls="drawer">Open menu</button><nav id="drawer" aria-label="Demo navigation" hidden><button id="close" type="button">Close menu</button><a href="#overview">Overview</a><a href="#activity">Activity</a><a href="#settings">Settings</a></nav><p id="status" class="status" role="status">Menu closed</p></main><script src="./responsive-nav-drawer.js" defer></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Navigation drawer — MotionShelf</title><link rel="stylesheet" href="./responsive-nav-drawer.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Navigation drawer</span><span class="frame-tag">slide + scrim</span></div><h1 class="sr-only">Navigation drawer</h1><div class="stage">
+<div class="nd">
+  <header class="nd-bar">
+    <button class="nd-burger" id="toggle" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nd-brand"><span class="nd-mark">M</span><span class="nd-word">Motionshelf</span></div>
+    <span class="nd-crumb" id="ndCrumb">Overview</span>
+  </header>
+  <div class="nd-body" id="ndBody">
+    <div class="nd-hero">
+      <div class="badge badge-accent">Workspace</div>
+      <h2>Design system</h2>
+      <p>Four pages · 12 members</p>
+    </div>
+  </div>
+  <div class="nd-scrim" id="ndScrim" hidden></div>
+  <nav class="nd-drawer" id="drawer" aria-label="Workspace navigation" aria-hidden="true">
+    <div class="nd-dhead">
+      <span class="nd-mark">M</span>
+      <div><strong>Motionshelf</strong><small>Design system</small></div>
+      <button class="nd-close" id="close" type="button" aria-label="Close menu">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <ul class="nd-links" id="ndLinks">
+      <li><a href="#overview" data-page="Overview"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.6"/><rect x="14" y="14" width="7" height="7" rx="1.6"/></svg>Overview</a></li>
+      <li><a href="#activity" data-page="Activity"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-linecap="round" aria-hidden="true"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg>Activity<span class="badge">3</span></a></li>
+      <li><a href="#components" data-page="Components"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg>Components</a></li>
+      <li><a href="#settings" data-page="Settings"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-2.9 1.2V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-2.9-1.2l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.7 1.7 0 0 0 3 15H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.2-2.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.7 1.7 0 0 0 10 3.9V3a2 2 0 1 1 4 0v.1A1.7 1.7 0 0 0 17 5.4l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0 1.2 2.9H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"/></svg>Settings</a></li>
+    </ul>
+    <div class="nd-dfoot"><span class="dot dot-ok"></span>All systems normal</div>
+  </nav>
+  <p id="status" class="sr-only" role="status" aria-live="polite">Menu closed</p>
+</div>
+</div></main><script src="./responsive-nav-drawer.js" defer></script></body></html>

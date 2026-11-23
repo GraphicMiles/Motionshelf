@@ -1,1 +1,15 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tag editor — MotionShelf</title><link rel="stylesheet" href="./tag-editor.css"></head><body><main class="demo"><div class="eyebrow">MOTIONSHELF / FIRST PARTY</div><h1>Tag editor</h1><label for="tag">Tags</label><div id="tags" class="row" aria-label="Selected tags"></div><div class="row"><input id="tag" placeholder="Add a tag" style="flex:1"><button id="add" type="button">Add</button></div><p id="status" class="status" role="status"></p></main><script src="./tag-editor.js" defer></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Tag editor — MotionShelf</title><link rel="stylesheet" href="./tag-editor.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Tag editor</span><span class="frame-tag">enter to add</span></div><h1 class="sr-only">Tag editor</h1><div class="stage">
+<div class="te">
+  <div class="te-top">
+    <span class="label" style="margin:0">Labels</span>
+    <span class="badge" id="teCount">0/6</span>
+  </div>
+  <div class="te-box" id="teBox">
+    <span class="te-chips" id="tags"></span>
+    <input id="tag" class="te-input" placeholder="Add a label…" autocomplete="off" aria-describedby="teHelp" aria-label="Add a label">
+  </div>
+  <p class="hint" id="teHelp">Press <kbd class="kbd">↵</kbd> to add, <kbd class="kbd">⌫</kbd> to edit the last one.</p>
+  <div class="te-suggest" id="teSuggest"></div>
+  <p id="status" class="hint" role="status" aria-live="polite" style="min-height:15px"></p>
+</div>
+</div></main><script src="./tag-editor.js" defer></script></body></html>

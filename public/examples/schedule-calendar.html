@@ -1,1 +1,23 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Schedule calendar — MotionShelf</title><link rel="stylesheet" href="./schedule-calendar.css"></head><body><main class="demo"><div class="eyebrow">MOTIONSHELF / FIRST PARTY</div><h1>Schedule calendar</h1><div class="row"><button id="previous" type="button" aria-label="Previous month">←</button><strong id="month" aria-live="polite"></strong><button id="next" type="button" aria-label="Next month">→</button></div><div id="days" role="group" aria-label="Choose a day"></div><p id="agenda" class="status" role="status"></p></main><script src="./schedule-calendar.js" defer></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Schedule calendar — MotionShelf</title><link rel="stylesheet" href="./schedule-calendar.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Schedule calendar</span><span class="frame-tag">single + range</span></div><h1 class="sr-only">Schedule calendar</h1><div class="stage">
+<div class="cal">
+  <div class="cal-head">
+    <button class="cal-nav" id="prev" type="button" aria-label="Previous month">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <div class="cal-month" id="month" aria-live="polite"></div>
+    <button class="cal-nav" id="next" type="button" aria-label="Next month">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+  <div class="cal-week" aria-hidden="true" id="calWeek"></div>
+  <div class="cal-grid" id="days" role="group" aria-label="Month days"></div>
+  <div class="cal-legend">
+    <span><i class="lg lg-today"></i>Today</span>
+    <span><i class="lg lg-dot"></i>Has events</span>
+    <span class="cal-mode" id="calMode">Range</span>
+  </div>
+  <div class="cal-agenda" id="agenda" role="status" aria-live="polite">
+    <span class="cal-agenda-i">Pick a date</span>
+  </div>
+</div>
+</div></main><script src="./schedule-calendar.js" defer></script></body></html>

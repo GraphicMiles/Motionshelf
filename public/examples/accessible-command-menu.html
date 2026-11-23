@@ -1,1 +1,15 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Command menu — MotionShelf</title><link rel="stylesheet" href="./accessible-command-menu.css"></head><body><main class="demo"><div class="eyebrow">MOTIONSHELF / FIRST PARTY</div><h1>Command menu</h1><label for="query">Find an action</label><input id="query" type="search" placeholder="Try “theme” or “copy”" autocomplete="off" aria-controls="actions"><div id="actions" class="stack" role="group" aria-label="Available commands"></div><p class="status" id="status" role="status" aria-live="polite"></p></main><script src="./accessible-command-menu.js" defer></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Command menu — MotionShelf</title><link rel="stylesheet" href="./accessible-command-menu.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Command menu</span><span class="frame-tag">⌘K</span></div><h1 class="sr-only">Command menu</h1><div class="stage">
+<div class="cm">
+  <div class="cm-field">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="query" type="text" role="combobox" aria-expanded="true" aria-controls="cmList" aria-autocomplete="list" aria-activedescendant="" autocomplete="off" spellcheck="false" placeholder="Search actions">
+    <span class="cm-count" id="cmCount" aria-hidden="true"></span>
+  </div>
+  <div class="cm-list" id="cmList" role="listbox" aria-label="Commands">
+    <div class="cm-glide" id="cmGlide" aria-hidden="true"></div>
+  </div>
+  <div class="cm-foot"><span id="cmStatus" role="status" aria-live="polite" class="sr-only">12 commands available</span><span class="cm-hint"><kbd class="kbd">↑</kbd><kbd class="kbd">↓</kbd> navigate</span><span class="cm-hint"><kbd class="kbd">↵</kbd> run</span><span class="cm-hint"><kbd class="kbd">esc</kbd> clear</span></div>
+</div>
+<p class="cm-flash" id="cmFlash" role="status" aria-live="polite"></p>
+<div class="toast-holder" id="cmToast"></div>
+</div></main><script src="./accessible-command-menu.js" defer></script></body></html>

@@ -1,1 +1,14 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Reading outline — MotionShelf</title><link rel="stylesheet" href="./table-of-contents.css"></head><body><main class="demo"><div class="eyebrow">MOTIONSHELF / FIRST PARTY</div><h1>Reading outline</h1><div class="row" role="group" aria-label="Sections"><button data-go="intro" aria-current="true">Intro</button><button data-go="details">Details</button><button data-go="summary">Summary</button></div><div id="reader" tabindex="0"><section id="intro"><h2>Intro</h2><p>Start here to learn the context.</p></section><section id="details"><h2>Details</h2><p>Move through the longer middle section.</p></section><section id="summary"><h2>Summary</h2><p>Finish with the important points.</p></section></div><p id="status" class="status" role="status"></p></main><script src="./table-of-contents.js" defer></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Reading outline — MotionShelf</title><link rel="stylesheet" href="./table-of-contents.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Reading outline</span><span class="frame-tag">scroll spy</span></div><h1 class="sr-only">Reading outline</h1><div class="stage">
+<div class="toc">
+  <div class="toc-rail">
+    <div class="toc-track"><span class="toc-prog" id="tocProg"></span></div>
+  </div>
+  <ol class="toc-list" id="tocList"></ol>
+  <div class="toc-reader" id="reader" tabindex="0" aria-label="Article body">
+    <section id="intro"><h2>Introduction</h2><p>The library started as three components and a colour ramp. Everything here follows from that constraint: one accent, two radii, and motion only where it explains a change of state.</p></section>
+    <section id="details"><h2>How it works</h2><p>Each component owns its own stylesheet and ships with no dependencies. The shared layer holds tokens, reset and the motion primitives — nothing that a component can opt out of.</p><p>Spacing is a 4px scale, radii are capped at 22px, and every interactive surface has a visible focus ring.</p></section>
+    <section id="summary"><h2>Summary</h2><p>Twenty-eight components, one design language, zero runtime dependencies. Copy the files, or take the zip.</p></section>
+  </div>
+  <p id="status" class="sr-only" role="status" aria-live="polite"></p>
+</div>
+</div></main><script src="./table-of-contents.js" defer></script></body></html>

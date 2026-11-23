@@ -1,1 +1,23 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Breadcrumb trail — MotionShelf</title><link rel="stylesheet" href="./breadcrumbs.css"></head><body><main class="demo"><div class="eyebrow">MOTIONSHELF / FIRST PARTY</div><h1>Breadcrumb trail</h1><nav aria-label="Breadcrumb"><ol id="trail"><li><a href="#home">Home</a></li><li id="middle" hidden><a href="#projects">Projects</a></li><li id="fold"><button id="expand" type="button" aria-label="Show hidden breadcrumbs">…</button></li><li><a href="#design">Design</a></li><li aria-current="page">Overview</li></ol></nav><p id="status" class="status" role="status">One path segment hidden</p></main><script src="./breadcrumbs.js" defer></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Breadcrumb trail — MotionShelf</title><link rel="stylesheet" href="./breadcrumbs.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Breadcrumb trail</span><span class="frame-tag">collapse</span></div><h1 class="sr-only">Breadcrumb trail</h1><div class="stage">
+<nav class="bc" aria-label="Breadcrumb">
+  <ol class="bc-list" id="trail">
+    <li><a href="#home" class="bc-a"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/></svg><span class="bc-t">Home</span></a></li>
+    <li class="bc-sep" aria-hidden="true"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></li>
+    <li id="fold" class="bc-fold"><button class="bc-more" id="expand" type="button" aria-label="Show 2 hidden breadcrumbs" aria-expanded="false">···</button></li>
+    <li class="bc-sep" id="foldSep" aria-hidden="true"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></li>
+    <li id="m1" hidden><a href="#projects" class="bc-a"><span class="bc-t">Projects</span></a></li>
+    <li class="bc-sep" id="s1" hidden aria-hidden="true"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></li>
+    <li id="m2" hidden><a href="#q4" class="bc-a"><span class="bc-t">Q4 launch</span></a></li>
+    <li class="bc-sep" id="s2" hidden aria-hidden="true"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></li>
+    <li><a href="#design" class="bc-a"><span class="bc-t">Design</span></a></li>
+    <li class="bc-sep" aria-hidden="true"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></li>
+    <li><span class="bc-cur" aria-current="page">Overview</span></li>
+  </ol>
+</nav>
+<div class="bc-page">
+  <div class="bc-kicker">Page</div>
+  <h2>Overview</h2>
+  <p>Design system · Q4 launch · last edited 2 hours ago by Amara.</p>
+</div>
+<p id="status" class="hint" role="status" aria-live="polite">Two segments collapsed</p>
+</div></main><script src="./breadcrumbs.js" defer></script></body></html>

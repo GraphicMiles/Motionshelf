@@ -1,1 +1,17 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Filter bar — MotionShelf</title><link rel="stylesheet" href="./filter-bar.css"></head><body><main class="demo"><div class="eyebrow">MOTIONSHELF / FIRST PARTY</div><h1>Filter bar</h1><div class="row" role="group" aria-label="Filter tasks"><button data-filter="all" aria-pressed="true">All</button><button data-filter="design" aria-pressed="false">Design</button><button data-filter="code" aria-pressed="false">Code</button><button data-filter="review" aria-pressed="false">Review</button></div><ul id="items"></ul><p id="status" class="status" role="status"></p></main><script src="./filter-bar.js" defer></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Filter bar — MotionShelf</title><link rel="stylesheet" href="./filter-bar.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Filter bar</span><span class="frame-tag">multi-select</span></div><h1 class="sr-only">Filter bar</h1><div class="stage">
+<div class="fb">
+  <div class="fb-row" role="group" aria-label="Filter tasks">
+    <button class="fb-chip" data-filter="all" aria-pressed="true">All <span class="fb-n" data-n="all">8</span></button>
+    <button class="fb-chip" data-filter="design" aria-pressed="false">Design <span class="fb-n" data-n="design">3</span></button>
+    <button class="fb-chip" data-filter="code" aria-pressed="false">Code <span class="fb-n" data-n="code">3</span></button>
+    <button class="fb-chip" data-filter="review" aria-pressed="false">Review <span class="fb-n" data-n="review">2</span></button>
+  </div>
+  <div class="fb-active" id="fbActive" hidden>
+    <span class="fb-lab">Active</span>
+    <span class="fb-chips" id="fbChips"></span>
+    <button class="fb-clear" id="fbClear" type="button">Clear all</button>
+  </div>
+  <ul class="fb-list" id="items"></ul>
+  <p id="status" class="hint" role="status" aria-live="polite"></p>
+</div>
+</div></main><script src="./filter-bar.js" defer></script></body></html>

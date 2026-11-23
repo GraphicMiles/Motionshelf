@@ -1,44 +1,548 @@
 [
-  {"slug":"accessible-command-menu","name":"Command menu","type":"ui","category":"Navigation","description":"A keyboard-first command menu with grouped actions, fuzzy search, and a clear empty state.","tags":["keyboard","search","navigation"],"scope":"Arrow-key navigation, Escape to close, accessible results announcements, and a command callback."},
-  {"slug":"async-combobox","name":"Async combobox","type":"ui","category":"Inputs & forms","description":"A searchable choice field that handles delayed results without losing the user's selection.","tags":["forms","search","async"],"scope":"Debounced queries, loading and error states, keyboard selection, and request cancellation."},
-  {"slug":"inline-edit-field","name":"Inline editor","type":"ui","category":"Inputs & forms","description":"An editable text field with explicit save, cancel, and validation states.","tags":["forms","editing","validation"],"scope":"Edit and read modes, optimistic save feedback, Escape to cancel, and focus restoration."},
-  {"slug":"multi-step-form","name":"Step form","type":"ui","category":"Inputs & forms","description":"A guided form that preserves entered values while moving between steps.","tags":["forms","workflow","validation"],"scope":"Per-step validation, back navigation, progress announcement, and a final review step."},
-  {"slug":"validation-summary","name":"Validation summary","type":"ui","category":"Inputs & forms","description":"A form-error summary that links each issue back to its field.","tags":["forms","accessibility","errors"],"scope":"Field-level errors, summary links, focus management, and screen-reader announcements."},
-  {"slug":"tag-editor","name":"Tag editor","type":"ui","category":"Inputs & forms","description":"A compact chip input for adding, removing, and editing a list of labels.","tags":["forms","tags","keyboard"],"scope":"Duplicate prevention, Enter and Backspace behavior, paste handling, and readable selected tags."},
-  {"slug":"file-drop-zone","name":"File drop zone","type":"ui","category":"Inputs & forms","description":"A file picker that explains type and size limits before a file is chosen.","tags":["files","forms","validation"],"scope":"Keyboard file picker, drag-and-drop, size/type feedback, and a removable selection."},
-  {"slug":"otp-code-input","name":"Verification code","type":"ui","category":"Inputs & forms","description":"A one-time-code input designed for paste, autofill, and mobile keyboards.","tags":["forms","authentication","mobile"],"scope":"Single logical input, numeric mode, paste support, and error and completion states."},
-  {"slug":"date-range-picker","name":"Date range picker","type":"ui","category":"Inputs & forms","description":"A start-and-end date picker with clear range boundaries and keyboard access.","tags":["dates","calendar","forms"],"scope":"Calendar navigation, blocked dates, range validation, and localized display."},
-  {"slug":"filter-bar","name":"Filter bar","type":"ui","category":"Navigation","description":"A set of removable filters that keeps active criteria easy to scan.","tags":["filters","search","navigation"],"scope":"Filter chips, clear-all action, responsive wrapping, and accessible result counts."},
-  {"slug":"responsive-nav-drawer","name":"Navigation drawer","type":"ui","category":"Navigation","description":"A compact-site navigation panel that works with touch and keyboard input.","tags":["navigation","mobile","accessibility"],"scope":"Open and close controls, focus return, scroll locking, and reduced-motion behavior."},
-  {"slug":"nested-menu","name":"Nested menu","type":"ui","category":"Navigation","description":"A multi-level menu that makes depth visible without trapping keyboard users.","tags":["navigation","menu","keyboard"],"scope":"Arrow-key movement, submenu open/close rules, outside click, and touch targets."},
-  {"slug":"overflow-tabs","name":"Overflow tabs","type":"ui","category":"Navigation","description":"A tab strip that keeps long labels and narrow screens usable.","tags":["tabs","responsive","keyboard"],"scope":"Roving focus, active-panel semantics, scroll-into-view, and narrow-screen overflow."},
-  {"slug":"breadcrumbs","name":"Breadcrumb trail","type":"ui","category":"Navigation","description":"A path indicator that remains readable as navigation depth grows.","tags":["navigation","paths","responsive"],"scope":"Current-page announcement, optional collapsed middle segments, and semantic links."},
-  {"slug":"table-of-contents","name":"Reading outline","type":"ui","category":"Navigation","description":"An in-page outline that tracks the section currently being read.","tags":["content","scroll","navigation"],"scope":"Heading discovery, active-section tracking, reduced-motion scrolling, and deep links."},
-  {"slug":"pagination-controls","name":"Pagination controls","type":"ui","category":"Navigation","description":"A compact page navigator with useful first, previous, next, and last states.","tags":["pagination","data","navigation"],"scope":"Page range ellipsis, disabled states, keyboard labels, and result-count context."},
-  {"slug":"collapsible-tree","name":"Collapsible tree","type":"ui","category":"Navigation","description":"A hierarchical explorer for folders, categories, or document sections.","tags":["tree","keyboard","navigation"],"scope":"Nested selection, arrow-key tree navigation, expansion state, and long-label handling."},
-  {"slug":"data-table","name":"Data table","type":"ui","category":"Data display","description":"A responsive table for scanning, sorting, and selecting small datasets.","tags":["table","sorting","selection"],"scope":"Sortable headers, row selection, empty state, and mobile horizontal scrolling."},
-  {"slug":"virtual-list","name":"Virtual list","type":"ui","category":"Data display","description":"A long-list view intended to stay responsive while only visible rows are rendered.","tags":["performance","lists","data"],"scope":"Stable keyboard focus, measured row heights, loading boundaries, and accessible item counts."},
-  {"slug":"kanban-lanes","name":"Kanban lanes","type":"ui","category":"Data display","description":"A task board with move controls that do not rely on dragging alone.","tags":["tasks","drag","keyboard"],"scope":"Pointer reordering, keyboard move actions, status updates, and an undo path."},
-  {"slug":"activity-timeline","name":"Activity timeline","type":"ui","category":"Data display","description":"A chronological feed that groups updates without hiding their timestamps.","tags":["timeline","activity","content"],"scope":"Readable time labels, grouped events, load-more state, and semantic ordering."},
-  {"slug":"schedule-calendar","name":"Schedule calendar","type":"ui","category":"Data display","description":"A monthly schedule that keeps dense event days readable on small screens.","tags":["calendar","events","responsive"],"scope":"Month navigation, selected-day agenda, overflow summaries, and keyboard date movement."},
-  {"slug":"comparison-grid","name":"Comparison grid","type":"ui","category":"Data display","description":"A side-by-side comparison with a layout that survives narrow viewports.","tags":["comparison","data","responsive"],"scope":"Sticky labels on desktop, stacked rows on mobile, and explicit missing values."},
-  {"slug":"status-dashboard","name":"Status dashboard","type":"ui","category":"Data display","description":"A small metrics view that distinguishes normal, delayed, and unavailable data.","tags":["dashboard","status","data"],"scope":"Timestamped values, unavailable-data labels, compact charts, and plain-language status."},
-  {"slug":"toast-stack","name":"Toast stack","type":"ui","category":"Feedback","description":"Transient notices that remain readable and never block essential controls.","tags":["feedback","notifications","accessibility"],"scope":"Queueing, dismissal, polite announcements, and persistent action feedback when needed."},
-  {"slug":"action-confirmation","name":"Action confirmation","type":"ui","category":"Feedback","description":"A focused confirmation dialog for a reversible or destructive action.","tags":["dialog","feedback","safety"],"scope":"Clear action labels, Escape behavior, focus return, and a required confirmation state."},
-  {"slug":"progress-steps","name":"Progress steps","type":"ui","category":"Feedback","description":"A task-progress indicator that says what has completed and what remains.","tags":["progress","workflow","accessibility"],"scope":"Current-step semantics, completed and blocked states, and compact mobile layout."},
-  {"slug":"notification-center","name":"Notification center","type":"ui","category":"Feedback","description":"An inbox for updates with clear read, unread, and empty states.","tags":["notifications","inbox","feedback"],"scope":"Read status, grouping, bulk actions, and a reliable unread count."},
-  {"slug":"repo-structure-map","name":"Repository map","type":"agent","category":"Code intelligence","description":"A proposed read-only tool that summarizes a repository's folders and entry points.","tags":["repository","navigation","analysis"],"scope":"Bounded file discovery, ignored paths, source citations, and no code execution."},
-  {"slug":"pr-change-risk","name":"Change risk review","type":"agent","category":"Code review","description":"A proposed assistant that identifies likely impact areas in a pull-request diff.","tags":["review","diff","risk"],"scope":"Diff-size limits, affected-path summary, evidence links, and uncertainty labels."},
-  {"slug":"test-gap-finder","name":"Test gap finder","type":"agent","category":"Code review","description":"A proposed diff reviewer that highlights changed behavior without nearby tests.","tags":["testing","review","coverage"],"scope":"Map changed files to tests, report gaps with paths, and avoid invented coverage claims."},
-  {"slug":"dependency-impact-trace","name":"Dependency impact","type":"agent","category":"Code intelligence","description":"A proposed read-only dependency map for spotting consumers of changed modules.","tags":["dependencies","analysis","review"],"scope":"Static import graph, bounded traversal, cycle handling, and explicit unknown edges."},
-  {"slug":"license-notice-check","name":"License notice check","type":"agent","category":"Repository hygiene","description":"A proposed inventory of declared licenses and bundled attribution files.","tags":["license","compliance","inventory"],"scope":"Report file-level evidence and missing notices without giving legal conclusions."},
-  {"slug":"docs-staleness-check","name":"Documentation freshness","type":"agent","category":"Repository hygiene","description":"A proposed checker for documentation references that no longer match repository files.","tags":["documentation","links","maintenance"],"scope":"Validate local paths and commands against source files; flag ambiguous references for review."},
-  {"slug":"api-contract-diff","name":"API contract diff","type":"agent","category":"Code review","description":"A proposed comparison of two API schemas with emphasis on breaking changes.","tags":["api","schema","compatibility"],"scope":"Schema-size limits, route/field changes, citations, and versioned output."},
-  {"slug":"accessibility-review-assistant","name":"Accessibility review","type":"agent","category":"Quality assurance","description":"A proposed checklist assistant that ties UI findings to observable markup.","tags":["accessibility","review","markup"],"scope":"Evidence from supplied HTML, keyboard-flow checklist, and no claim of a full audit."},
-  {"slug":"release-checklist-builder","name":"Release checklist","type":"agent","category":"Quality assurance","description":"A proposed release checklist assembled from repository configuration and changes.","tags":["release","workflow","testing"],"scope":"Read-only evidence, human sign-off steps, and explicit unverified checks."},
-  {"slug":"build-log-triage","name":"Build log triage","type":"agent","category":"Quality assurance","description":"A proposed parser that groups build failures by likely root cause.","tags":["build","logs","debugging"],"scope":"Log truncation, secret redaction, grouped errors, and references to exact lines."},
-  {"slug":"issue-duplicate-finder","name":"Issue similarity","type":"agent","category":"Team workflow","description":"A proposed helper for finding possibly related issues without merging them automatically.","tags":["issues","search","triage"],"scope":"Similarity scoring, evidence snippets, and human confirmation before action."},
-  {"slug":"prompt-boundary-probe","name":"Prompt boundary probe","type":"agent","category":"Safety tooling","description":"A proposed offline test harness for known prompt-injection boundary cases.","tags":["security","prompts","testing"],"scope":"Fixture-based inputs, pass/fail criteria, no secret-bearing targets, and reproducible reports."},
-  {"slug":"secret-pattern-audit","name":"Secret pattern audit","type":"agent","category":"Safety tooling","description":"A proposed local scanner that flags likely credential strings without printing them.","tags":["security","secrets","repository"],"scope":"Allowlisted file types, false-positive controls, masked output, and no external upload."},
-  {"slug":"localization-consistency-check","name":"Localization consistency","type":"agent","category":"Quality assurance","description":"A proposed comparison of translation keys, placeholders, and missing locale entries.","tags":["localization","i18n","quality"],"scope":"Key-set diff, placeholder matching, source references, and no invented translations."}
+ {
+  "slug": "accessible-command-menu",
+  "name": "Command menu",
+  "type": "ui",
+  "category": "Navigation",
+  "description": "A keyboard-first command menu with grouped actions, subsequence matching, a gliding highlight and a live result count.",
+  "tags": [
+   "keyboard",
+   "search",
+   "navigation"
+  ],
+  "scope": "Grouped action list, subsequence matching with highlighted matches, gliding selection indicator, arrow keys, Escape to clear, Enter to run, live count and announcement."
+ },
+ {
+  "slug": "async-combobox",
+  "name": "Async combobox",
+  "type": "ui",
+  "category": "Inputs & forms",
+  "description": "A debounced city search that guards against stale responses, glides a highlight across results and confirms the selection with its timezone.",
+  "tags": [
+   "forms",
+   "search",
+   "async"
+  ],
+  "scope": "260ms debounce, stale-response ticket guard, gliding highlight, match highlighting, keyboard selection, timezone confirmation panel, clear control."
+ },
+ {
+  "slug": "inline-edit-field",
+  "name": "Inline editor",
+  "type": "ui",
+  "category": "Inputs & forms",
+  "description": "An inline title editor with explicit save and cancel, live character counting and a visible change history.",
+  "tags": [
+   "forms",
+   "editing",
+   "validation"
+  ],
+  "scope": "Edit in place, live 60-character counter, inline required error, Enter to save, Escape to discard, saved change history."
+ },
+ {
+  "slug": "multi-step-form",
+  "name": "Step form",
+  "type": "ui",
+  "category": "Inputs & forms",
+  "description": "A three-step wizard with a connector-linked stepper, per-step validation that blocks advancement and a review panel built from entered values.",
+  "tags": [
+   "forms",
+   "workflow",
+   "validation"
+  ],
+  "scope": "Stepper with connector fill, per-step validation, radio group, preserved values when moving backwards, review panel."
+ },
+ {
+  "slug": "validation-summary",
+  "name": "Validation summary",
+  "type": "ui",
+  "category": "Inputs & forms",
+  "description": "A form-error summary that links every issue to its field, counts validity live and clears as fields are fixed.",
+  "tags": [
+   "forms",
+   "accessibility",
+   "errors"
+  ],
+  "scope": "aria-invalid per field, linked error list that focuses its field, live validity pill, shake on failed submit."
+ },
+ {
+  "slug": "tag-editor",
+  "name": "Tag editor",
+  "type": "ui",
+  "category": "Inputs & forms",
+  "description": "A chip input with suggestions, duplicate detection, a six-label cap and Backspace-to-edit on the last chip.",
+  "tags": [
+   "forms",
+   "tags",
+   "keyboard"
+  ],
+  "scope": "Enter or button to add, suggestions, duplicate warning, six-tag cap, Backspace edits the last chip, animated removal."
+ },
+ {
+  "slug": "file-drop-zone",
+  "name": "File drop zone",
+  "type": "ui",
+  "category": "Inputs & forms",
+  "description": "A drag-and-drop file picker with type and size validation, an animated drop target and a fill bar on acceptance.",
+  "tags": [
+   "files",
+   "forms",
+   "validation"
+  ],
+  "scope": "Drag-over state with ring animation, extension and 100 KB checks, rejection messaging that resets the input, remove control."
+ },
+ {
+  "slug": "otp-code-input",
+  "name": "Verification code",
+  "type": "ui",
+  "category": "Inputs & forms",
+  "description": "A six-slot verification code input with paste-spread, arrow-key navigation, a resend timer and per-slot confirmation.",
+  "tags": [
+   "forms",
+   "authentication",
+   "mobile"
+  ],
+  "scope": "Paste spreads across slots, digits only, Backspace walks back, arrow keys move, resend resets, verified state."
+ },
+ {
+  "slug": "date-range-picker",
+  "name": "Date range picker",
+  "type": "ui",
+  "category": "Inputs & forms",
+  "description": "A month calendar with Monday-first weekday headers, a hover preview band between the two dates and inclusive night counting.",
+  "tags": [
+   "dates",
+   "calendar",
+   "forms"
+  ],
+  "scope": "Monday-first weekday grid, hover preview band, inclusive night count, end-before-start normalisation, clear."
+ },
+ {
+  "slug": "filter-bar",
+  "name": "Filter bar",
+  "type": "ui",
+  "category": "Navigation",
+  "description": "A multi-select filter bar with live counts, removable active chips and a clear-all control.",
+  "tags": [
+   "filters",
+   "search",
+   "navigation"
+  ],
+  "scope": "Multi-select with counts, removal chips, clear all, empty state, announcement of visible count."
+ },
+ {
+  "slug": "responsive-nav-drawer",
+  "name": "Navigation drawer",
+  "type": "ui",
+  "category": "Navigation",
+  "description": "A slide-in drawer with a blurred scrim, focus trapping, Escape to close and focus restored to the trigger.",
+  "tags": [
+   "navigation",
+   "mobile",
+   "accessibility"
+  ],
+  "scope": "Slide-in with scrim, focus trap, Escape, focus restoration, current-page marking."
+ },
+ {
+  "slug": "nested-menu",
+  "name": "Nested menu",
+  "type": "ui",
+  "category": "Navigation",
+  "description": "A flyout menu with a pointer arrow, roving arrow-key focus, a danger action and Escape-to-close with focus return.",
+  "tags": [
+   "navigation",
+   "menu",
+   "keyboard"
+  ],
+  "scope": "Flyout with pointer, roving focus, Home/End, Escape and ArrowLeft close with focus return, danger styling on Share."
+ },
+ {
+  "slug": "overflow-tabs",
+  "name": "Overflow tabs",
+  "type": "ui",
+  "category": "Navigation",
+  "description": "A scrollable tab strip with a gliding underline, Home/End and arrow-key roving focus, and a fade that signals hidden tabs.",
+  "tags": [
+   "tabs",
+   "responsive",
+   "keyboard"
+  ],
+  "scope": "Gliding underline, roving tabindex, Home/End, arrow keys, scroll fade, right-scroll control, per-tab panel content."
+ },
+ {
+  "slug": "breadcrumbs",
+  "name": "Breadcrumb trail",
+  "type": "ui",
+  "category": "Navigation",
+  "description": "A breadcrumb trail that collapses the middle segments behind a control and expands them back, keeping the current page marked.",
+  "tags": [
+   "navigation",
+   "paths",
+   "responsive"
+  ],
+  "scope": "Ellipsis expands two hidden segments and collapses them again, focus moves to the revealed crumb."
+ },
+ {
+  "slug": "table-of-contents",
+  "name": "Reading outline",
+  "type": "ui",
+  "category": "Navigation",
+  "description": "A scroll-spy outline with a progress rail that tracks position through the reading pane.",
+  "tags": [
+   "content",
+   "scroll",
+   "navigation"
+  ],
+  "scope": "Scroll spy with aria-current, progress rail, click-to-scroll, reduced-motion aware."
+ },
+ {
+  "slug": "pagination-controls",
+  "name": "Pagination controls",
+  "type": "ui",
+  "category": "Navigation",
+  "description": "Numbered pagination with a windowed page list, ellipsis, disabled bounds and a live range readout.",
+  "tags": [
+   "pagination",
+   "data",
+   "navigation"
+  ],
+  "scope": "Windowed page numbers with ellipsis, disabled previous and next at bounds, live range."
+ },
+ {
+  "slug": "collapsible-tree",
+  "name": "Collapsible tree",
+  "type": "ui",
+  "category": "Navigation",
+  "description": "A keyboard-navigable file tree with guide lines, expand and collapse on arrow keys, and selection.",
+  "tags": [
+   "tree",
+   "keyboard",
+   "navigation"
+  ],
+  "scope": "role=tree with aria-expanded, arrow-key navigation, indent guides, selection."
+ },
+ {
+  "slug": "data-table",
+  "name": "Data table",
+  "type": "ui",
+  "category": "Data display",
+  "description": "A sortable revenue table with row selection that survives sorting, an animated bulk-action bar and a search empty state.",
+  "tags": [
+   "table",
+   "sorting",
+   "selection"
+  ],
+  "scope": "Column sorting with direction indicator, selection persisted across sorts, select all with indeterminate state, bulk bar, search empty state."
+ },
+ {
+  "slug": "virtual-list",
+  "name": "Virtual list",
+  "type": "ui",
+  "category": "Data display",
+  "description": "A windowed ten-thousand-row audit log that renders only the visible slice while keeping the full scroll height.",
+  "tags": [
+   "performance",
+   "lists",
+   "data"
+  ],
+  "scope": "10,000 records, fixed row height, aria-posinset and aria-setsize, jump to top."
+ },
+ {
+  "slug": "kanban-lanes",
+  "name": "Kanban lanes",
+  "type": "ui",
+  "category": "Data display",
+  "description": "Three drag-and-drop lanes with live counts, add-task controls and moves announced to assistive technology.",
+  "tags": [
+   "tasks",
+   "drag",
+   "keyboard"
+  ],
+  "scope": "Native drag-and-drop across lanes, add task, live counts, announcements."
+ },
+ {
+  "slug": "activity-timeline",
+  "name": "Activity timeline",
+  "type": "ui",
+  "category": "Data display",
+  "description": "A grouped activity rail with typed markers, quoted comments and progressive loading.",
+  "tags": [
+   "timeline",
+   "activity",
+   "content"
+  ],
+  "scope": "Type filters, progressive load more, quoted comments, typed markers."
+ },
+ {
+  "slug": "schedule-calendar",
+  "name": "Schedule calendar",
+  "type": "ui",
+  "category": "Data display",
+  "description": "A month calendar with correct Monday-first date placement, weekday headers, an event marker, and a range band with inclusive night counts.",
+  "tags": [
+   "calendar",
+   "events",
+   "responsive"
+  ],
+  "scope": "Correct weekday placement, adjacent-month days, today marker, event dots, range selection with hover band."
+ },
+ {
+  "slug": "comparison-grid",
+  "name": "Comparison grid",
+  "type": "ui",
+  "category": "Data display",
+  "description": "A feature comparison with an accessible only-differences switch and distinct check and cross marks.",
+  "tags": [
+   "comparison",
+   "data",
+   "responsive"
+  ],
+  "scope": "Accessible switch, check and cross marks, difference emphasis, live count."
+ },
+ {
+  "slug": "status-dashboard",
+  "name": "Status dashboard",
+  "type": "ui",
+  "category": "Data display",
+  "description": "A live metrics panel with trend badges, an outage simulation and a bar sparkline.",
+  "tags": [
+   "dashboard",
+   "status",
+   "data"
+  ],
+  "scope": "Metric rows with trend badges, outage toggle that stops showing stale values as current, sparkline bars."
+ },
+ {
+  "slug": "toast-stack",
+  "name": "Toast stack",
+  "type": "ui",
+  "category": "Feedback",
+  "description": "Severity-coded toasts with icons, a draining timer bar, pause-on-hover and a three-item cap.",
+  "tags": [
+   "feedback",
+   "notifications",
+   "accessibility"
+  ],
+  "scope": "Four severities with icons, draining timer, pause on hover and focus, dismiss, three-item cap, empty state."
+ },
+ {
+  "slug": "action-confirmation",
+  "name": "Action confirmation",
+  "type": "ui",
+  "category": "Feedback",
+  "description": "A real modal dialog with a scrim, focus trap, Escape to cancel, and an undo bar with a countdown.",
+  "tags": [
+   "dialog",
+   "feedback",
+   "safety"
+  ],
+  "scope": "Modal with scrim and focus trap, Escape cancels, confirm removes with an undo countdown."
+ },
+ {
+  "slug": "progress-steps",
+  "name": "Progress steps",
+  "type": "ui",
+  "category": "Feedback",
+  "description": "A numbered stepper with ticked completions, connector fill, per-step panels and review.",
+  "tags": [
+   "progress",
+   "workflow",
+   "accessibility"
+  ],
+  "scope": "Numbered bubbles with ticks, connector fill, per-step panel, review summary, start over."
+ },
+ {
+  "slug": "notification-center",
+  "name": "Notification center",
+  "type": "ui",
+  "category": "Feedback",
+  "description": "A notification inbox with unread emphasis, correct singular/plural copy, an unread filter and an empty state.",
+  "tags": [
+   "notifications",
+   "inbox",
+   "feedback"
+  ],
+  "scope": "Unread emphasis, mark one read, unread filter, mark all read, empty state, correct pluralisation."
+ },
+ {
+  "slug": "repo-structure-map",
+  "name": "Repository map",
+  "type": "agent",
+  "category": "Code intelligence",
+  "description": "A proposed read-only tool that summarizes a repository's folders and entry points.",
+  "tags": [
+   "repository",
+   "navigation",
+   "analysis"
+  ],
+  "scope": "Bounded file discovery, ignored paths, source citations, and no code execution."
+ },
+ {
+  "slug": "pr-change-risk",
+  "name": "Change risk review",
+  "type": "agent",
+  "category": "Code review",
+  "description": "A proposed assistant that identifies likely impact areas in a pull-request diff.",
+  "tags": [
+   "review",
+   "diff",
+   "risk"
+  ],
+  "scope": "Diff-size limits, affected-path summary, evidence links, and uncertainty labels."
+ },
+ {
+  "slug": "test-gap-finder",
+  "name": "Test gap finder",
+  "type": "agent",
+  "category": "Code review",
+  "description": "A proposed diff reviewer that highlights changed behavior without nearby tests.",
+  "tags": [
+   "testing",
+   "review",
+   "coverage"
+  ],
+  "scope": "Map changed files to tests, report gaps with paths, and avoid invented coverage claims."
+ },
+ {
+  "slug": "dependency-impact-trace",
+  "name": "Dependency impact",
+  "type": "agent",
+  "category": "Code intelligence",
+  "description": "A proposed read-only dependency map for spotting consumers of changed modules.",
+  "tags": [
+   "dependencies",
+   "analysis",
+   "review"
+  ],
+  "scope": "Static import graph, bounded traversal, cycle handling, and explicit unknown edges."
+ },
+ {
+  "slug": "license-notice-check",
+  "name": "License notice check",
+  "type": "agent",
+  "category": "Repository hygiene",
+  "description": "A proposed inventory of declared licenses and bundled attribution files.",
+  "tags": [
+   "license",
+   "compliance",
+   "inventory"
+  ],
+  "scope": "Report file-level evidence and missing notices without giving legal conclusions."
+ },
+ {
+  "slug": "docs-staleness-check",
+  "name": "Documentation freshness",
+  "type": "agent",
+  "category": "Repository hygiene",
+  "description": "A proposed checker for documentation references that no longer match repository files.",
+  "tags": [
+   "documentation",
+   "links",
+   "maintenance"
+  ],
+  "scope": "Validate local paths and commands against source files; flag ambiguous references for review."
+ },
+ {
+  "slug": "api-contract-diff",
+  "name": "API contract diff",
+  "type": "agent",
+  "category": "Code review",
+  "description": "A proposed comparison of two API schemas with emphasis on breaking changes.",
+  "tags": [
+   "api",
+   "schema",
+   "compatibility"
+  ],
+  "scope": "Schema-size limits, route/field changes, citations, and versioned output."
+ },
+ {
+  "slug": "accessibility-review-assistant",
+  "name": "Accessibility review",
+  "type": "agent",
+  "category": "Quality assurance",
+  "description": "A proposed checklist assistant that ties UI findings to observable markup.",
+  "tags": [
+   "accessibility",
+   "review",
+   "markup"
+  ],
+  "scope": "Evidence from supplied HTML, keyboard-flow checklist, and no claim of a full audit."
+ },
+ {
+  "slug": "release-checklist-builder",
+  "name": "Release checklist",
+  "type": "agent",
+  "category": "Quality assurance",
+  "description": "A proposed release checklist assembled from repository configuration and changes.",
+  "tags": [
+   "release",
+   "workflow",
+   "testing"
+  ],
+  "scope": "Read-only evidence, human sign-off steps, and explicit unverified checks."
+ },
+ {
+  "slug": "build-log-triage",
+  "name": "Build log triage",
+  "type": "agent",
+  "category": "Quality assurance",
+  "description": "A proposed parser that groups build failures by likely root cause.",
+  "tags": [
+   "build",
+   "logs",
+   "debugging"
+  ],
+  "scope": "Log truncation, secret redaction, grouped errors, and references to exact lines."
+ },
+ {
+  "slug": "issue-duplicate-finder",
+  "name": "Issue similarity",
+  "type": "agent",
+  "category": "Team workflow",
+  "description": "A proposed helper for finding possibly related issues without merging them automatically.",
+  "tags": [
+   "issues",
+   "search",
+   "triage"
+  ],
+  "scope": "Similarity scoring, evidence snippets, and human confirmation before action."
+ },
+ {
+  "slug": "prompt-boundary-probe",
+  "name": "Prompt boundary probe",
+  "type": "agent",
+  "category": "Safety tooling",
+  "description": "A proposed offline test harness for known prompt-injection boundary cases.",
+  "tags": [
+   "security",
+   "prompts",
+   "testing"
+  ],
+  "scope": "Fixture-based inputs, pass/fail criteria, no secret-bearing targets, and reproducible reports."
+ },
+ {
+  "slug": "secret-pattern-audit",
+  "name": "Secret pattern audit",
+  "type": "agent",
+  "category": "Safety tooling",
+  "description": "A proposed local scanner that flags likely credential strings without printing them.",
+  "tags": [
+   "security",
+   "secrets",
+   "repository"
+  ],
+  "scope": "Allowlisted file types, false-positive controls, masked output, and no external upload."
+ },
+ {
+  "slug": "localization-consistency-check",
+  "name": "Localization consistency",
+  "type": "agent",
+  "category": "Quality assurance",
+  "description": "A proposed comparison of translation keys, placeholders, and missing locale entries.",
+  "tags": [
+   "localization",
+   "i18n",
+   "quality"
+  ],
+  "scope": "Key-set diff, placeholder matching, source references, and no invented translations."
+ }
 ]

@@ -1,1 +1,17 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Virtual list — MotionShelf</title><link rel="stylesheet" href="./virtual-list.css"></head><body><main class="demo"><div class="eyebrow">MOTIONSHELF / FIRST PARTY</div><h1>Virtual list</h1><div id="viewport" tabindex="0" role="list" aria-label="One thousand rows"><div id="spacer"><div id="window"></div></div></div><p id="status" class="status" role="status"></p></main><script src="./virtual-list.js" defer></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Virtual list — MotionShelf</title><link rel="stylesheet" href="./virtual-list.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Virtual list</span><span class="frame-tag">10,000 rows</span></div><h1 class="sr-only">Virtual list</h1><div class="stage">
+<div class="vl">
+  <div class="vl-head">
+    <span class="vl-title">Audit log</span>
+    <span class="badge" id="vlBadge">10,000</span>
+  </div>
+  <div class="vl-view" id="viewport" tabindex="0" role="list" aria-label="Audit log entries">
+    <div class="vl-spacer" id="spacer"><div class="vl-window" id="window"></div></div>
+  </div>
+  <div class="vl-foot">
+    <span id="vlRange">Rows 1–12</span>
+    <span class="spacer"></span>
+    <button class="btn btn-sm btn-ghost" type="button" id="vlTop">Jump to top</button>
+  </div>
+  <p id="status" class="sr-only" role="status" aria-live="polite"></p>
+</div>
+</div></main><script src="./virtual-list.js" defer></script></body></html>

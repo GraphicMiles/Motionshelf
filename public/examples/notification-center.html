@@ -1,1 +1,16 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Notification center — MotionShelf</title><link rel="stylesheet" href="./notification-center.css"></head><body><main class="demo"><div class="eyebrow">MOTIONSHELF / FIRST PARTY</div><h1>Notification center</h1><div class="row"><button id="unread" aria-pressed="false" type="button">Unread only</button><button id="markAll" type="button">Mark all read</button></div><div id="notes" class="stack" style="margin-top:10px"></div><p id="status" class="status" role="status"></p></main><script src="./notification-center.js" defer></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Notifications — MotionShelf</title><link rel="stylesheet" href="./notification-center.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Notifications</span><span class="frame-tag">read state</span></div><h1 class="sr-only">Notifications</h1><div class="stage">
+<div class="nc">
+  <div class="nc-head">
+    <div class="nc-title">Inbox <span class="badge badge-accent" id="ncBadge">3</span></div>
+    <div class="nc-tools">
+      <button class="nc-filter" id="unread" aria-pressed="false" type="button">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M22 3H2l8 9.5V19l4 2v-8.5L22 3Z"/></svg>
+        Unread only
+      </button>
+      <button class="nc-mark" id="markAll" type="button">Mark all read</button>
+    </div>
+  </div>
+  <ul class="nc-list" id="notes"></ul>
+  <p id="status" class="sr-only" role="status" aria-live="polite"></p>
+</div>
+</div></main><script src="./notification-center.js" defer></script></body></html>

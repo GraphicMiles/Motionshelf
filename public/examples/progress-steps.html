@@ -1,1 +1,12 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Progress steps — MotionShelf</title><link rel="stylesheet" href="./progress-steps.css"></head><body><main class="demo"><div class="eyebrow">MOTIONSHELF / FIRST PARTY</div><h1>Progress steps</h1><ol id="steps"><li aria-current="step">Details</li><li>Review</li><li>Done</li></ol><label class="row" for="ready"><input id="ready" type="checkbox" style="width:auto">Details are complete</label><div class="row" style="margin-top:12px"><button id="back" type="button" disabled>Back</button><button id="next" class="primary" type="button">Continue</button></div><p id="status" class="status" role="status"></p></main><script src="./progress-steps.js" defer></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Progress steps — MotionShelf</title><link rel="stylesheet" href="./progress-steps.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Progress steps</span><span class="frame-tag">numbered</span></div><h1 class="sr-only">Progress steps</h1><div class="stage">
+<div class="ps">
+  <ol class="ps-head" id="steps"></ol>
+  <div class="ps-panel" id="psPanel"></div>
+  <div class="ps-foot">
+    <button class="btn btn-sm" type="button" id="back">Back</button>
+    <span class="spacer"></span>
+    <button class="btn btn-sm btn-primary" type="button" id="next">Continue</button>
+  </div>
+  <p id="status" class="sr-only" role="status" aria-live="polite"></p>
+</div>
+</div></main><script src="./progress-steps.js" defer></script></body></html>

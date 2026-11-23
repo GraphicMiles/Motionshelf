@@ -1,1 +1,21 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>File drop zone — MotionShelf</title><link rel="stylesheet" href="./file-drop-zone.css"></head><body><main class="demo"><div class="eyebrow">MOTIONSHELF / FIRST PARTY</div><h1>File drop zone</h1><label for="file">Choose a text file</label><div id="drop"><input id="file" type="file" accept=".txt,text/plain"><p>Drop a .txt file here or use the picker · 100 KB max</p></div><button id="clear" type="button" hidden>Remove file</button><p id="status" class="status" role="status"></p></main><script src="./file-drop-zone.js" defer></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>File drop zone — MotionShelf</title><link rel="stylesheet" href="./file-drop-zone.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">File drop zone</span><span class="frame-tag">100 KB max</span></div><h1 class="sr-only">File drop zone</h1><div class="stage">
+<div class="fd">
+  <input id="file" type="file" accept=".txt,.md,text/plain,text/markdown" class="sr-only" aria-label="Choose a text file">
+  <div class="fd-zone" id="drop" tabindex="0" role="button" aria-describedby="fdHelp">
+    <span class="fd-ring" aria-hidden="true"></span>
+    <span class="fd-icon" id="fdIcon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 9l5-5 5 5"/><path d="M12 4v12"/></svg>
+    </span>
+    <div class="fd-title" id="fdTitle">Drop a .txt or .md file</div>
+    <div class="fd-help" id="fdHelp">or <span class="fd-link">browse files</span> · 100 KB max</div>
+    <div class="fd-bar" id="fdBar" hidden><span id="fdFill"></span></div>
+    <div class="fd-file" id="fdFile" hidden></div>
+  </div>
+  <div class="fd-foot">
+    <button class="btn btn-sm btn-ghost" id="clear" type="button" hidden>Remove file</button>
+    <span class="spacer"></span>
+    <span class="hint" id="fdSize">0 files</span>
+  </div>
+  <p id="status" class="hint" role="status" aria-live="polite">Nothing uploaded — this stays on your device.</p>
+</div>
+</div></main><script src="./file-drop-zone.js" defer></script></body></html>

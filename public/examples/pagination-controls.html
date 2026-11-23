@@ -1,1 +1,10 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pagination controls — MotionShelf</title><link rel="stylesheet" href="./pagination-controls.css"></head><body><main class="demo"><div class="eyebrow">MOTIONSHELF / FIRST PARTY</div><h1>Pagination controls</h1><ol id="results"></ol><nav class="row" aria-label="Pages"><button id="previous" type="button">Previous</button><span id="page" aria-live="polite"></span><button id="next" type="button">Next</button></nav></main><script src="./pagination-controls.js" defer></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Pagination — MotionShelf</title><link rel="stylesheet" href="./pagination-controls.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Pagination</span><span class="frame-tag">numbered</span></div><h1 class="sr-only">Pagination</h1><div class="stage">
+<div class="pg">
+  <ul class="pg-results" id="results"></ul>
+  <div class="pg-bar">
+    <span class="pg-info" id="pgInfo"></span>
+    <nav class="pg-nav" aria-label="Pagination" id="pgNav"></nav>
+  </div>
+  <p id="status" class="sr-only" role="status" aria-live="polite"></p>
+</div>
+</div></main><script src="./pagination-controls.js" defer></script></body></html>

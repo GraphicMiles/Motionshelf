@@ -1,1 +1,32 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Data table — MotionShelf</title><link rel="stylesheet" href="./data-table.css"></head><body><main class="demo"><div class="eyebrow">MOTIONSHELF / FIRST PARTY</div><h1>Data table</h1><div class="table-wrap"><table><thead><tr><th><button id="sort" type="button" aria-label="Sort by name">Name ↕</button></th><th>Status</th><th><span class="sr-only">Select</span></th></tr></thead><tbody id="rows"></tbody></table></div><p id="status" class="status" role="status"></p></main><script src="./data-table.js" defer></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Data table — MotionShelf</title><link rel="stylesheet" href="./data-table.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Data table</span><span class="frame-tag">sort + select</span></div><h1 class="sr-only">Data table</h1><div class="stage">
+<div class="dt">
+  <div class="dt-head">
+    <div class="dt-title">Revenue</div>
+    <span class="badge" id="dtCount">0 selected</span>
+  </div>
+  <div class="dt-search">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="dtQuery" type="search" placeholder="Search products…" autocomplete="off">
+  </div>
+  <div class="dt-scroll" id="dtScroll">
+    <table class="dt-table">
+      <thead>
+        <tr>
+          <th class="dt-check"><input type="checkbox" id="dtAll" aria-label="Select all rows"></th>
+          <th scope="col"><button class="dt-sort" data-col="name" aria-label="Sort by product">Product</button></th>
+          <th scope="col" class="dt-r"><button class="dt-sort dt-on" data-col="revenue" aria-label="Sort by revenue">Revenue<i class="dt-ar" aria-hidden="true"></i></button></th>
+          <th scope="col" class="dt-r"><button class="dt-sort" data-col="delta" aria-label="Sort by change">Δ</button></th>
+        </tr>
+      </thead>
+      <tbody id="dtBody"></tbody>
+    </table>
+  </div>
+  <div class="dt-bulk" id="dtBulk" hidden>
+    <span id="dtBulkText">0 selected</span>
+    <span class="spacer"></span>
+    <button class="btn btn-sm btn-ghost" type="button" id="dtExport">Export</button>
+    <button class="btn btn-sm btn-danger" type="button" id="dtDelete">Delete</button>
+  </div>
+  <p id="status" class="sr-only" role="status" aria-live="polite"></p>
+</div>
+</div></main><script src="./data-table.js" defer></script></body></html>

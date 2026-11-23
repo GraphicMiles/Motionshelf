@@ -1,1 +1,23 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Overflow tabs — MotionShelf</title><link rel="stylesheet" href="./overflow-tabs.css"></head><body><main class="demo"><div class="eyebrow">MOTIONSHELF / FIRST PARTY</div><h1>Overflow tabs</h1><div role="tablist" aria-label="Workspace sections" id="tabs"><button role="tab" aria-selected="true" aria-controls="panel" tabindex="0">Overview</button><button role="tab" aria-selected="false" aria-controls="panel" tabindex="-1">Activity</button><button role="tab" aria-selected="false" aria-controls="panel" tabindex="-1">Files</button><button role="tab" aria-selected="false" aria-controls="panel" tabindex="-1">Permissions</button><button role="tab" aria-selected="false" aria-controls="panel" tabindex="-1">Settings</button></div><div role="tabpanel" id="panel" tabindex="0"><p id="content">Overview content is ready.</p></div></main><script src="./overflow-tabs.js" defer></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Overflow tabs — MotionShelf</title><link rel="stylesheet" href="./overflow-tabs.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Overflow tabs</span><span class="frame-tag">scroll + glide</span></div><h1 class="sr-only">Overflow tabs</h1><div class="stage">
+<div class="ot">
+  <div class="ot-wrap">
+    <div class="ot-tabs" role="tablist" aria-label="Workspace sections" id="tabs">
+      <button role="tab" aria-selected="true" aria-controls="panel" id="tab-0" tabindex="0">Overview</button>
+      <button role="tab" aria-selected="false" aria-controls="panel" id="tab-1" tabindex="-1">Activity</button>
+      <button role="tab" aria-selected="false" aria-controls="panel" id="tab-2" tabindex="-1">Files</button>
+      <button role="tab" aria-selected="false" aria-controls="panel" id="tab-3" tabindex="-1">Permissions</button>
+      <button role="tab" aria-selected="false" aria-controls="panel" id="tab-4" tabindex="-1">Settings</button>
+      <span class="ot-ink" id="otInk" aria-hidden="true"></span>
+    </div>
+    <button class="ot-more" id="otMore" type="button" aria-label="Scroll tabs right" hidden>
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+    <span class="ot-fade" id="otFade" aria-hidden="true"></span>
+  </div>
+  <div role="tabpanel" id="panel" tabindex="0" aria-labelledby="tab-0">
+    <h2 id="otTitle">Overview</h3>
+    <p id="otBody"></p>
+    <div class="ot-stats" id="otStats"></div>
+  </div>
+</div>
+</div></main><script src="./overflow-tabs.js" defer></script></body></html>

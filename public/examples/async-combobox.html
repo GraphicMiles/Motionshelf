@@ -1,1 +1,25 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Async combobox — MotionShelf</title><link rel="stylesheet" href="./async-combobox.css"></head><body><main class="demo"><div class="eyebrow">MOTIONSHELF / FIRST PARTY</div><h1>Async combobox</h1><label for="city">City</label><input id="city" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-controls="results" autocomplete="off" placeholder="Type at least two letters"><div id="results" role="listbox" hidden></div><p id="status" class="status" role="status" aria-live="polite"></p></main><script src="./async-combobox.js" defer></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Async combobox — MotionShelf</title><link rel="stylesheet" href="./async-combobox.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Async combobox</span><span class="frame-tag">debounced</span></div><h1 class="sr-only">Async combobox</h1><div class="stage">
+<div class="cb">
+  <label class="label" for="city">Destination city</label>
+  <div class="cb-anchor">
+    <div class="cb-trigger" id="cbTrigger">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="cb-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      <input id="city" type="text" role="combobox" aria-expanded="false" aria-controls="cbList" aria-autocomplete="list" aria-activedescendant="" autocomplete="off" spellcheck="false" placeholder="Search a city…">
+      <span class="cb-spin" id="cbSpin" hidden aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 3a9 9 0 0 1 9 9" stroke-linecap="round"/></svg></span>
+      <button type="button" class="cb-clear" id="cbClear" hidden aria-label="Clear selection"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="cb-pop" id="cbPop" hidden>
+      <div class="cb-list" id="cbList" role="listbox" aria-label="Cities">
+        <div class="cb-glide" id="cbGlide" aria-hidden="true"></div>
+      </div>
+      <div class="cb-empty" id="cbEmpty" hidden>No city matches that search.</div>
+    </div>
+  </div>
+  <div class="cb-selected" id="cbSelected" hidden>
+    <span class="dot dot-ok" aria-hidden="true"></span>
+    <span id="cbSelText"></span>
+    <span class="badge" id="cbSelTz"></span>
+  </div>
+  <p id="status" class="hint" role="status" aria-live="polite">Type two letters to search 40 cities.</p>
+</div>
+</div></main><script src="./async-combobox.js" defer></script></body></html>

@@ -1,1 +1,24 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Action confirmation — MotionShelf</title><link rel="stylesheet" href="./action-confirmation.css"></head><body><main class="demo"><div class="eyebrow">MOTIONSHELF / FIRST PARTY</div><h1>Action confirmation</h1><div class="row" id="item"><span>Quarterly plan</span><button id="delete" type="button">Remove</button></div><div role="dialog" aria-modal="true" aria-labelledby="dialogTitle" id="dialog" hidden><h2 id="dialogTitle">Remove this item?</h2><p>You can undo the change in this demo.</p><div class="row"><button id="cancel" type="button">Cancel</button><button id="confirm" class="primary" type="button">Remove item</button></div></div><button id="undo" type="button" hidden>Undo removal</button><p class="status" id="status" role="status"></p></main><script src="./action-confirmation.js" defer></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Confirm dialog — MotionShelf</title><link rel="stylesheet" href="./action-confirmation.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Confirm dialog</span><span class="frame-tag">modal + undo</span></div><h1 class="sr-only">Confirm dialog</h1><div class="stage">
+<div class="ac">
+  <div class="ac-list" id="acList"></div>
+  <div class="ac-scrim" id="acScrim" hidden></div>
+  <div class="ac-dialog" id="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle" aria-describedby="dialogBody" hidden>
+    <div class="ac-icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M10 11v6M14 11v6"/></svg>
+    </div>
+    <h2 id="dialogTitle">Remove this item?</h3>
+    <p id="dialogBody">“Quarterly plan” will be removed from the workspace. You can undo this for a few seconds.</p>
+    <div class="ac-actions">
+      <button class="btn btn-sm" type="button" id="cancel">Keep it</button>
+      <button class="btn btn-sm btn-danger" type="button" id="confirm">Remove</button>
+    </div>
+  </div>
+  <div class="ac-undo" id="undoBar" hidden>
+    <span class="dot dot-ok"></span>
+    <span id="undoText">Item removed</span>
+    <span class="ac-undo-bar"><span id="undoFill"></span></span>
+    <button class="ac-undo-btn" type="button" id="undo">Undo</button>
+  </div>
+  <p id="status" class="sr-only" role="status" aria-live="polite"></p>
+</div>
+</div></main><script src="./action-confirmation.js" defer></script></body></html>

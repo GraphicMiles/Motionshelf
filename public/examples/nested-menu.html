@@ -1,1 +1,29 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nested menu — MotionShelf</title><link rel="stylesheet" href="./nested-menu.css"></head><body><main class="demo"><div class="eyebrow">MOTIONSHELF / FIRST PARTY</div><h1>Nested menu</h1><div class="stack" role="menu" aria-label="Project menu"><button id="parent" role="menuitem" aria-expanded="false" aria-controls="submenu">Project options ▾</button><div id="submenu" role="group" aria-label="Project options" hidden><button role="menuitem" data-action="Duplicate">Duplicate</button><button role="menuitem" data-action="Archive">Archive</button><button role="menuitem" data-action="Share">Share</button></div></div><p id="status" class="status" role="status"></p></main><script src="./nested-menu.js" defer></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Nested menu — MotionShelf</title><link rel="stylesheet" href="./nested-menu.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Nested menu</span><span class="frame-tag">flyout</span></div><h1 class="sr-only">Nested menu</h1><div class="stage">
+<div class="nm">
+  <div class="nm-bar">
+    <button class="nm-trigger" id="parent" type="button" aria-expanded="false" aria-controls="submenu">
+      <span class="nm-ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h10M4 17h7"/></svg></span>
+      <span class="nm-txt">Project options</span>
+      <svg class="nm-chev" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </button>
+  </div>
+  <div class="nm-pop" id="submenu" role="menu" aria-label="Project options" hidden>
+    <div class="nm-glab">Project</div>
+    <button role="menuitem" tabindex="-1" data-action="Duplicate">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+      <span>Duplicate</span><kbd class="kbd">⌘D</kbd>
+    </button>
+    <button role="menuitem" tabindex="-1" data-action="Archive">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="4" width="20" height="5" rx="1.5"/><path d="M4 9v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9"/><path d="M10 13h4"/></svg>
+      <span>Archive</span>
+    </button>
+    <div class="nm-sep"></div>
+    <button role="menuitem" tabindex="-1" data-action="Share" class="nm-danger">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M16 6l-4-4-4 4"/><path d="M12 2v13"/></svg>
+      <span>Share</span>
+    </button>
+  </div>
+  <div class="nm-result" id="nmResult" hidden></div>
+  <p id="status" class="hint" role="status" aria-live="polite">Closed — press ↓ or click to open.</p>
+</div>
+</div></main><script src="./nested-menu.js" defer></script></body></html>

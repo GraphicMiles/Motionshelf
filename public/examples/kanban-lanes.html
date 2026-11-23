@@ -1,1 +1,26 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kanban lanes — MotionShelf</title><link rel="stylesheet" href="./kanban-lanes.css"></head><body><main class="demo"><div class="eyebrow">MOTIONSHELF / FIRST PARTY</div><h1>Kanban lanes</h1><div class="lanes"><section><h2>To do</h2><div id="todo"></div></section><section><h2>Done</h2><div id="done"></div></section></div><p id="status" class="status" role="status"></p></main><script src="./kanban-lanes.js" defer></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kanban lanes — MotionShelf</title><link rel="stylesheet" href="./kanban-lanes.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Kanban lanes</span><span class="frame-tag">move cards</span></div><h1 class="sr-only">Kanban lanes</h1><div class="stage">
+<div class="kb">
+  <div class="kb-head">
+    <span class="kb-title">Sprint 24</span>
+    <span class="kb-meta" id="kbMeta"></span>
+  </div>
+  <div class="kb-lanes" id="kbLanes">
+    <section class="kb-lane" data-lane="todo">
+      <header><span class="kb-dot"></span><h2>To do</h2><span class="badge" data-count>0</span></header>
+      <div class="kb-cards" data-drop="todo" tabindex="0" role="group" aria-label="To do tasks"></div>
+      <button class="kb-add" type="button" data-add="todo">+ Add task</button>
+    </section>
+    <section class="kb-lane" data-lane="doing">
+      <header><span class="kb-dot"></span><h2>In progress</h2><span class="badge" data-count>0</span></header>
+      <div class="kb-cards" data-drop="doing" tabindex="0" role="group" aria-label="In progress tasks"></div>
+      <button class="kb-add" type="button" data-add="doing">+ Add task</button>
+    </section>
+    <section class="kb-lane" data-lane="done">
+      <header><span class="kb-dot"></span><h2>Done</h2><span class="badge" data-count>0</span></header>
+      <div class="kb-cards" data-drop="done" tabindex="0" role="group" aria-label="Done tasks"></div>
+      <button class="kb-add" type="button" data-add="done">+ Add task</button>
+    </section>
+  </div>
+  <p id="status" class="sr-only" role="status" aria-live="polite"></p>
+</div>
+</div></main><script src="./kanban-lanes.js" defer></script></body></html>

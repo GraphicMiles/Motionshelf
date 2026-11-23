@@ -1,1 +1,21 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Comparison grid — MotionShelf</title><link rel="stylesheet" href="./comparison-grid.css"></head><body><main class="demo"><div class="eyebrow">MOTIONSHELF / FIRST PARTY</div><h1>Comparison grid</h1><label class="row" for="differences"><input id="differences" type="checkbox" style="width:auto">Only differences</label><div class="table-wrap"><table><thead><tr><th>Feature</th><th>Basic</th><th>Plus</th></tr></thead><tbody id="rows"></tbody></table></div><p id="status" class="status" role="status"></p></main><script src="./comparison-grid.js" defer></script></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Comparison grid — MotionShelf</title><link rel="stylesheet" href="./comparison-grid.css"></head><body><main class="demo"><div class="frame-bar"><span class="pip" aria-hidden="true"></span><span class="frame-name">Comparison grid</span><span class="frame-tag">diff only</span></div><h1 class="sr-only">Comparison grid</h1><div class="stage">
+<div class="cg">
+  <label class="cg-toggle">
+    <input type="checkbox" id="differences">
+    <span>Only show differences</span>
+  </label>
+  <div class="cg-scroll" tabindex="0" role="region" aria-label="Feature comparison">
+    <table class="cg-table">
+      <thead>
+        <tr>
+          <th scope="col">Feature</th>
+          <th scope="col">Basic</th>
+          <th scope="col" class="cg-hi">Plus<span class="cg-star">★</span></th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+  <p id="status" class="hint" role="status" aria-live="polite"></p>
+</div>
+</div></main><script src="./comparison-grid.js" defer></script></body></html>
