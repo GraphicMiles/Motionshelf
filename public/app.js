@@ -7,7 +7,8 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 function visual(r){return examples.has(r.slug)?`<iframe class="example-frame" title="${esc(r.name)} example" src="/examples/${esc(r.slug)}.html" loading="lazy" sandbox="allow-scripts allow-forms"></iframe>`:`<div class="agent-preview"><i class="fa-solid fa-code-branch" aria-hidden="true"></i><strong>${esc(r.name)}</strong><p>Explore the original project.</p><a href="${esc(r.firstParty?r.source:r.repository)}" target="_blank" rel="noopener noreferrer"><span>View source</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div>`}
 function filtered(){const items=state.resources.filter(r=>(state.type==='all'||r.type===state.type)&&(state.framework==='all'||r.frameworks.includes(state.framework))&&(state.license==='all'||r.license===state.license)&&(!state.query||[r.slug,r.name,r.description,r.category,r.type,r.runtime,...r.tags,...r.frameworks].join(' ').toLowerCase().includes(state.query)));if(state.sort==='az')items.sort((a,b)=>a.name.localeCompare(b.name));if(state.sort==='za')items.sort((a,b)=>b.name.localeCompare(a.name));return items;}
 function filteredPlanned(){const items=state.planned.filter(r=>(state.type==='all'||r.type===state.type)&&state.framework==='all'&&state.license==='all'&&(!state.query||[r.slug,r.name,r.description,r.category,r.type,r.scope,...r.tags].join(' ').toLowerCase().includes(state.query)));if(state.sort==='az')items.sort((a,b)=>a.name.localeCompare(b.name));if(state.sort==='za')items.sort((a,b)=>b.name.localeCompare(a.name));return items}
-function render(){const items=filtered();$('#cards').innerHTML=items.map(r=>`<article class="resource-card"><div class="card-canvas"><span class="card-label">${labels[r.type]}</span><button class="card-copy" type="button" data-copy-card="${esc(r.slug)}" ${examples.has(r.slug)||r.install?'':'disabled'} aria-label="${examples.has(r.slug)?'Copy example JavaScript':r.install?'Copy installation command':'No snippet available for'} ${esc(r.name)}" title="${examples.has(r.slug)?'Copy example JavaScript':r.install?'Copy installation command':'No snippet available'}"><i class="fa-regular fa-copy" aria-hidden="true"></i></button><span class="card-copy-feedback" data-copy-feedback="${esc(r.slug)}" role="status" aria-live="polite"></span><div class="demo-content">${visual(r)}</div></div><div class="card-meta"><div><span class="card-category">${esc(r.frameworks[0])} <span>·</span> ${esc(r.license)}</span><h3>${esc(r.name)}</h3><p>${esc(r.description)}</p></div><button class="card-open" data-open="${esc(r.slug)}" aria-label="View ${esc(r.name)} details"><i class="fa-solid fa-arrow-up-right-from-square"></i></button></div></article>`).join('');const planned=filteredPlanned(),previewMode=state.type==='all'&&state.framework==='all'&&state.license==='all'&&!state.query&&state.sort==='featured',collapsed=previewMode&&!state.showAllPlans,visiblePlanned=collapsed?planned.slice(0,8):planned;$('#plannedCards').innerHTML=visiblePlanned.map((r,index)=>`<article class="planned-card"><div class="planned-card-top"><span class="planned-index">${String(index+1).padStart(2,'0')}</span><span class="planned-badge">Coming soon</span></div><div class="planned-card-body"><div class="planned-icon"><i class="fa-solid ${r.type==='agent'?'fa-terminal':'fa-shapes'}" aria-hidden="true"></i></div><div><span class="planned-category">${esc(r.type==='agent'?'AGENT TOOL':'UI COMPONENT')} / ${esc(r.category)}</span><h4>${esc(r.name)}</h4><p>${esc(r.description)}</p></div></div><button type="button" class="planned-open" data-plan-open="${esc(r.slug)}" aria-label="Read plan for ${esc(r.name)}">Read plan <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></button></article>`).join('');$('#plannedGroup').hidden=planned.length===0;$('#plannedCount').textContent=`${planned.length} PLANNED`;$('#showPlans').hidden=!previewMode||planned.length<=8;$('#showPlans').innerHTML=state.showAllPlans?'Show fewer plans <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>':`Show all ${planned.length} plans <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>`;$('#availableGroup').hidden=items.length===0;$('#empty').hidden=items.length+planned.length>0;$('#resultCount').textContent=`${items.length} AVAILABLE${planned.length?' · '+planned.length+' PLANNED':''}`;$$('[data-type]').forEach(b=>b.classList.toggle('active',b.dataset.type===state.type));}
+function render(){const items=filtered();$('#cards').innerHTML=items.map(r=>`<article class="resource-card"><div class="card-canvas"><span class="card-label">${labels[r.type]}</span><button class="card-copy" type="button" data-copy-card="${esc(r.slug)}" ${examples.has(r.slug)||r.install?'':'disabled'} aria-label="${examples.has(r.slug)?'Copy example JavaScript':r.install?'Copy installation command':'No snippet available for'} ${esc(r.name)}" title="${examples.has(r.slug)?'Copy example JavaScript':r.install?'Copy installation command':'No snippet available'}"><i class="fa-regular fa-copy" aria-hidden="true"></i></button><span class="card-copy-feedback" data-copy-feedback="${esc(r.slug)}" role="status" aria-live="polite"></span><div class="demo-content">${visual(r)}</div></div><div class="card-meta"><div><span class="card-category">${esc(r.frameworks[0])} <span>·</span> ${esc(r.license)}</span><h3>${esc(r.name)}</h3><p>${esc(r.description)}</p></div><button class="card-open" data-open="${esc(r.slug)}" aria-label="View ${esc(r.name)} details"><i class="fa-solid fa-arrow-up-right-from-square"></i></button></div></article>`).join('');const planned=filteredPlanned(),previewMode=state.type==='all'&&state.framework==='all'&&state.license==='all'&&!state.query&&state.sort==='featured',collapsed=previewMode&&!state.showAllPlans,visiblePlanned=collapsed?planned.slice(0,8):planned;$('#plannedCards').innerHTML=visiblePlanned.map((r,index)=>`<article class="planned-card"><div class="planned-card-top"><span class="planned-index">${String(index+1).padStart(2,'0')}</span><span class="planned-badge">Coming soon</span></div><div class="planned-card-body"><div class="planned-icon"><i class="fa-solid ${r.type==='agent'?'fa-terminal':'fa-shapes'}" aria-hidden="true"></i></div><div><span class="planned-category">${esc(r.type==='agent'?'AGENT TOOL':'UI COMPONENT')} / ${esc(r.category)}</span><h4>${esc(r.name)}</h4><p>${esc(r.description)}</p></div></div><button type="button" class="planned-open" data-plan-open="${esc(r.slug)}" aria-label="Read plan for ${esc(r.name)}">Read plan <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></button></article>`).join('');$('#plannedGroup').hidden=planned.length===0;$('#plannedCount').textContent=`${planned.length} PLANNED`;$('#showPlans').hidden=!previewMode||planned.length<=8;$('#showPlans').innerHTML=state.showAllPlans?'Show fewer plans <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>':`Show all ${planned.length} plans <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>`;{const skeleton=$('#shelfSkeleton');const loading=!!skeleton&&!skeleton.hidden;const failed=!!$('#cards')?.querySelector('.shelf-failed');/* Only hide the group for a genuinely empty result, never while the skeleton or a retry is what the reader needs to see. */
+$('#availableGroup').hidden=items.length===0&&!loading&&!failed;}$('#empty').hidden=items.length+planned.length>0;$('#resultCount').textContent=`${items.length} AVAILABLE${planned.length?' · '+planned.length+' PLANNED':''}`;$$('[data-type]').forEach(b=>b.classList.toggle('active',b.dataset.type===state.type));}
 function setType(type){state.type=type;render();$('#library').scrollIntoView({behavior:'smooth',block:'start'})}
 function openPlanned(slug){const r=state.planned.find(x=>x.slug===slug);if(!r)return;currentDetailSlug=slug;$('#detailContent').innerHTML=`<div class="detail-kicker">IN THE WORKS / ${esc(r.type==='agent'?'AGENT TOOL':'UI COMPONENT')}</div><h2 id="detailTitle">${esc(r.name)}<span class="title-period">.</span></h2><p class="detail-description">${esc(r.description)}</p><div class="planned-detail-notice"><i class="fa-solid fa-hammer" aria-hidden="true"></i><div><strong>Coming soon</strong><p>This is a first-party build plan, not a released resource. There is no preview, source code, installation command, or license to claim yet.</p></div></div><div class="detail-section"><h3>Target behavior</h3><p>${esc(r.scope)}</p></div><div class="detail-section"><h3>Area</h3><p>${esc(r.category)}</p></div>`;returnFocus=document.activeElement;$('#detailOverlay').hidden=false;document.body.style.overflow='hidden';history.replaceState(null,'',`#${r.slug}`);$('.detail-panel').scrollTop=0;$('.detail-panel .close-btn').focus()}
 function openDetail(slug){if(state.planned.some(x=>x.slug===slug))return openPlanned(slug);const r=state.resources.find(x=>x.slug===slug);if(!r)return;currentDetailSlug=slug;const preview=examples.has(r.slug)?`<div class="detail-section"><h3>Preview</h3><div class="detail-preview">${visual(r)}</div></div>`:`<div class="detail-section"><h3>Preview</h3><p>Explore the original project for details.</p></div>`;
@@ -15,7 +16,81 @@ $('#detailContent').innerHTML=`<div class="detail-kicker">RESOURCE / ${labels[r.
 function close(which){$(`#${which}Overlay`).hidden=true;document.body.style.overflow='';if(which==='detail'){currentDetailSlug=null;history.replaceState(null,'',location.pathname+location.search)}if(returnFocus?.isConnected)returnFocus.focus();returnFocus=null}
 function closeMobileMenu(){const nav=$('#headerNav');nav.classList.remove('open');$('#menuToggle').setAttribute('aria-expanded','false');$('#menuToggle i').className='fa-solid fa-bars'}
 function optionFill(id,values){$(id).innerHTML+=values.map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join('')}
-async function init(){try{const response=await fetch((window.MOTIONSHELF_API_BASE||'')+'/api/resources');if(!response.ok)throw Error('Could not load catalog');state.resources=await response.json();state.resources.filter(r=>r.firstParty&&r.type==='ui').forEach(r=>examples.add(r.slug));optionFill('#frameworkFilter',[...new Set(state.resources.flatMap(r=>r.frameworks))].sort());optionFill('#licenseFilter',[...new Set(state.resources.map(r=>r.license))].sort());render();const slug=decodeURIComponent(location.hash.slice(1));if(state.resources.some(r=>r.slug===slug))openDetail(slug)}catch(e){$('#cards').innerHTML=`<p class="form-error">${esc(e.message)}. Please refresh the page.</p>`;return}try{const response=await fetch((window.MOTIONSHELF_API_BASE||'')+'/api/roadmap');if(!response.ok)throw Error();const planned=await response.json();if(!Array.isArray(planned))throw Error();state.planned=planned;render();const slug=decodeURIComponent(location.hash.slice(1));if(state.planned.some(r=>r.slug===slug))openDetail(slug)}catch{$('#roadmapMessage').hidden=false;$('#roadmapMessage').textContent='The build roadmap is temporarily unavailable. The working library is still here.'}}
+/* ---- Loading state -------------------------------------------------------
+   The catalog is fetched after first paint, so the grid used to be empty and
+   0px tall until the response landed. These three helpers own that window:
+   the skeleton occupies the grid, the live region reports progress for
+   screen readers, and a failure offers a retry instead of only red text. */
+function setShelfStatus(message){const node=$('#shelfStatus');if(node)node.textContent=message}
+
+function showShelfLoading(){const group=$('#availableGroup'),cards=$('#cards'),skeleton=$('#shelfSkeleton');
+ if(!group)return;
+ group.setAttribute('aria-busy','true');
+ if(cards){cards.hidden=true;cards.innerHTML=''}
+ if(skeleton)skeleton.hidden=false;
+ setShelfStatus('Loading the shelf.')}
+
+function showShelfReady(count){const group=$('#availableGroup'),cards=$('#cards'),skeleton=$('#shelfSkeleton');
+ if(group)group.setAttribute('aria-busy','false');
+ if(skeleton)skeleton.hidden=true;
+ if(cards)cards.hidden=false;
+ setShelfStatus(count===0?'No resources are available.':`${count} ${count===1?'resource':'resources'} available.`)}
+
+function showShelfFailure(message,retry){const group=$('#availableGroup'),cards=$('#cards'),skeleton=$('#shelfSkeleton');
+ if(group)group.setAttribute('aria-busy','false');
+ if(skeleton)skeleton.hidden=true;
+ if(!cards)return;
+ cards.hidden=false;
+ cards.innerHTML=`<div class="shelf-failed"><p>${esc(message)}</p></div>`;
+ const button=document.createElement('button');
+ button.type='button';button.className='shelf-retry';button.textContent='Try again';
+ button.addEventListener('click',()=>{button.disabled=true;button.textContent='Retrying…';retry()});
+ cards.querySelector('.shelf-failed').appendChild(button);
+ setShelfStatus(message)}
+
+async function fetchJSON(path,label){
+ let response;
+ try{response=await fetch((window.MOTIONSHELF_API_BASE||'')+path)}
+ /* A rejected fetch surfaces as "Failed to fetch", which is browser
+    wording, not something to show a reader. */
+ catch{throw Error('Check your connection and try again.')}
+ if(!response.ok)throw Error(label);
+ try{return await response.json()}
+ catch{throw Error(label)}}
+
+/* The catalog is the only blocking request: it is what the page is for.
+   The roadmap sits below the fold, so it loads alongside it rather than
+   after it, and its failure never stops the library rendering. */
+async function loadResources(){const data=await fetchJSON('/api/resources','The library could not be loaded');
+ if(!Array.isArray(data))throw Error('The library could not be loaded');
+ state.resources=data;
+ state.resources.filter(r=>r.firstParty&&r.type==='ui').forEach(r=>examples.add(r.slug));
+ optionFill('#frameworkFilter',[...new Set(state.resources.flatMap(r=>r.frameworks))].sort());
+ optionFill('#licenseFilter',[...new Set(state.resources.map(r=>r.license))].sort());
+ render();
+ showShelfReady(state.resources.length);
+ const slug=decodeURIComponent(location.hash.slice(1));
+ if(state.resources.some(r=>r.slug===slug))openDetail(slug)}
+
+async function loadRoadmap(){try{const planned=await fetchJSON('/api/roadmap','Roadmap unavailable');
+  if(!Array.isArray(planned))throw Error('Roadmap unavailable');
+  state.planned=planned;render();
+  const slug=decodeURIComponent(location.hash.slice(1));
+  if(state.planned.some(r=>r.slug===slug))openDetail(slug)}
+ catch{$('#roadmapMessage').hidden=false;
+  $('#roadmapMessage').textContent='The build roadmap is temporarily unavailable. The working library is still here.'}}
+
+async function init(){
+ showShelfLoading();
+ try{await loadResources()}
+ catch(e){
+  /* One automatic retry covers a cold start or a dropped request; after that
+     the failure state hands control back to the reader. */
+  try{await loadResources()}
+  catch(e2){showShelfFailure(e2.message,init);return}
+ }
+ loadRoadmap();
+}
 $$('[data-type]').forEach(b=>b.addEventListener('click',()=>setType(b.dataset.type)));$('#search').addEventListener('input',e=>{state.query=e.target.value.trim().toLowerCase();render()});$('#frameworkFilter').addEventListener('change',e=>{state.framework=e.target.value;render()});$('#licenseFilter').addEventListener('change',e=>{state.license=e.target.value;render()});$('#sortFilter').addEventListener('change',e=>{state.sort=e.target.value;render()});$('#clearFilters').addEventListener('click',()=>{state.query='';state.framework='all';state.license='all';state.type='all';state.sort='featured';$('#sortFilter').value='featured';$('#search').value='';$('#frameworkFilter').value='all';$('#licenseFilter').value='all';render()});$$('#headerNav a').forEach(a=>a.addEventListener('click',closeMobileMenu));$('#menuToggle').addEventListener('click',()=>{const open=$('#headerNav').classList.toggle('open');$('#menuToggle').setAttribute('aria-expanded',String(open));$('#menuToggle i').className=open?'fa-solid fa-xmark':'fa-solid fa-bars'});
 $('#showPlans').addEventListener('click',()=>{state.showAllPlans=!state.showAllPlans;render();if(!state.showAllPlans)$('#plannedGroup').scrollIntoView({behavior:'smooth',block:'start'})});
 $('#plannedCards').addEventListener('click',e=>{const button=e.target.closest('[data-plan-open]');if(button)openPlanned(button.dataset.planOpen)});
